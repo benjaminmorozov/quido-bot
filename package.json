@@ -1,0 +1,22 @@
+{
+  "name": "quido",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^11.5.1",
+    "random-puppy": "^1.1.0",
+    "reques": "0.0.1-security",
+    "request": "^2.88.0",
+    "request-promise-native": "^1.0.7",
+    "snekfetch": "^4.0.4",
+    "superagent": "^5.1.0"
+  },
+  "devDependencies": {},
+  "description": ""
+}
