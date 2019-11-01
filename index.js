@@ -237,7 +237,7 @@ client.on("message", async message => {
       return message.reply("Sorry, you don't have permissions to use this!");
     
     const activity = args.join(" ");
-    client.user.setActivity(activity);
+    client.user.setActivity(activity, {type: 4});
     message.channel.send(`My activity has been set to "${activity}".`).then(sentMessage => {
       sentMessage.delete(5000);
     })
