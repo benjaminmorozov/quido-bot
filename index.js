@@ -42,22 +42,22 @@ client.on("message", async message => {
     message.channel.send({embed: {
         color: 3447003,
         author: {
-          name: '15 Commands:',
+          name: '12 Commands:',
         },
         thumbnail: {
             "url": "http://giphygifs.s3.amazonaws.com/media/MF1kR4YmC2Z20/giphy.gif"
           },
         fields: [{
           name: "Fun:",
-          value: "`__$cat__` - Get an instant picture of a cute cat. (usage: $cat)\n__$dog__ - Get an instant picture of a cute dog. (usage: $dog)\n__$8ball__ - Ask a question to the mystic 8ball. (usage: $8ball <question>)"
+          value: `__${config.prefix}cat__ - Get an instant picture of a cute cat. (usage: ${config.prefix}cat)\n__${config.prefix}dog__ - Get an instant picture of a cute dog. (usage: ${config.prefix}dog)\n__${config.prefix}8ball__ - Ask a question to the mystic 8ball. (usage: ${config.prefix}8ball <question>)`
           },
           {
             name: "Mod:",
-            value: "`__$ban__` - Bans an user. (usage: $ban <@user> <reason>)\n__$kick__ - Kicks an user. (usage: $kick <@user> <reason>)\n__$mute__ - Mutes an user. (usage: $mute <@user> <reason>\n__$purge__ - Deletes a custom amount of messages. (usage: $purge <amount>)\n__$unmute__ - Unmutes an user. (usage: $unmute <@user>)"
+            value: `__${config.prefix}ban__ - Bans an user. (usage: ${config.prefix}ban <@user> <reason>)\n__${config.prefix}kick__ - Kicks an user. (usage: ${config.prefix}kick <@user> <reason>)\n__${config.prefix}mute__ - Mutes an user. (usage: ${config.prefix}mute <@user> <reason>\n__${config.prefix}purge__ - Deletes a custom amount of messages. (usage: ${config.prefix}purge <amount>)\n__${config.prefix}unmute__ - Unmutes an user. (usage: ${config.prefix}unmute <@user>)`
           },
           {
             name: "Utils:",
-            value: "`$avatar` - Displays an avatar of the mentioned user/you.\n$help - Show all the commands.\n$say - Makes the bot say something.\n$server - Informations about the server.\n$setstatus - Sets the "playing" status of the bot.\n$user-info - Displays informations about you.",
+            value: "$avatar - Displays an avatar of the mentioned user/you.\n$help - Show all the commands.\n$server - Informations about the server.\n$user-info - Displays informations about you.",
             inline: "true"
           }
         ],
