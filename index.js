@@ -287,8 +287,30 @@ client.on("message", async message => {
     })
   }
 
-  if(command === "actuallywhatisthefuckingamountoftheusersonthisdiscordserver") {
-    return message.reply(`${message.guild.memberCount} a laskavě nepičuj.`);
+  if(command === "report") {
+    let rMember = message.mentions.members.first() || message.guild.members.get(args[0]);
+
+    if (!rMember)
+      return message.reply("Couldn't find that person?");
+
+    if (!args[1])
+      return message.channel.send("Please provide a reason for the report");
+    
+    const channel = message.guild.channels.find(c => c.name === "reports")
+
+    if (!channel)
+      return message.channel.send("Couldn't find the `#reports` channel").then(m => m.delete(5000));
+    
+    const embedReport = new RichEmbed()
+      .setColor("#ff0000")
+      .setTimestamp()
+      .setFooter(message.guild.name, message.guild.iconURL)
+      .setAuthor("Reported member", rMember.user.displayAvatarURL)
+      .setDescription(stripIndents`**> Member:** ${rMember} (${rMember.user.id})
+      **> Reported by:** ${message.member}
+      **> Reported in:** ${message.channel}
+      **> Reason:** ${args.slice(1).join(" ")}`);
+    return channel.send(embedReport);
   }
   
   if(command === "purge") {
