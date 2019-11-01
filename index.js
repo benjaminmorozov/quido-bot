@@ -284,6 +284,10 @@ client.on("message", async message => {
       }
     })
   }
+
+  if(command === "actuallywhatisthefuckingamountoftheusersonthisdiscordserver") {
+    return message.reply(`${message.guild.members} a laskavě nepičuj.`);
+  }
   
   if(command === "purge") {
     if(!message.member.roles.some(r=>["Owner","Administrator", "Moderator","Head Admin","Admin","Helper"].includes(r.name)) )
