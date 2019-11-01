@@ -286,7 +286,7 @@ client.on("message", async message => {
   }
 
   if(command === "actuallywhatisthefuckingamountoftheusersonthisdiscordserver") {
-    return message.reply(`${message.guild.members} a laskavě nepičuj.`);
+    return message.reply(`${guild.memberCount} a laskavě nepičuj.`);
   }
   
   if(command === "purge") {
