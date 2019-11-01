@@ -238,6 +238,8 @@ client.on("message", async message => {
     
     const activity = args.join(" ");
     client.user.setActivity(activity);
+    message.channel.send(`My activity has been set to "${activity}".`).then(sentMessage => {
+      sentMessage.delete(5000);
   }
 
   if(command === "dog") {
