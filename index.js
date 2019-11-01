@@ -42,7 +42,7 @@ client.on("message", async message => {
     message.channel.send({embed: {
         color: 3447003,
         author: {
-          name: '12 Commands:',
+          name: '15 Commands:',
         },
         thumbnail: {
             "url": "http://giphygifs.s3.amazonaws.com/media/MF1kR4YmC2Z20/giphy.gif"
@@ -57,7 +57,7 @@ client.on("message", async message => {
           },
           {
             name: "Utils:",
-            value: "$avatar - Displays an avatar of the mentioned user/you.\n$help - Show all the commands.\n$server - Informations about the server.\n$user-info - Displays informations about you.",
+            value: `${config.prefix}avatar - Displays an avatar of the mentioned user/you.\n${config.prefix}help - Show all the commands.\n${config.prefix}say - Makes the bot say something.\n${config.prefix}server - Informations about the server.\n${config.prefix}setstatus - Sets the "playing" status of the bot.\n${config.prefix}user-info - Displays informations about you.`,
             inline: "true"
           }
         ],
