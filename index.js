@@ -232,6 +232,14 @@ client.on("message", async message => {
     }
   }
 
+  if(command === "setstatus") {
+    if(!message.member.roles.some(r=>["Owner","Administrator", "Moderator","Head Admin","Admin"].includes(r.name)) )
+      return message.reply("Sorry, you don't have permissions to use this!");
+    
+    const activity = args.join(" ");
+    client.user.setActivity(sayMessage);
+  }
+
   if(command === "dog") {
     const request = require('request');
     const rp = require('random-puppy');
