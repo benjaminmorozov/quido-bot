@@ -237,7 +237,7 @@ client.on("message", async message => {
       return message.reply("Sorry, you don't have permissions to use this!");
     
     const activity = args.join(" ");
-    client.user.setActivity(sayMessage);
+    client.user.setActivity(activity);
   }
 
   if(command === "dog") {
