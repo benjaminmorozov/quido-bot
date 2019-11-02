@@ -242,9 +242,7 @@ client.on("message", async message => {
     if(!minutes) minutes = "no time provided";
 
     // This is the role you want to assign to the user
-    let mutedRole = message.guild.find(role => role.name == "Your role's name");
-    // This is the member you want to mute
-    let member = message.mentions.members.first();
+    let mutedRole = message.guild.find(role => role.name == "Muted");
 
     // Mute the user
     member.addRole(mutedRole, `Muted by ${message.author.tag} for ${minutes} minutes. Reason: ${reason}`);
