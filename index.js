@@ -222,7 +222,38 @@ client.on("message", async message => {
       .catch(error => console.log(`Sorry ${message.author} I couldn't mute ${member.user.tag} because of : ${error}`));
     message.reply(`${member.user.tag} has been muted by ${message.author.tag} for: ${reason}`);
   }
+  
+  if(command === "tempmute") {
+    if(!message.member.roles.some(r=>["🔱OWNER🔱","Administrator", "Moderator","Head Admin","Admin","Helper"].includes(r.name)) )
+    return message.reply("Sorry, you don't have enough permissions to use this!");
 
+    let member = message.mentions.members.first() || message.guild.members.get(args[0]);
+    if(!member)
+      return message.reply("please mention a valid member of this server");
+    if(!member.kickable) 
+      return message.reply("you cannot mute this user!");
+    
+    // slice(1) removes the first part, which here should be the user mention or ID
+    // join(' ') takes all the various parts to make it a single string.
+    let reason = args.slice(1).join(' ');
+    if(!reason) reason = "no reason provided";
+
+    let minutes = args.slice(1).join(' ');
+    if(!minutes) minutes = "no time provided";
+
+    // This is the role you want to assign to the user
+    let mutedRole = message.guild.find(role => role.name == "Your role's name");
+    // This is the member you want to mute
+    let member = message.mentions.members.first();
+
+    // Mute the user
+    member.addRole(mutedRole, `Muted by ${message.author.tag} for ${minutes} minutes. Reason: ${reason}`);
+
+    // Unmute them after x minutes
+    setTimout(() => {
+      member.removeRole(mutedRole, `Temporary mute expired.`);
+    }, minutes * 60000);
+  }
   if(command === "unmute") {
     if(!message.member.roles.some(r=>["🔱OWNER🔱","Administrator", "Moderator","Head Admin","Admin","Helper"].includes(r.name)) )
       return message.reply("Sorry, you don't have enough permissions to use this!");
