@@ -351,7 +351,7 @@ client.on("message", async message => {
       **> Reason:** ${args.slice(1).join(" ")}`);
     function message() {
         return channel.send(embedReport);
-    });
+    };
     message.channel.send(message())
     return channel.reply("User reported to the staff.");
   }
