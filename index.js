@@ -238,7 +238,7 @@ client.on("message", async message => {
     let reason = args.slice(1).join(' ');
     if(!reason) reason = "no reason provided";
 
-    let minutes = args.slice(1).join(' ');
+    let minutes = args.slice(2).join(' ');
     if(!minutes) minutes = "no time provided";
 
     // This is the role you want to assign to the user
@@ -248,7 +248,7 @@ client.on("message", async message => {
     member.addRole(mutedRole, `Muted by ${message.author.tag} for ${minutes} minutes. Reason: ${reason}`);
 
     // Unmute them after x minutes
-    setTimout(() => {
+    setTimeout(() => {
       member.removeRole(mutedRole, `Temporary mute expired.`);
     }, minutes * 60000);
   }
