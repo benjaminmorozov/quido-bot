@@ -343,11 +343,11 @@ client.on("message", async message => {
     const embedReport = new RichEmbed()
       .setColor("#ff0000")
       .setTimestamp()
-      .setFooter(message.guild.name, message.guild.iconURL)
+      .setFooter(`If you find a bug, please report it to our staff. ❤️`, message.guild.iconURL)
       .setAuthor("Reported member", rMember.user.displayAvatarURL)
       .setDescription(`**> Member:** ${rMember} (${rMember.user.id})
-      **> Reported by:** ${message.member}
-      **> Reported in:** ${message.channel}
+      **> Reported by:** ${message.member} (${message.member.user.id})
+      **> Reported in:** ${message.channel} (${message.channel.id})
       **> Reason:** ${args.slice(1).join(" ")}`);
     return channel.send(embedReport);
   }
