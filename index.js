@@ -349,11 +349,7 @@ client.on("message", async message => {
       **> Reported by:** ${message.member}
       **> Reported in:** ${message.channel}
       **> Reason:** ${args.slice(1).join(" ")}`);
-    function message() {
-        return channel.send(embedReport);
-    };
-    message.channel.send(message())
-    return channel.reply("User reported to the staff.");
+    return channel.send(embedReport);
   }
   
   if(command === "purge") {
