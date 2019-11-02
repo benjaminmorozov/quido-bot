@@ -1,21 +1,11 @@
-exports.run = (client, message, [msg]) => { 
-    if (!msg) { return message.reply("You need to provide a message."); }
-    
-    message.delete().catch();
-    if (message.author.id === client.owner.id) { return message.channel.send(msg); }
-    return message.channel.send(`${message.author.username} (${message.author.id}) wanted to say: ${msg}`);
-};
-  
-exports.conf = {
-    enabled: true,
-    runIn: ["text"],
-    aliases: ["echo", "talk"],
-    permLevel: 0,
-    botPerms: [],
-};
-  
-exports.help = {
-    name: "say",
-    description: "Have Margarine echo what you said.",
-    usage: "[msg:str]",
-};
+exports.run = (client, message, [msg]) => {
+    if(!message.member.roles.some(r=>["🔱OWNER🔱","Administrator", "Moderator","Head Admin","Admin","Helper"].includes(r.name)) )
+    return message.reply("Sorry, you don't have permissions to use this!");
+    // makes the bot say something and delete the message. As an example, it's open to anyone to use. 
+    // To get the "message" itself we join the `args` back into a string with spaces: 
+    const sayMessage = args.join(" ");
+    // Then we delete the command message (sneaky, right?). The catch just ignores the error with a cute smiley thing.
+    message.delete().catch(O_o=>{}); 
+    // And we get the bot to say the thing: 
+    message.channel.send(sayMessage);
+  };

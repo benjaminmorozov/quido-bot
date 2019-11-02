@@ -15,9 +15,6 @@ client.on("ready", () => {
 client.commands = new Enmap();
 
 const init = async () => {
-
-    // Here we load **commands** into memory, as a collection, so they're accessible
-    // here and everywhere else.
     const cmdFiles = await readdir("./commands/");
     client.logger.log(`Loading a total of ${cmdFiles.length} commands.`);
     cmdFiles.forEach(f => {
