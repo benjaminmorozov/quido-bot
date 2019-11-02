@@ -34,20 +34,6 @@ client.on('ready', () => {
 
 client.commands = new Enmap();
 
-fs.readdir("./commands/", (err, files) => {
-  if (err) return console.error(err);
-  files.forEach(file => {
-    if (!file.endsWith(".js")) return;
-    // Load the command file itself
-    let props = require(`./commands/${file}`);
-    // Get just the command name from the file name
-    let commandName = file.split(".")[0];
-    console.log(`Attempting to load command ${commandName}`);
-    // Here we simply store the whole thing in the command Enmap. We're not running it right now.
-    client.commands.set(commandName, props);
-  });
-});
-
 // Create an event listener for new guild members
 client.on('guildMemberAdd', member => {
   // To compare, we need to load the current invite list.
