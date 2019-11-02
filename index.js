@@ -216,9 +216,10 @@ client.on("message", async message => {
     let reason = args.slice(1).join(' ');
     if(!reason) reason = "no reason provided";
     
-    // Now, time for a swift kick in the nuts!
-    let role = message.guild.roles.get("630146706930925569");
-    member.addRole(role)
+    // This is the role you want to assign to the user
+    let mutedRole = message.guild.roles.find(role => role.name == "Muted");
+
+    member.addRole(mutedRole)
       .catch(error => console.log(`Sorry ${message.author} I couldn't mute ${member.user.tag} because of : ${error}`));
     message.reply(`${member.user.tag} has been muted by ${message.author.tag} for: ${reason}`);
   }
@@ -267,8 +268,10 @@ client.on("message", async message => {
 
     let reason = args.slice(1).join(' ');
 
-    let role = message.guild.roles.get("630146706930925569");
-    member.removeRole(role)
+    // This is the role you want to assign to the user
+    let mutedRole = message.guild.roles.find(role => role.name == "Muted");
+
+    member.removeRole(mutedRole)
       .catch(error => console.log(`Sorry ${message.author} I couldn't unmute ${member.user.tag} because of : ${error}`));
     message.reply(`${member.user.tag} has been unmuted by ${message.author.tag}.`);
   }
