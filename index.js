@@ -7,6 +7,11 @@ const config = require("./config.json");
 // We also need to make sure we're attaching the config to the CLIENT so it's accessible everywhere!
 client.config = config;
 
+client.on("ready", () => {
+    console.log(`Logged in as ${client.user.tag}!`);
+    client.user.setActivity(`Quido je láska ❤️`);
+});
+
 client.commands = new Enmap();
 
 fs.readdir("./commands/", (err, files) => {
