@@ -353,7 +353,7 @@ client.on("message", async message => {
   }
 
   if(command === "report") {
-    message.channel.send('User reported to the staff.')
+    return message.reply("User reported to the staff.");
   }
 
   if(command === "purge") {
