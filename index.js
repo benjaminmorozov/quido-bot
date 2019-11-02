@@ -67,7 +67,7 @@ client.on("message", async message => {
   const command = args.shift().toLowerCase();
   
   if(command === "say") {
-    if(!message.member.roles.some(r=>["Owner","Administrator", "Moderator","Head Admin","Admin","Helper"].includes(r.name)) )
+    if(!message.member.roles.some(r=>["🔱OWNER🔱","Administrator", "Moderator","Head Admin","Admin","Helper"].includes(r.name)) )
     return message.reply("Sorry, you don't have permissions to use this!");
     // makes the bot say something and delete the message. As an example, it's open to anyone to use. 
     // To get the "message" itself we join the `args` back into a string with spaces: 
@@ -175,7 +175,7 @@ client.on("message", async message => {
     // This command must be limited to mods and admins. In this example we just hardcode the role names.
     // Please read on Array.some() to understand this bit: 
     // https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/some?
-    if(!message.member.roles.some(r=>["Owner","Administrator", "Moderator","Head Admin","Admin"].includes(r.name)) )
+    if(!message.member.roles.some(r=>["🔱OWNER🔱","Administrator", "Moderator","Head Admin","Admin"].includes(r.name)) )
       return message.reply("Sorry, you don't have permissions to use this!");
     
     // Let's first check if we have a member and if we can kick them!
@@ -199,7 +199,7 @@ client.on("message", async message => {
   }
 
   if(command === "mute") {
-    if(!message.member.roles.some(r=>["Owner","Administrator", "Moderator","Head Admin","Admin","Helper"].includes(r.name)) )
+    if(!message.member.roles.some(r=>["🔱OWNER🔱","Administrator", "Moderator","Head Admin","Admin","Helper"].includes(r.name)) )
       return message.reply("Sorry, you don't have enough permissions to use this!");
     
     // Let's first check if we have a member and if we can kick them!
@@ -224,7 +224,7 @@ client.on("message", async message => {
   }
 
   if(command === "unmute") {
-    if(!message.member.roles.some(r=>["Owner","Administrator", "Moderator","Head Admin","Admin","Helper"].includes(r.name)) )
+    if(!message.member.roles.some(r=>["🔱OWNER🔱","Administrator", "Moderator","Head Admin","Admin","Helper"].includes(r.name)) )
       return message.reply("Sorry, you don't have enough permissions to use this!");
 
     // Let's first check if we have a member and if we can kick them!
@@ -247,7 +247,7 @@ client.on("message", async message => {
   if(command === "ban") {
     // Most of this command is identical to kick, except that here we'll only let admins do it.
     // In the real world mods could ban too, but this is just an example, right? ;)
-    if(!message.member.roles.some(r=>["Owner","Administrator", "Moderator","Head Admin","Admin"].includes(r.name)) )
+    if(!message.member.roles.some(r=>["🔱OWNER🔱","Administrator", "Moderator","Head Admin","Admin"].includes(r.name)) )
       return message.reply("Sorry, you don't have permissions to use this!");
     
     let member = message.mentions.members.first();
@@ -275,7 +275,7 @@ client.on("message", async message => {
   }
 
   if(command === "setstatus") {
-    if(!message.member.roles.some(r=>["Owner","Administrator", "Moderator","Head Admin","Admin"].includes(r.name)) )
+    if(!message.member.roles.some(r=>["🔱OWNER🔱","Administrator", "Moderator","Head Admin","Admin"].includes(r.name)) )
       return message.reply("Sorry, you don't have permissions to use this!");
     
     const activity = args.join(" ");
@@ -352,7 +352,7 @@ client.on("message", async message => {
   }
   
   if(command === "purge") {
-    if(!message.member.roles.some(r=>["Owner","Administrator", "Moderator","Head Admin","Admin","Helper"].includes(r.name)) )
+    if(!message.member.roles.some(r=>["🔱OWNER🔱","Administrator", "Moderator","Head Admin","Admin","Helper"].includes(r.name)) )
       return message.reply("Sorry, you don't have enough permissions to use this!");
     // This command removes all messages from all users in the channel, up to 100.
     
