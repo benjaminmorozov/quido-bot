@@ -38,6 +38,6 @@ client.on("message", async message => {
             client.commands.set(commandName, props);
         });
     });
-}
+});
 
 client.login(config.token);
