@@ -352,10 +352,6 @@ client.on("message", async message => {
     return channel.send(embedReport);
   }
 
-  if(command === "report") {
-    return message.reply("User reported to the staff.");
-  }
-
   if(command === "purge") {
     if(!message.member.roles.some(r=>["🔱OWNER🔱","Administrator", "Moderator","Head Admin","Admin","Helper"].includes(r.name)) )
       return message.reply("Sorry, you don't have enough permissions to use this!");
