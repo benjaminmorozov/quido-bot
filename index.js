@@ -326,7 +326,6 @@ client.on("message", async message => {
   }
 
   if(command === "report") {
-    const { Command } = require('discord.js-commando');
     const { RichEmbed } = require('discord.js');
     let rMember = message.mentions.members.first() || message.guild.members.get(args[0]);
 
