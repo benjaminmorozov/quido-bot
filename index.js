@@ -349,7 +349,7 @@ client.on("message", async message => {
       **> Reported by:** ${message.member}
       **> Reported in:** ${message.channel}
       **> Reason:** ${args.slice(1).join(" ")}`);
-    bot.on("message", function (message) {
+    function (message) {
         return channel.send(embedReport);
     });
     message.channel.send(message())
