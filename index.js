@@ -233,13 +233,11 @@ client.on("message", async message => {
       return message.reply("please mention a valid member of this server");
     if(!member.kickable) 
       return message.reply("you cannot mute this user!");
-    
-    // slice(1) removes the first part, which here should be the user mention or ID
-    // join(' ') takes all the various parts to make it a single string.
-    let reason = args.slice(1).join(' ');
+
+    let reason = args[1];
     if(!reason) reason = "no reason provided";
 
-    let minutes = args.slice(2).join(' ');
+    let minutes = args[2];
     if(!minutes) minutes = "no time provided";
 
     // This is the role you want to assign to the user
