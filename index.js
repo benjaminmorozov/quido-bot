@@ -234,10 +234,10 @@ client.on("message", async message => {
     if(!member.kickable) 
       return message.reply("you cannot mute this user!");
 
-    let reason = args[1];
+    let reason = args.slice(2).join(" ");
     if(!reason) reason = "no reason provided";
 
-    let minutes = args[2];
+    let minutes = args[1];
     if(!minutes) minutes = "no time provided";
 
     // This is the role you want to assign to the user
