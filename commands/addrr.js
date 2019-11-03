@@ -3,9 +3,9 @@ exports.run = (client, message, args) => {
     var rolename=["Minecraft"];
 
     for(let n in emojiname){
-        var emoji =[msg.guild.emojis.find(r => r.name == emojiname[n])];
+        var emoji =[messsage.guild.emojis.find(r => r.name == emojiname[n])];
         for(let i in emoji){
-            msg.react(emoji[i]);
+            message.react(emoji[i]);
         }
     }
 
