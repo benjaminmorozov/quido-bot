@@ -1,6 +1,6 @@
 exports.run = async (client, message, args) => {
 
-    let.msg = await message.channel.send("test");
+    let.message = await message.channel.send("test");
     await msg.react("😦");
     await msg.react("🍆");
 
