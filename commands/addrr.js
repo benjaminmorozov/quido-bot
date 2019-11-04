@@ -14,17 +14,13 @@ exports.run = async (client, message, args) => {
 
     message.channel.send({embed: {
         color: 0xff5353,
-        title: 'REACH EMOJI TO GET ROLE:',
+        author: {
+          name: `${minecraftemoji}`,
         },
-        fields: [
-            {
-                name: `test`,
-                value: `${minecraftemoji}\n${counterstrikeemoji}`,
-            }
-        ],
         footer: {
-          icon_url: 'https://images.discordapp.net/avatars/220644154177355777/bd6b28005c26d079486063a4976dfb44.png',
-          text: "If you find a bug, please report it to our staff. ❤️"
+          icon_url: 'https://cdn.discordapp.com/icons/610434388777369602/08a037cb16972aa3cd069a055d63ca43.webp',
+          text: "Thanks for being a part of our community ❤️"
         }
-      });
+      }
+    });
 };
