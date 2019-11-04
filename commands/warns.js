@@ -3,7 +3,7 @@ const fs = require("fs");
 const ms = require("ms");
 let warns = JSON.parse(fs.readFileSync("./warnings.json", "utf8"));
 
-exports.run = async (client, message, args) => {
+exports.run = (client, message, args) => {
     if(!message.member.roles.some(r=>["🔱OWNER🔱","Administrator", "Moderator","Head Admin","Admin"].includes(r.name)) )
     return message.reply("sorry, you don't have enough permissions to use this command!");
 
