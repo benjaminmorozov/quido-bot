@@ -11,8 +11,7 @@ exports.run = async (client, message, args) => {
     // message.mentions.members is a collection of people that have been mentioned, as GuildMembers.
     // We can also support getting the member by ID, which would be args[0]
     let member = message.mentions.members.first();
-    let warnlevel = warns[member.id];
     
-    message.reply(`<@${member.id}> has ${warnlevel} warnings.`);
+    message.reply(`<@${member.id}> has ${warns[member.id]} warnings.`);
     
 };
