@@ -1,7 +1,6 @@
 const Discord = require("discord.js");
 const fs = require("fs");
 const ms = require("ms");
-var editJsonFile = require("edit-json-file");
 let warns = JSON.parse(fs.readFileSync("./warnings.json", "utf8"));
 
 exports.run = async (client, message, args) => {
@@ -14,7 +13,11 @@ exports.run = async (client, message, args) => {
     let member = message.mentions.members.first();
     if(!member)
         return message.reply("please mention a valid member of this server.");
-    
+
+    if(!warns[member.id]) warns[member.id] = {
+        warns: 0
+    };
+
     warns[member.id].warns--;
     
     fs.writeFile("./warnings.json", JSON.stringify(warns), (err) => {
