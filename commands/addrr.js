@@ -13,8 +13,7 @@ exports.run = async (client, message, args) => {
         color: 0xff5353,
         title: 'REACH EMOJI TO GET ROLE:',
         },
-        description: `A
-        B`,
+        description: `:630379820030885898: :counterstrike`,
         footer: {
           icon_url: 'https://images.discordapp.net/avatars/220644154177355777/bd6b28005c26d079486063a4976dfb44.png',
           text: "If you find a bug, please report it to our staff. ❤️"
