@@ -3,7 +3,7 @@ exports.run = async (client, message) => {
     return message.reply("sorry, you don't have enough permissions to use this command!");
     
     message.channel.send({embed: {
-        color: 3447003,
+        color: 0xff5353,
         title: 'All muted users:',
         description: `**> ${message.guild.roles.get('630146706930925569').members.map(m=>m.user.tag).join('\n')}**`,
         footer: {

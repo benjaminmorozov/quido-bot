@@ -1,6 +1,6 @@
 exports.run = (client, message) => {
     message.channel.send({embed: {
-        color: 3447003,
+        color: 0xff5353,
         author: {
           name: '🔰 List of all commands:',
         },
