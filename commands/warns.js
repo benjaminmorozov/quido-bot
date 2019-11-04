@@ -25,7 +25,6 @@ exports.run = (client, message, args) => {
     });
   
     let warnchannel = client.channels.get(`630403969616707594`);
-
-    warns[member.id].warns - 1;
-    message.reply(`<@${member.id}> has ${warns[member.id].warns} warnings.`);
+    
+    message.reply(`<@${member.id}> has ${(warns[member.id].warns) - 1} warnings.`);
 };
