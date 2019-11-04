@@ -17,8 +17,6 @@ exports.run = (client, message, args) => {
     if(!warns[member.id]) warns[member.id] = {
         warns: 0
     };
-
-    warns[member.id].warns++;
     
     fs.writeFile("./warnings.json", JSON.stringify(warns), (err) => {
         if (err) console.log(err)
