@@ -23,5 +23,5 @@ exports.run = async (client, message, args) => {
         warns: 0
     };
 
-    message.reply(`<@${member.id}> has ${warnlevel} warnings.`);
+    message.reply(`<@${member.id}> has ${warns[member.id].warns} warnings.`);
 };
