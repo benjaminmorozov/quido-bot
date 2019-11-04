@@ -14,5 +14,5 @@ exports.run = (client, message, args) => {
     if(!member)
         return message.reply("please mention a valid member of this server.");
 
-    message.reply(`<@${member.id}> has ${warns[member.id].warns} warnings.`);
+    message.reply(`<@${member.id}> has ${warns[member.id]} warnings.`);
 };
