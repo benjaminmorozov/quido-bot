@@ -15,17 +15,11 @@ exports.run = async (client, message, args) => {
     if(!member)
         return message.reply("please mention a valid member of this server.");
     
+    warns[member.id].warns--;
+    
     fs.writeFile("./warnings.json", JSON.stringify(warns), (err) => {
         if (err) console.log(err)
     });
   
     let warnchannel = client.channels.get(`630403969616707594`);
-    
-    var file = editJsonFile(`./warnings.json`); //load queue.json
-
-    fs.writeFileSync(`./warnings.json`, '{\n    \n}'); //reset queue.json
-
-    file = editJsonFile(`./warnings.json`); //reload the file <---- this is the most important one
-
-    file.set(`${member.id}`, "0"); //set your new variables
 };
