@@ -9,7 +9,7 @@ exports.run = async (client, message, args) => {
     let member = message.mentions.members.first();
     if(!member)
         return message.reply("please mention a valid member of this server.");
-    if(!member.kickable) 
+    if(!member.bannable) 
         return message.channel.send(`Sorry ${message.author}, you cannot kick this user.`);
     
     if(!reason) reason = "No reason provided.";
