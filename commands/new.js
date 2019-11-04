@@ -19,11 +19,11 @@ exports.run = async (client, message, args) => {
     
     if(!reason) reason = "No reason provided.";
 
-    if(!warns[wUser.id]) warns[wUser.id] = {
+    if(!warns[member.id]) warns[member.id] = {
         warns: 0
     };
 
-    warns[wUser.id].warns++;
+    warns[member.id].warns++;
     
     fs.writeFile("./warnings.json", JSON.stringify(warns), (err) => {
         if (err) console.log(err)
@@ -42,17 +42,17 @@ exports.run = async (client, message, args) => {
           },
         fields: [{
           name: "Warned User:",
-          value: `<@${wUser.id}>`,
+          value: `<@${member.id}>`,
           inline: "true"
           },
           {
             name: "Warned In:",
-            value: `${warns[wUser.id].warns}`,
+            value: `${warns[member.id].warns}`,
             inline: "true"
           },
           {
             name: "Number of Warnings:",
-            value: `${warns[wUser.id].warns}`,
+            value: `${warns[member.id].warns}`,
             inline: "true"
           },
           {
@@ -68,21 +68,21 @@ exports.run = async (client, message, args) => {
       }
     });
 
-    if(warns[wUser.id].warns == 2){
+    if(warns[member.id].warns == 2){
         let muterole = message.guild.roles.find(`name`, "muted");
         if(!muterole) return message.reply("You should create that role dude.");
     
         let mutetime = "10s";
-        await(wUser.addRole(muterole.id));
-        message.channel.send(`<@${wUser.id}> has been temporarily muted`);
+        await(member.addRole(muterole.id));
+        message.channel.send(`<@${member.id}> has been temporarily muted`);
     
         setTimeout(function(){
-          wUser.removeRole(muterole.id)
-          message.reply(`<@${wUser.id}> has been unmuted.`)
+          member.removeRole(muterole.id)
+          message.reply(`<@${member.id}> has been unmuted.`)
         }, ms(mutetime))
     };
-    if(warns[wUser.id].warns == 3){
-        message.guild.member(wUser).ban(reason);
-        message.reply(`<@${wUser.id}> has been banned.`)
+    if(warns[member.id].warns == 3){
+        message.guild.member(member).ban(reason);
+        message.reply(`<@${member.id}> has been banned.`)
     }
 };
