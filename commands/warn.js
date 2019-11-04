@@ -29,17 +29,13 @@ exports.run = async (client, message, args) => {
         if (err) console.log(err)
     });
   
-    let warnchannel = message.guild.channels.find(`name`, "logs");
+    let warnchannel = message.guild.channels.find(channel => "logs");
 
     message.channel.send({embed: {
         color: 0xff5353,
         author: {
-          name: '🔰 List of all commands:',
+          name: 'Warning',
         },
-        description: 'Warning:',
-        thumbnail: {
-            "url": "http://giphygifs.s3.amazonaws.com/media/MF1kR4YmC2Z20/giphy.gif"
-          },
         fields: [{
           name: "Warned User:",
           value: `<@${member.id}>`,
