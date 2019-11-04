@@ -12,6 +12,6 @@ exports.run = async (client, message, args) => {
     // We can also support getting the member by ID, which would be args[0]
     let member = message.mentions.members.first();
     
-    message.reply(`<@${member.id}> has ${warns[member.id]} warnings.`);
+    message.reply(`<@${member.id}> has ${warns[member.id].warns} warnings.`);
     
 };
