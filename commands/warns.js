@@ -24,7 +24,7 @@ exports.run = (client, message, args) => {
         if (err) console.log(err)
     });
   
-    let warnchannel = client.channels.get(`630403969616707594`);
+    let warnchannel = client.channels.get(`638791812038918174`);
 
     message.reply(`<@${member.id}> has ${warns[member.id].warns} warnings.`);
 };
