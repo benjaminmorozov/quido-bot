@@ -31,10 +31,10 @@ exports.run = async (client, message, args) => {
   
     let warnchannel = client.channels.get(`630403969616707594`);
 
-    message.channel.send({embed: {
+    warnchannel.send({embed: {
         color: 0xff5353,
         author: {
-          name: 'Warning',
+          name: 'Warning:',
         },
         fields: [{
           name: "Warned User:",
