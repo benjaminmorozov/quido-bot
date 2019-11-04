@@ -19,5 +19,5 @@ exports.run = async (client, message, args) => {
 
     member.removeRole(mutedRole)
     .catch(error => console.log(`Sorry ${message.author}, I couldn't unmute because of : ${error}`));
-    message.channel.send(`${member.user.tag} was unmuted by ${message.author.tag}`);
+    message.channel.send(`${member.user.tag} has been unmuted by ${message.author.tag}`);
 };

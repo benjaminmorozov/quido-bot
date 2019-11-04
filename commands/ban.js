@@ -16,5 +16,5 @@ exports.run = async (client, message, args) => {
     
     await member.ban(reason)
       .catch(error => message.channel.send(`Sorry ${message.author} I couldn't ban because of : ${error}`));
-    message.channel.send(`${member.user.tag} was banned by ${message.author.tag} because: ${reason}`);
+    message.channel.send(`${member.user.tag} has been banned by ${message.author.tag} because: ${reason}`);
 };

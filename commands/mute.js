@@ -22,5 +22,5 @@ exports.run = async (client, message, args) => {
 
     member.addRole(mutedRole)
     .catch(error => console.log(`Sorry ${message.author}, I couldn't mute because of : ${error}`));
-    message.channel.send(`${member.user.tag} was muted by ${message.author.tag} for: ${reason}`);
+    message.channel.send(`${member.user.tag} has been muted by ${message.author.tag} for: ${reason}`);
 };

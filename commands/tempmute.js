@@ -29,9 +29,9 @@ exports.run = async (client, message, args) => {
     // Mute the user
     member.addRole(mutedRole);
     if(time > 1)
-      message.channel.send(`${member.user.tag} was muted by ${message.author.tag} for a duration of ${time} minutes for: ${reason}`);
+      message.channel.send(`${member.user.tag} has been muted by ${message.author.tag} for a duration of ${time} minutes for: ${reason}`);
     if(time < 2)
-      message.channel.send(`${member.user.tag} was muted by ${message.author.tag} for a duration of ${time} minute for: ${reason}`);
+      message.channel.send(`${member.user.tag} has been muted by ${message.author.tag} for a duration of ${time} minute for: ${reason}`);
 
     // Unmute them after x minutes
     setTimeout(() => {
