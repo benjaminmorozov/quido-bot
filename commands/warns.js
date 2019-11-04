@@ -14,7 +14,7 @@ exports.run = async (client, message, args) => {
     let warnlevel = warns[member.id];
     if(!warns[member.id]) warns[member.id] = {
         warns: 0
-      };
-    
-    message.reply(`<@${member.id}> has ${warnlevel} warnings.`);
+    };
+    let finalwarnlevel = require('util').inspect(warnlevel));
+    message.reply(`<@${member.id}> has ${finalwarnlevel} warnings.`);
 };
