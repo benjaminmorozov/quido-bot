@@ -1,6 +1,6 @@
 exports.run = async (client, message, args) => {
 
-    let.message = message.content.includes('#rr.role.add.01');
+    let message = message.content.includes('#rr.role.add.01');
     await msg.react("😦");
     await msg.react("🍆");
 
