@@ -20,7 +20,7 @@ exports.run = async (client, message, args) => {
 
     warns[member.id].warns++;
 
-    var warns = warns[member.id] - 1;
+    var warns = warns[member.id].warns - 1;
     
     fs.writeFile("./warnings.json", JSON.stringify(warns), (err) => {
         if (err) console.log(err)
