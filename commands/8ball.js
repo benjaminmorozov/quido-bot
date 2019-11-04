@@ -6,6 +6,6 @@ exports.run = (client, message, args) => {
     let reason = args.slice(1).join(' ');
     if(!reason) reason = "Not a valid question.";
     else {
-    message.channel.sendMessage(doMagic8BallVoodoo())
+    message.channel.send(doMagic8BallVoodoo())
     };
 }
