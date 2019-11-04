@@ -12,10 +12,6 @@ exports.run = async (client, message, args) => {
     // We can also support getting the member by ID, which would be args[0]
     let member = message.mentions.members.first();
     let warnlevel = warns[member.id];
-
-    if(!warns[member.id]) warns[member.id] = {
-        warns: 0
-      };
     
     message.reply(`<@${member.id}> has ${warnlevel} warnings.`);
     
