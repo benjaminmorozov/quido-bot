@@ -1,8 +1,6 @@
 exports.run = async (client, message, args) => {
-
-    let message = message.content.includes('#rr.role.add.01');
-    await msg.react("😦");
-    await msg.react("🍆");
+    await message.react("😦");
+    await message.react("🍆");
 
     const reactions = await message.awaitReactions(reaction => {
         return reaction.emoji.name === "😂"; 
