@@ -12,6 +12,7 @@ exports.run = async (client, message, args) => {
 
     const filter = (reaction, user) => ['A','B'].includes(reaction.emoji.name) && user.id === message.author.id;
 
+    channel.sendMessage("test <:counterstrike:630379893422555147>");
     message.channel.send({embed: {
         color: 0xff5353,
         author: {
