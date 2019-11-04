@@ -10,13 +10,13 @@ exports.run = async (client, message, args) => {
     // Let's first check if we have a member and if we can kick them!
     // message.mentions.members is a collection of people that have been mentioned, as GuildMembers.
     // We can also support getting the member by ID, which would be args[0]
-    let wUser = message.mentions.members.first();
-    let warnlevel = warns[wUser.id].warns;
+    let member = message.mentions.members.first();
+    let warnlevel = warns[member.id].warns;
 
-    if(!warns[wUser.id]) warns[wUser.id] = {
+    if(!warns[member.id]) warns[member.id] = {
         warns: 0
       };
     
-    message.reply(`<@${wUser.id}> has ${warnlevel} warnings.`);
+    message.reply(`<@${member.id}> has ${warnlevel} warnings.`);
     
 };
