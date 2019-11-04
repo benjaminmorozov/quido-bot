@@ -67,7 +67,7 @@ exports.run = async (client, message, args) => {
     if(warns[member.id].warns == 3){
         let muterole = message.guild.roles.find(role => role.name == "Muted");
     
-        let mutetime = "1m";
+        let mutetime = "10m";
         await(member.addRole(muterole));
         warnchannel.send(`<@${member.id}> has been temporarily muted`);
     
@@ -75,5 +75,41 @@ exports.run = async (client, message, args) => {
           member.removeRole(muterole)
           warnchannel.send(`<@${member.id}> has been unmuted.`)
         }, ms(mutetime))
+    };
+    if(warns[member.id].warns == 5){
+      let muterole = message.guild.roles.find(role => role.name == "Muted");
+  
+      let mutetime = "30m";
+      await(member.addRole(muterole));
+      warnchannel.send(`<@${member.id}> has been temporarily muted`);
+  
+      setTimeout(function(){
+        member.removeRole(muterole)
+        warnchannel.send(`<@${member.id}> has been unmuted.`)
+      }, ms(mutetime))
+    };
+    if(warns[member.id].warns == 7){
+      let muterole = message.guild.roles.find(role => role.name == "Muted");
+  
+      let mutetime = "60m";
+      await(member.addRole(muterole));
+      warnchannel.send(`<@${member.id}> has been temporarily muted`);
+  
+      setTimeout(function(){
+        member.removeRole(muterole)
+        warnchannel.send(`<@${member.id}> has been unmuted.`)
+      }, ms(mutetime))
+    };
+    if(warns[member.id].warns == 10){
+      let muterole = message.guild.roles.find(role => role.name == "Muted");
+  
+      let mutetime = "120m";
+      await(member.addRole(muterole));
+      warnchannel.send(`<@${member.id}> has been temporarily muted`);
+  
+      setTimeout(function(){
+        member.removeRole(muterole)
+        warnchannel.send(`<@${member.id}> has been unmuted.`)
+      }, ms(mutetime))
     };
 };
