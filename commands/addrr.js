@@ -18,8 +18,8 @@ exports.run = async (client, message, args) => {
         },
         fields: [
             {
-                name: `${minecraftemoji}\n${counterstrikeemoji}`,
-                value: '',
+                name: `test`,
+                value: `${minecraftemoji}\n${counterstrikeemoji}`,
             }
         ],
         footer: {
