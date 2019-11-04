@@ -64,21 +64,17 @@ exports.run = async (client, message, args) => {
       }
     });
 
-    if(warns[member.id].warns == 2){
-        let muterole = message.guild.roles.find(`name`, "muted");
+    if(warns[member.id].warns == 3){
+        let muterole = member.roles.find(r => r.name === "Muted");
         if(!muterole) return message.reply("You should create that role dude.");
     
-        let mutetime = "10s";
+        let mutetime = "1m";
         await(member.addRole(muterole.id));
-        message.channel.send(`<@${member.id}> has been temporarily muted`);
+        warnchannel.send(`<@${member.id}> has been temporarily muted`);
     
         setTimeout(function(){
           member.removeRole(muterole.id)
-          message.reply(`<@${member.id}> has been unmuted.`)
+          warnchannel.reply(`<@${member.id}> has been unmuted.`)
         }, ms(mutetime))
     };
-    if(warns[member.id].warns == 3){
-        message.guild.member(member).ban(reason);
-        message.reply(`<@${member.id}> has been banned.`)
-    }
 };

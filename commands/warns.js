@@ -16,5 +16,4 @@ exports.run = async (client, message, args) => {
       };
     
     message.reply(`<@${member.id}> has ${warns[member.id].warns} warnings.`);
-    
 };
