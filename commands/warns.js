@@ -10,20 +10,14 @@ exports.run = async (client, message, args) => {
     // Let's first check if we have a member and if we can kick them!
     // message.mentions.members is a collection of people that have been mentioned, as GuildMembers.
     // We can also support getting the member by ID, which would be args[0]
-    let reason = args.join(" ").slice(22);
-    let member = message.mentions.members.first();
-    if(!member)
-        return message.reply("please mention a valid member of this server.");
-    if(!member.kickable) 
-        return message.channel.send(`Sorry ${message.author}, you cannot kick this user.`);
-    
-    if(!reason) reason = "No reason provided.";
-
-    let warnlevel = warns[member.id].warns;
-
-    if(!warns[member.id]) warns[member.id] = {
+    if(!warns[wUser.id]) warns[wUser.id] = {
         warns: 0
-    };
-
-    message.reply(`<@${member.id}> has ${warnlevel} warnings.`);
+      };
+    if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply("You can't do that.");
+    let wUser = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0])
+    if(!wUser) return message.reply("Couldn't find them yo");
+    let warnlevel = warns[wUser.id].warns;
+    
+    message.reply(`<@${wUser.id}> has ${warnlevel} warnings.`);
+    
 };
