@@ -9,15 +9,17 @@ exports.run = async (client, message, args) => {
 
     const filter = (reaction, user) => ['A','B'].includes(reaction.emoji.name) && user.id === message.author.id;
 
-    const embed = new RichEmbed()
-        .setTitle('REACH EMOJI TO GET ROLE')
-        .setDescription(`
-        
-        A
-        B
-        
-        `)
-        .setColor(0xff5353)
-        .setFooter(`ID: ${message.author.id}`); 
-    message.channel.send(embed);
+    message.channel.send({embed: {
+        color: 0xff5353,
+        title: {
+          name: 'REACH EMOJI TO GET ROLE:',
+        },
+        description: `A
+        B`,
+        footer: {
+          icon_url: 'https://images.discordapp.net/avatars/220644154177355777/bd6b28005c26d079486063a4976dfb44.png',
+          text: "If you find a bug, please report it to our staff. ❤️"
+        }
+      }
+    });
 };
