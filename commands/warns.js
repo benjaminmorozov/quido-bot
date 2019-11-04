@@ -17,6 +17,8 @@ exports.run = (client, message, args) => {
     if(!warns[member.id]) warns[member.id] = {
         warns: 0
     };
+
+    warns[member.id].warns++;
     
     fs.writeFile("./warnings.json", JSON.stringify(warns), (err) => {
         if (err) console.log(err)
@@ -24,5 +26,6 @@ exports.run = (client, message, args) => {
   
     let warnchannel = client.channels.get(`630403969616707594`);
 
+    warns[member.id].warns - 1;
     message.reply(`<@${member.id}> has ${warns[member.id].warns} warnings.`);
 };
