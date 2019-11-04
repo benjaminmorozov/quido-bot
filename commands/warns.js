@@ -11,7 +11,7 @@ exports.run = async (client, message, args) => {
     // message.mentions.members is a collection of people that have been mentioned, as GuildMembers.
     // We can also support getting the member by ID, which would be args[0]
     const member = message.mentions.members.first()
-    if(!warns[wUser.id]) {
+    if(!warns[mamber.id]) {
         let warnlevel = 0;
     } else {
         let warnlevel = warns[member.id].warns;
