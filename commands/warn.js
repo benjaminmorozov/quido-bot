@@ -29,7 +29,7 @@ exports.run = async (client, message, args) => {
         if (err) console.log(err)
     });
   
-    let warnchannel = message.guild.channels.find(channel => "logs");
+    let warnchannel = client.channels.get(`630403969616707594`);
 
     message.channel.send({embed: {
         color: 0xff5353,
@@ -43,7 +43,7 @@ exports.run = async (client, message, args) => {
           },
           {
             name: "Warned In:",
-            value: `${warns[member.id].warns}`,
+            value: `${message.channel}`,
             inline: "true"
           },
           {
