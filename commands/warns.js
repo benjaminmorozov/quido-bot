@@ -14,6 +14,9 @@ exports.run = async (client, message, args) => {
     let warnlevel = warns[member.id];
     if(!warns[member.id]) warns[member.id] = {
         warns: 0
-      };
+    };
+    if(warnlevel < 1){
+        message.reply(`<@${member.id}> has no warnings.`);
+    }
     message.reply(`<@${member.id}> has ${warnlevel} warnings.`);
 };
