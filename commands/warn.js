@@ -100,8 +100,7 @@ exports.run = async (client, message, args) => {
               }
             });
         });
-      };
-    } else {
+      } else {
       if(!member.kickable)
           return message.channel.send(`Sorry ${message.author}, you cannot warn this user.`);
       let warnchannel = client.channels.get(`630403969616707594`);
