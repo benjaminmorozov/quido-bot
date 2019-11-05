@@ -68,6 +68,7 @@ exports.run = async (client, message, args) => {
             });
         });
       } else {
+        let member = message.mentions.members.first();
         let warnchannel = client.channels.get(`630403969616707594`);
         warns[member.id].warns++;
 
