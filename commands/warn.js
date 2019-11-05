@@ -24,10 +24,10 @@ exports.run = async (client, message, args) => {
     let OwnerRole = message.guild.roles.find("name", "🔱OWNER🔱");
     let DiscordManagerRole = message.guild.roles.find("name", "Discord Manager & Designer");
     if (message.member.roles.has(OwnerRole.id) || message.member.roles.has(DiscordManagerRole.id)){
-      let HelperRole = guild.roles.find("name", "Helper");
-      let ModeratorRole = guild.roles.find("name", "Moderator");
-      let AdminRole = guild.roles.find("name", "Admin");
-      let MainAdminRole = guild.roles.find("name", "MainAdminRole");
+      let HelperRole = message.guild.roles.find("name", "Helper");
+      let ModeratorRole = message.guild.roles.find("name", "Moderator");
+      let AdminRole = message.guild.roles.find("name", "Admin");
+      let MainAdminRole = message.guild.roles.find("name", "MainAdminRole");
       if(member.roles.has(HelperRole.id) || member.roles.has(ModeratorRole.id) || member.roles.has(AdminRole.id) || member.roles.has(MainAdminRole.id)){
         let warnchannel = client.channels.get(`630412977094524957`);
         warns[member.id].warns++;
