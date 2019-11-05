@@ -18,7 +18,7 @@ exports.run = async (client, message, args) => {
         return message.reply("this user is already muted.");
     
     if(message.author.roles.find(r => r.name === "Moderator","Helper")){
-        if(member.roles.find(r => r.name === "Helper") || member.roles.find(r => rname === "Helper")){
+        if(message.mentions.members.roles.find(r => r.name === "Helper") || member.roles.find(r => rname === "Helper")){
             // Mute the user
             let mutedRole = message.guild.roles.find(role => role.name == "Muted");
             member.addRole(mutedRole);
