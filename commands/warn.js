@@ -57,7 +57,7 @@ exports.run = async (client, message, args) => {
                 }
               }
             });
-        });
+        };
       };
       let MemberRole = message.guild.roles.find("name", "Member");
       if(member.roles.has(MemberRole.id)){
