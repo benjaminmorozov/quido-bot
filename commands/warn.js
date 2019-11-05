@@ -14,8 +14,6 @@ exports.run = async (client, message, args) => {
     let member = message.mentions.members.first();
     if(!member)
         return message.reply("please mention a valid member of this server.");
-    if(!member.kickable)
-        return message.channel.send(`Sorry ${message.author}, you cannot warn this user.`);
 
     if(!reason) reason = "No reason provided.";
 
@@ -71,6 +69,8 @@ exports.run = async (client, message, args) => {
         });
       }
     } else {
+      if(!member.kickable)
+          return message.channel.send(`Sorry ${message.author}, you cannot warn this user.`);
       let warnchannel = client.channels.get(`630403969616707594`);
     }
 
