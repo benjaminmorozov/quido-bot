@@ -68,9 +68,8 @@ exports.run = async (client, message, args) => {
             });
         });
       };
-      let ModeratorRole = message.guild.roles.find("name", "🔱OWNER🔱");
-      let DiscordManagerRole = message.guild.roles.find("name", "Discord Manager & Designer");
-      if (message.member.roles.has(OwnerRole.id) || message.member.roles.has(DiscordManagerRole.id)){
+      let MemberRole = message.guild.roles.find("name", "Member");
+      if(member.roles.has(MemberRole.id){
         let member = message.mentions.members.first();
         let warnchannel = client.channels.get(`630403969616707594`);
         warns[member.id].warns++;
