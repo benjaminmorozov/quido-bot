@@ -15,7 +15,7 @@ exports.run = async (client, message, args) => {
     if(!member)
         return message.reply("please mention a valid member of this server.");
     if(!member.kickable) 
-        return message.channel.send(`Sorry ${message.author}, you cannot kick this user.`);
+        return message.channel.send(`Sorry ${message.author}, you cannot warn this user.`);
     
     if(!reason) reason = "No reason provided.";
 
@@ -28,8 +28,14 @@ exports.run = async (client, message, args) => {
     fs.writeFile("./warnings.json", JSON.stringify(warns), (err) => {
         if (err) console.log(err)
     });
-  
-    let warnchannel = client.channels.get(`630403969616707594`);
+
+    let OwnerRole = message.guild.roles.find("name", "🔱OWNER🔱");
+    let DiscordManagerRole = message.guild.roles.find("name", "Discord Manager & Designer");
+    if (message.member.roles.has(OwnerRole.id) || message.member.roles.has(DiscordManagerRole.id)) {
+    
+    } else {
+      let warnchannel = client.channels.get(`630403969616707594`);
+    }
 
     warnchannel.send({embed: {
         color: 0xff5353,

@@ -24,7 +24,7 @@ exports.run = async (client, message, args) => {
         message.channel.send(`${member.user.tag} has been muted by ${message.author.tag} for: ${reason}`);
     } else {
         if(!member.kickable) 
-        return message.channel.send(`Sorry ${message.author}, you cannot mute this user.`);
+            return message.channel.send(`Sorry ${message.author}, you cannot mute this user.`);
         // This is the role you want to assign to the user
         let mutedRole = message.guild.roles.find(role => role.name == "Muted");
 

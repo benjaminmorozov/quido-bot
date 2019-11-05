@@ -26,15 +26,31 @@ exports.run = async (client, message, args) => {
     // This is the role you want to assign to the user
     let mutedRole = message.guild.roles.find(role => role.name == "Muted");
 
-    // Mute the user
-    member.addRole(mutedRole);
-    if(time > 1)
-      message.channel.send(`${member.user.tag} has been muted by ${message.author.tag} for a duration of ${time} minutes for: ${reason}`);
-    if(time < 2)
-      message.channel.send(`${member.user.tag} has been muted by ${message.author.tag} for a duration of ${time} minute for: ${reason}`);
+    let OwnerRole = message.guild.roles.find("name", "🔱OWNER🔱");
+    let DiscordManagerRole = message.guild.roles.find("name", "Discord Manager & Designer");
+    if (message.member.roles.has(OwnerRole.id) || message.member.roles.has(DiscordManagerRole.id)) {
+      // Mute the user
+      member.addRole(mutedRole);
+      if(time > 1)
+        message.channel.send(`${member.user.tag} has been muted by ${message.author.tag} for a duration of ${time} minutes for: ${reason}`);
+      if(time < 2)
+        message.channel.send(`${member.user.tag} has been muted by ${message.author.tag} for a duration of ${time} minute for: ${reason}`);
+    
+      // Unmute them after x minutes
+      setTimeout(() => {
+        member.removeRole(mutedRole, `Temporary mute expired.`);
+      }, time * 60000);
+    } else {
+      if(!member.kickable) 
+        return message.channel.send(`Sorry ${message.author}, you cannot mute this user.`);
+        // This is the role you want to assign to the user
+        let mutedRole = message.guild.roles.find(role => role.name == "Muted");
 
-    // Unmute them after x minutes
-    setTimeout(() => {
-      member.removeRole(mutedRole, `Temporary mute expired.`);
-    }, time * 60000);
+        member.addRole(mutedRole)
+        .catch(error => console.log(`Sorry ${message.author}, I couldn't mute because of : ${error}`));
+        if(time > 1)
+          message.channel.send(`${member.user.tag} has been muted by ${message.author.tag} for a duration of ${time} minutes for: ${reason}`);
+        if(time < 2)
+          message.channel.send(`${member.user.tag} has been muted by ${message.author.tag} for a duration of ${time} minute for: ${reason}`);
+    };
 };
