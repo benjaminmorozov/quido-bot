@@ -16,11 +16,24 @@ exports.run = async (client, message, args) => {
 
     if(member.roles.find(r => r.name === "Muted"))
         return message.reply("this user is already muted.");
-
+    
+    if(message.author.roles.find(r => r.name === "Moderator","Helper")){
+        if(member.roles.find(r => r.name === "Helper") || member.roles.find(r => rname === "Helper")){
+            // Mute the user
+            let mutedRole = message.guild.roles.find(role => role.name == "Muted");
+            member.addRole(mutedRole);
+            message.channel.send(`${message.author.tag}, it seems like you're trying to mute a member of the staff. Therefore, I'm automatically muting him only for a duration of 10 minutes`);
+            message.channel.send(`${member.user.tag} has been muted by ${message.author.tag} for a duration of 10 minutes for: ${reason}`);
+            setTimeout(() => {
+                member.removeRole(mutedRole, `Temporary mute expired.`);
+            }, 10 * 60000);
+        };
+    } else {
     // This is the role you want to assign to the user
     let mutedRole = message.guild.roles.find(role => role.name == "Muted");
 
     member.addRole(mutedRole)
     .catch(error => console.log(`Sorry ${message.author}, I couldn't mute because of : ${error}`));
     message.channel.send(`${member.user.tag} has been muted by ${message.author.tag} for: ${reason}`);
+    };
 };
