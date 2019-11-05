@@ -30,10 +30,6 @@ exports.run = async (client, message, args) => {
       let MainAdminRole = message.guild.roles.find("name", "MainAdminRole");
       if(member.roles.has(HelperRole.id) || member.roles.has(ModeratorRole.id) || member.roles.has(AdminRole.id) || member.roles.has(MainAdminRole.id)){
         let warnchannel = client.channels.get(`630412977094524957`);
-        warns[member.id].warns++;
-
-        fs.writeFile("./warnings.json", JSON.stringify(warns), (err) => {
-            if (err) console.log(err)
             warnchannel.send({embed: {
                 color: 0xff5353,
                 author: {
@@ -47,11 +43,6 @@ exports.run = async (client, message, args) => {
                   {
                     name: "Warned In:",
                     value: `${message.channel}`,
-                    inline: "true"
-                  },
-                  {
-                    name: "Number of Warnings:",
-                    value: `${warns[member.id].warns}`,
                     inline: "true"
                   },
                   {
