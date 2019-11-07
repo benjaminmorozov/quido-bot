@@ -57,8 +57,9 @@ exports.run = async (client, message, args) => {
                 }
               }
             });
-        } else {
-          let warnchannel = client.channels.get(`630403969616707594`);
+        };
+        if!(member.roles.has(HelperRole.id) || member.roles.has(ModeratorRole.id) || member.roles.has(AdminRole.id) || member.roles.has(MainAdminRole.id)){
+          let warnchannel = client.channels.get(`630412977094524957`);
               warnchannel.send({embed: {
                   color: 0xff5353,
                   author: {
@@ -83,10 +84,10 @@ exports.run = async (client, message, args) => {
                   footer: {
                     icon_url: 'https://images.discordapp.net/avatars/220644154177355777/bd6b28005c26d079486063a4976dfb44.png',
                     text: "If you find a bug, please report it to our staff. ❤️"
-                 }
-              }
-          });
-        }
+                  }
+                }
+              });
+          };
       };
       let MemberRole = message.guild.roles.find("name", "Member");
       if(member.roles.has(MemberRole.id)){
