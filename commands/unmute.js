@@ -1,5 +1,5 @@
 exports.run = async (client, message, args) => {
-    if(!message.member.roles.some(r=>["🔱OWNER🔱","Administrator", "Moderator","Head Admin","Admin","Helper"].includes(r.name)) )
+    if(!message.member.roles.some(r=>["🔱OWNER🔱","Discord Manager & Designer","Administrator", "Moderator","Head Admin","Admin","Helper"].includes(r.name)) )
     return message.reply("sorry, you don't have enough permissions to use this command!");
 
     // Let's first check if we have a member and if we can kick them!

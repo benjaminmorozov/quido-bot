@@ -1,5 +1,5 @@
 exports.run = (client, message, args) => {
-    if(!message.member.roles.some(r=>["🔱OWNER🔱","Administrator", "Moderator","Head Admin","Admin"].includes(r.name)) )
+    if(!message.member.roles.some(r=>["🔱OWNER🔱","Discord Manager & Designer","Administrator", "Moderator","Head Admin","Admin"].includes(r.name)) )
       return message.reply("Sorry, you don't have permissions to use this!");
     
     const activity = args.join(" ");
