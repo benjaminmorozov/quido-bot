@@ -17,7 +17,7 @@ exports.run = async (client, message, args) => {
 
     if(!reason) reason = "No reason provided.";
 
-    if(!warns[member.id]) warns[member.id] = {
+    if(!warns[user.id]) warns[user.id] = {
         warns: 0
     };
 
