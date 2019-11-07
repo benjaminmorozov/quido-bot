@@ -49,6 +49,11 @@ exports.run = async (client, message, args) => {
                     name: "Reason:",
                     value: `${reason}`,
                     inline: "true"
+                  },
+                  {
+                    name: "Warnings:",
+                    value: `${(warns[member.id].warns)}`,
+                    inline: "true"
                   }
                 ],
                 footer: {
@@ -77,6 +82,11 @@ exports.run = async (client, message, args) => {
                     {
                       name: "Reason:",
                       value: `${reason}`,
+                      inline: "true"
+                    },
+                    {
+                      name: "Warnings:",
+                      value: `${(warns[member.id].warns)}`,
                       inline: "true"
                     }
                   ],
