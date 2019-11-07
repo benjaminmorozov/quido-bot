@@ -57,7 +57,36 @@ exports.run = async (client, message, args) => {
                 }
               }
             });
-        };
+        } else {
+          let warnchannel = client.channels.get(`630403969616707594`);
+              warnchannel.send({embed: {
+                  color: 0xff5353,
+                  author: {
+                    name: 'Staff Warning:',
+                  },
+                  fields: [{
+                    name: "Warned User:",
+                    value: `<@${member.id}>`,
+                    inline: "true"
+                    },
+                    {
+                      name: "Warned In:",
+                      value: `${message.channel}`,
+                      inline: "true"
+                    },
+                    {
+                      name: "Reason:",
+                      value: `${reason}`,
+                      inline: "true"
+                    }
+                  ],
+                  footer: {
+                    icon_url: 'https://images.discordapp.net/avatars/220644154177355777/bd6b28005c26d079486063a4976dfb44.png',
+                    text: "If you find a bug, please report it to our staff. ❤️"
+                 }
+              }
+          });
+        }
       };
       let MemberRole = message.guild.roles.find("name", "Member");
       if(member.roles.has(MemberRole.id)){
