@@ -11,7 +11,7 @@ exports.run = async (client, message, args) => {
     // message.mentions.members is a collection of people that have been mentioned, as GuildMembers.
     // We can also support getting the member by ID, which would be args[0]
     let reason = args.join(" ").slice(22);
-    let member = message.mentions.members.first();
+    let user = message.mentions.members.first();
     if(!member)
         return message.reply("please mention a valid member of this server.");
 
@@ -28,7 +28,8 @@ exports.run = async (client, message, args) => {
       let ModeratorRole = message.guild.roles.find("name", "Moderator");
       let AdminRole = message.guild.roles.find("name", "Admin");
       let MainAdminRole = message.guild.roles.find("name", "MainAdminRole");
-      if(member.roles.has(HelperRole.id) || member.roles.has(ModeratorRole.id) || member.roles.has(AdminRole.id) || member.roles.has(MainAdminRole.id)){
+      let Member = message.guild.roles.find("name", "Member");
+      if(user.roles.has(HelperRole.id) || user.roles.has(ModeratorRole.id) || user.roles.has(AdminRole.id) || user.roles.has(MainAdminRole.id)){
         let warnchannel = client.channels.get(`630412977094524957`);
             warnchannel.send({embed: {
                 color: 0xff5353,
@@ -57,7 +58,7 @@ exports.run = async (client, message, args) => {
                 }
               }
             });
-        } else if(member && !member.roles.has(HelperRole.id) || !member.roles.has(ModeratorRole.id) || !member.roles.has(AdminRole.id) || !member.roles.has(MainAdminRole.id)){
+        } else if(user.roles.has(Member.id)){
           let warnchannel = client.channels.get(`630412977094524957`);
               warnchannel.send({embed: {
                   color: 0xff5353,
