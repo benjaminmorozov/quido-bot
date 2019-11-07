@@ -1,3 +1,4 @@
+const Discord = require("discord.js");
 exports.run = (client, message) => {
   const exampleEmbed = new Discord.RichEmbed()
   	.setColor('0xff5353')
