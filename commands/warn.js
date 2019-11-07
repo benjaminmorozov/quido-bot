@@ -27,9 +27,8 @@ exports.run = async (client, message, args) => {
       let HelperRole = message.guild.roles.find("name", "Helper");
       let ModeratorRole = message.guild.roles.find("name", "Moderator");
       let AdminRole = message.guild.roles.find("name", "Admin");
-      let MainAdminRole = message.guild.roles.find("name", "MainAdminRole");
       let Member = message.guild.roles.find("name", "Member");
-      if(user.roles.has(HelperRole.id) || user.roles.has(ModeratorRole.id) || user.roles.has(AdminRole.id) || user.roles.has(MainAdminRole.id)){
+      if(user.roles.has(HelperRole.id) || user.roles.has(ModeratorRole.id) || user.roles.has(AdminRole.id)){
         let warnchannel = client.channels.get(`630412977094524957`);
             warnchannel.send({embed: {
                 color: 0xff5353,
