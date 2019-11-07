@@ -38,7 +38,7 @@ exports.run = async (client, message, args) => {
                 },
                 fields: [{
                   name: "Warned User:",
-                  value: `<@${member.id}>`,
+                  value: `<@${user.id}>`,
                   inline: "true"
                   },
                   {
@@ -67,7 +67,7 @@ exports.run = async (client, message, args) => {
                   },
                   fields: [{
                     name: "Warned User:",
-                    value: `<@${member.id}>`,
+                    value: `<@${user.id}>`,
                     inline: "true"
                     },
                     {
