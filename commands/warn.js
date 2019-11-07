@@ -58,7 +58,8 @@ exports.run = async (client, message, args) => {
               }
             });
         };
-        if!(member.roles.has(HelperRole.id) || member.roles.has(ModeratorRole.id) || member.roles.has(AdminRole.id) || member.roles.has(MainAdminRole.id)){
+        let Member = message.guild.roles.find("name","Member");
+        if(member.roles.has(Member.id)){
           let warnchannel = client.channels.get(`630412977094524957`);
               warnchannel.send({embed: {
                   color: 0xff5353,
