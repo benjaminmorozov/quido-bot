@@ -52,7 +52,7 @@ exports.run = async (client, message, args) => {
                   },
                   {
                     name: "Warnings:",
-                    value: `${(warns[member.id].warns)}`,
+                    value: `${(warns[user.id].warns)}`,
                     inline: "true"
                   }
                 ],
@@ -86,7 +86,7 @@ exports.run = async (client, message, args) => {
                     },
                     {
                       name: "Warnings:",
-                      value: `${(warns[member.id].warns)}`,
+                      value: `${(warns[user.id].warns)}`,
                       inline: "true"
                     }
                   ],
