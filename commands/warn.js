@@ -12,7 +12,7 @@ exports.run = async (client, message, args) => {
     // We can also support getting the member by ID, which would be args[0]
     let reason = args.join(" ").slice(22);
     let user = message.mentions.members.first();
-    if(!member)
+    if(!user)
         return message.reply("please mention a valid member of this server.");
 
     if(!reason) reason = "No reason provided.";
