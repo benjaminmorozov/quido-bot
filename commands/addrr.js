@@ -1,6 +1,9 @@
 const Discord = require("discord.js");
 
 exports.run = async (client, message, args) => {
+  let OwnerRole = message.guild.roles.find("name", "🔱OWNER🔱");
+  let DiscordManagerRole = message.guild.roles.find("name", "Discord Manager & Designer");
+  if (message.member.roles.has(OwnerRole.id) || message.member.roles.has(DiscordManagerRole.id)){
 
     const minecraftemoji = client.emojis.get("630379820030885898");
     const counterstrikeemoji = client.emojis.get("630379893422555147");
@@ -23,4 +26,7 @@ exports.run = async (client, message, args) => {
         }
       }
     });
+  } else {
+    return message.reply("řekl jsem nepoužívat, tak to laskavě nech.");
+  };
 };
