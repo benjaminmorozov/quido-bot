@@ -15,6 +15,11 @@ exports.run = (client, message) => {
             inline: "true"
             },
             {
+            name: "Server prefix:",
+            value: `**q!**`,
+            inline: "true"
+            },
+            {
             name: "User Count:",
             value: `${message.guild.members.filter(member => !member.user.bot).size}`,
             inline: "true"

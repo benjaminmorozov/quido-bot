@@ -3,7 +3,6 @@ exports.run = (client, message) => {
   const exampleEmbed = new Discord.RichEmbed()
   	.setColor('0xff5353')
   	.setTitle('🔰 List of all commands:')
-    .setDescription('Use the prefix: q!')
   	.setThumbnail('http://giphygifs.s3.amazonaws.com/media/MF1kR4YmC2Z20/giphy.gif')
   	.addField('Fun', 'q!', true)
   	.addField('Misc', 'Some value here', true)
