@@ -58,11 +58,11 @@ exports.run = async (client, message, args) => {
               }
             });
         } else if(user.roles.has(Member.id)){
-          let warnchannel = client.channels.get(`630412977094524957`);
+          let warnchannel = client.channels.get(`630403969616707594`);
               warnchannel.send({embed: {
                   color: 0xff5353,
                   author: {
-                    name: 'Staff Warning:',
+                    name: 'Warning:',
                   },
                   fields: [{
                     name: "Warned User:",
