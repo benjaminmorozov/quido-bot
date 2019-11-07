@@ -3,17 +3,12 @@ exports.run = (client, message) => {
   const exampleEmbed = new Discord.RichEmbed()
   	.setColor('0xff5353')
   	.setTitle('🔰 List of all commands:')
-  	.setAuthor('Quido’s Club', 'https://cdn.discordapp.com/icons/610434388777369602/08a037cb16972aa3cd069a055d63ca43.webp')
-  	.setDescription('Some description here')
-  	.setThumbnail('https://i.imgur.com/wSTFkRM.png')
-  	.addField('Regular field title', 'Some value here')
+  	.setThumbnail('http://giphygifs.s3.amazonaws.com/media/MF1kR4YmC2Z20/giphy.gif')
+  	.addField('Fun', 'Some value here')
   	.addBlankField()
-  	.addField('Inline field title', 'Some value here', true)
-  	.addField('Inline field title', 'Some value here', true)
-  	.addField('Inline field title', 'Some value here', true)
-  	.setImage('https://i.imgur.com/wSTFkRM.png')
-  	.setTimestamp()
-  	.setFooter('Some footer text here', 'https://i.imgur.com/wSTFkRM.png');
+  	.addField('Misc', 'Some value here', true)
+  	.addField('Mod', 'Some value here', true)
+  	.setFooter('Thanks for being a part of our community. ❤️', 'https://images.discordapp.net/avatars/220644154177355777/bd6b28005c26d079486063a4976dfb44.png');
 
   message.channel.send(exampleEmbed);
 };
