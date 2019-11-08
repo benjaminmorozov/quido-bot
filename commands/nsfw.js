@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const snekfetch = require('snekfetch');
+const randomPuppy = require('random-puppy');
 
 exports.run = (client, message, args) => {
   randomPuppy()
