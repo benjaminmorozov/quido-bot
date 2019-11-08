@@ -36,7 +36,7 @@ exports.run = (client, message) => {
         ],
         footer: {
         icon_url: `${message.guild.iconURL}`,
-        text: "Thanks for being a part of our community ❤️ - Quido's Club (https://discord.gg/pqBZK33)"
+        text: "Thanks for being a part of our community ❤️ - Quido's Club - [link](https://discord.gg/pqBZK33)"
         }
     }
     })
