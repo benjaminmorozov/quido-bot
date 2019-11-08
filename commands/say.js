@@ -7,7 +7,9 @@ exports.run = (client, message, args) => {
         return;
     }
 
-    if(message.content.includes('quido bot 1')) {
+    var msg = message.content.toLowerCase();
+
+    if(msg.content.includes('quido bot 1')) {
       return message.reply("well well... We do not say that here.")
     };
 
