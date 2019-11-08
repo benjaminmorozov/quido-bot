@@ -1,6 +1,6 @@
 const snekfetch = require('snekfetch');
 
-exports.run = (client, message, args) => {
+exports.run = async (client, message, args) => {
   const { body } = await snekfetch
       .get('https://www.reddit.com/r/dankmemes.json?sort=top&t=week')
       .query({ limit: 800 });
