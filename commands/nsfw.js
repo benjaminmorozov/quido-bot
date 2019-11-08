@@ -1,6 +1,6 @@
 const snekfetch = require('snekfetch');
 
-exports.run = (client, message, args) => {
+exports.run = async (client, message, args) => {
   const { body } = await snekfetch
       .get('https://www.reddit.com/r/hentai/hot.json')
       .query({ limit: 800 });
