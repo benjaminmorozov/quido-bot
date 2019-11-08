@@ -27,7 +27,7 @@ exports.run = (client, message) => {
             {
             name: "Staff List:",
             value: "<#638804758240559154>",
-            inline: "true"cmd
+            inline: "true"
             },
             {
             name: "Server Creation Date:",
