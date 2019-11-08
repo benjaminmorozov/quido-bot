@@ -8,7 +8,6 @@ exports.run = (client, message) => {
         thumbnail: {
             "url": `${message.guild.iconURL}`
         },
-        description: "A Czech/English gaming Discord server for everyone.",
         fields: [{
             name: "Server Owner:",
             value: "<@529057345599307776>",
@@ -16,7 +15,7 @@ exports.run = (client, message) => {
             },
             {
             name: "Bot Prefix:",
-            value: `**q!**`,
+            value: `**${client.config.prefix}**`,
             inline: "true"
             },
             {
@@ -37,7 +36,7 @@ exports.run = (client, message) => {
         ],
         footer: {
         icon_url: `${message.guild.iconURL}`,
-        text: "Thanks for being a part of our community ❤️"
+        text: "Thanks for being a part of our community ❤️ - Quido's Club (https://discord.gg/pqBZK33)"
         }
     }
     })
