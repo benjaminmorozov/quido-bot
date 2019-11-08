@@ -7,7 +7,7 @@ exports.run = (client, message, args) => {
         return;
     }
 
-    if(message.content.includes('quido bot 1') {
+    if(message.content.includes('quido bot 1')) {
       return message.reply("well well... We do not say that here.")
     };
 
