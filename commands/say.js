@@ -8,7 +8,7 @@ exports.run = (client, message, args) => {
     }
 
     const quidobot = "quido bot 1";
-    if(message.content.includes(quidobot) {
+    if(message.content.includes(quidobot)) {
       return message.reply("well well... We don't say that here.")
     };
 
