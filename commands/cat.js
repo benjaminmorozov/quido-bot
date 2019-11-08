@@ -1,3 +1,4 @@
+const Discord = require("discord.js");
 const request = require('request');
 exports.run = (client, message, args) => {
   request.get('http://thecatapi.com/api/images/get?format=src&type=png', {

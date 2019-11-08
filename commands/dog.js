@@ -1,4 +1,5 @@
-const request = require('request');
+const Discord = require("discord.js");
+onst request = require('request');
 const rp = require('random-puppy');
 exports.run = (client, message, args) => {
   var subreddits = [
