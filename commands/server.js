@@ -8,6 +8,7 @@ exports.run = (client, message) => {
         thumbnail: {
             "url": `${message.guild.iconURL}`
         },
+        description: "A Czech/English gaming Discord server for everyone.",
         fields: [{
             name: "Server Owner:",
             value: "<@529057345599307776>",
@@ -36,7 +37,7 @@ exports.run = (client, message) => {
         ],
         footer: {
         icon_url: `${message.guild.iconURL}`,
-        text: "If you find a bug, please report it to the bot's developers ❤️ - Quido's Club - https://discord.gg/pqBZK33"
+        text: "Thanks for being a part of our community ❤️"
         }
     }
     })
