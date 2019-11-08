@@ -10,6 +10,7 @@ exports.run = (client, message, args) => {
     const quidobot = "quido bot";
     const quidobott = "bot quido";
     if(message.content.toLowerCase().includes(quidobot) || message.content.toLowerCase().includes(quidobott)) {
+      message.delete();
       return message.reply("well well... We do not say that here.")
     };
 

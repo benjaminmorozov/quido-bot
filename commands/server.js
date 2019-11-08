@@ -2,11 +2,11 @@ exports.run = (client, message) => {
     message.channel.send({embed: {
         color: 0xff5353,
         author: {
-        name: 'Quido’s Club',
-        icon_url: 'https://cdn.discordapp.com/icons/610434388777369602/08a037cb16972aa3cd069a055d63ca43.webp'
+        name: `${message.guild.name}`,
+        icon_url: `${message.guild.iconURL}`
         },
         thumbnail: {
-            "url": "https://cdn.discordapp.com/icons/610434388777369602/08a037cb16972aa3cd069a055d63ca43.webp"
+            "url": `${message.guild.iconURL}`
         },
         description: "A Czech/English gaming Discord server for everyone.",
         fields: [{
@@ -36,7 +36,7 @@ exports.run = (client, message) => {
             },
         ],
         footer: {
-        icon_url: 'https://cdn.discordapp.com/icons/610434388777369602/08a037cb16972aa3cd069a055d63ca43.webp',
+        icon_url: `${message.guild.iconURL}`,
         text: "Thanks for being a part of our community ❤️"
         }
     }
