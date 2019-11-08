@@ -8,14 +8,8 @@ exports.run = (client, message, args) => {
     }
 
     const quidobot = "quido bot";
-    const quidobot1 = "Quido bot";
-    const quidobot2 = "bot quido";
-    const quidobot3 = "Bot quido";
-    const quidobot4 = "quido Bot";
-    const quidobot5 = "Quido Bot";
-    const quidobot6 = "bot Quido";
-    const quidobot7 = "Bot Quido";
-    if(message.content.includes(quidobot) || message.content.includes(quidobot1) || message.content.includes(quidobot2) || message.content.includes(quidobot3) || message.content.includes(quidobot4) || message.content.includes(quidobot5) || message.content.includes(quidobot6) || message.content.includes(quidobot7)) {
+    const quidobott = "bot quido";
+    if(message.content.toLowerCase().includes(quidobot) || message.content.toLowerCase().includes(quidobott)) {
       return message.reply("well well... We do not say that here.")
     };
 
