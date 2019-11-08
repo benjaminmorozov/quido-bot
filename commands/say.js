@@ -7,9 +7,9 @@ exports.run = (client, message, args) => {
         return;
     }
 
-    if (args.includes(forbidenWords[i]) {
+    if (args.includes(forbidenWords[i])) {
       return message.reply("well well... We don't say that here.")
-    }
+    };
 
     message.delete();
     let botmessage = args.join(" ");
