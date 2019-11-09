@@ -16,7 +16,7 @@ module.exports = (client, message) => {
     if (!cmd) return;
 
     const reload = "Prosím si jeden reload";
-    if(message.content.toLowerCase().includes(reload) {
+    if(message.content.toLowerCase().includes(reload)) {
       client.user.setPresence({ game: { name: "Quido's Club > All", type: 0 } });
       return message.reply("Asi zablokuju možnost nastavit status.")
     };
