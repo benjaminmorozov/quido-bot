@@ -12,7 +12,7 @@ exports.run = async (client, message, args) => {
 
     if(!reason) reason = "No reason provided";
 
-    let time = args[1];
+    let mutetime = args[1];
 
     if(!time)
       return message.reply(`please, provide a duration of the mute.`);
