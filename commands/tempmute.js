@@ -16,7 +16,7 @@ exports.run = async (client, message, args) => {
       return message.reply(`please, provide a duration of the mute.`);
 
     // This is the role you want to assign to the user
-    let muteRole = message.guild.roles.find(role => role.name == "Muted");
+    let muterole = message.guild.roles.find(role => role.name == "Muted");
 
     let OwnerRole = message.guild.roles.find("name", "🔱OWNER🔱");
     let DiscordManagerRole = message.guild.roles.find("name", "Discord Manager & Designer");
