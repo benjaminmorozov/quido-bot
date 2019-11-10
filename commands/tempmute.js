@@ -22,21 +22,21 @@ exports.run = async (client, message, args) => {
     let DiscordManagerRole = message.guild.roles.find("name", "Discord Manager & Designer");
     if (message.member.roles.has(OwnerRole.id) || message.member.roles.has(DiscordManagerRole.id)) {
       // Mute the user
-      await(tomute.addRole(muterole.id));
-      message.reply(`<@${tomute.id}> has been muted for ${ms(ms(mutetime))}`);
+      await(member.addRole(muterole.id));
+      message.reply(`<@${member.id}> has been muted for ${ms(ms(mutetime))}`);
 
       setTimeout(function(){
-        tomute.removeRole(muterole.id);
-        message.channel.send(`<@${tomute.id}> has been unmuted!`);
+        member.removeRole(muterole.id);
+        message.channel.send(`<@${member.id}> has been unmuted!`);
       }, ms(mutetime));
     } else {
       if(!member.kickable)
-      await(tomute.addRole(muterole.id));
-      message.reply(`<@${tomute.id}> has been muted for ${ms(ms(mutetime))}`);
+      await(member.addRole(muterole.id));
+      message.reply(`<@${member.id}> has been muted for ${ms(ms(mutetime))}`);
 
       setTimeout(function(){
-        tomute.removeRole(muterole.id);
-        message.channel.send(`<@${tomute.id}> has been unmuted!`);
+        member.removeRole(muterole.id);
+        message.channel.send(`<@${member.id}> has been unmuted!`);
       }, ms(mutetime));
     };
 };
