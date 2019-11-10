@@ -11,5 +11,5 @@ exports.run = (client, message, args) => {
         let room = message.guild.channels.find('name' , collected.first().content);
         if(!room) return message.channel.send(':disappointed_relieved:| I could not find that channel');
       });
-    };
+    });
 };
