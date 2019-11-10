@@ -14,7 +14,7 @@ exports.run = async (client, message, args) => {
 
     let mutetime = args[1];
 
-    if(!time)
+    if(!mutetime)
       return message.reply(`please, provide a duration of the mute.`);
 
     // This is the role you want to assign to the user
