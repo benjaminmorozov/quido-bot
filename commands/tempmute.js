@@ -25,7 +25,7 @@ exports.run = async (client, message, args) => {
     if (message.member.roles.has(OwnerRole.id) || message.member.roles.has(DiscordManagerRole.id)) {
       // Mute the user
       await(member.addRole(muterole.id));
-      message.channel.send(`<@${member.id}> has been muted by ${message.author.tag} for a duration of: ${ms(ms(mutetime))} for: ${reason}`);
+      message.channel.send(`<@${member.id}> has been muted by ${message.author.tag} for a duration of ${ms(ms(mutetime))} for: ${reason}`);
 
       setTimeout(function(){
         member.removeRole(muterole.id, `Temporary mute expired.`);
@@ -35,7 +35,7 @@ exports.run = async (client, message, args) => {
         return message.channel.send(`Sorry ${message.author}, you cannot mute this user.`);
 
       await(member.addRole(muterole.id));
-      message.channel.send(`<@${member.id}> has been muted by ${message.author.tag} for a duration of: ${ms(ms(mutetime))} for: ${reason}`);
+      message.channel.send(`<@${member.id}> has been muted by ${message.author.tag} for a duration of ${ms(ms(mutetime))} for: ${reason}`);
 
       setTimeout(function(){
         member.removeRole(muterole.id, `Temporary mute expired.`);
