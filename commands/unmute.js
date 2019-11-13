@@ -8,7 +8,7 @@ exports.run = async (client, message, args) => {
     let member = message.mentions.members.first() || message.guild.members.get(args[0]);
     if(!member)
         return message.reply("please mention a valid member of this server.");
-    if(!member.kickable) 
+    if(!member.kickable)
         return message.channel.send(`Sorry ${message.author}, you cannot unmute this user.`);
 
     if(!member.roles.find(r => r.name === "Muted"))
@@ -19,5 +19,5 @@ exports.run = async (client, message, args) => {
 
     member.removeRole(mutedRole)
     .catch(error => console.log(`Sorry ${message.author}, I couldn't unmute because of : ${error}`));
-    message.channel.send(`${member.user.tag} has been unmuted by ${message.author.tag}`);
+    message.channel.send(`${member} has been unmuted by ${message.author}`);
 };

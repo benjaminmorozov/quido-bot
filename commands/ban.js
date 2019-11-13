@@ -9,12 +9,12 @@ exports.run = async (client, message, args) => {
     let member = message.mentions.members.first();
     if(!member)
       return message.reply("please mention a valid member of this server");
-    if(!member.bannable) 
+    if(!member.bannable)
     return message.channel.send(`Sorry ${message.author}, you cannot ban this user.`);
 
     if(!reason) reason = "No reason provided.";
-    
+
     await member.ban(reason)
       .catch(error => message.channel.send(`Sorry ${message.author} I couldn't ban because of : ${error}`));
-    message.channel.send(`${member.user.tag} has been banned by ${message.author.tag} because: ${reason}`);
+    message.channel.send(`${member.user} has been banned by ${message.author} because: ${reason}`);
 };
