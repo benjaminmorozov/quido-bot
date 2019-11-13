@@ -29,8 +29,8 @@ exports.run = async (client, message, args) => {
 
       // Mute the user
       await(member.addRole(muterole.id));
-      message.channel.send(`${member} has been muted by ${message.author.tag} for a duration of ${ms(ms(mutetime))} for: ${reason}`);
-      member.send(`${member}, you have been muted by ${message.author.tag} for a duration of ${ms(ms(mutetime))} for: ${reason}`)
+      message.channel.send(`${member} has been muted by ${message.author} for a duration of ${ms(ms(mutetime))} for: ${reason}`);
+      member.send(`${member}, you have been muted by ${message.author} for a duration of ${ms(ms(mutetime))} for: ${reason}`)
 
       setTimeout(function(){
         member.removeRole(muterole.id, `Temporary mute expired.`);
@@ -43,8 +43,8 @@ exports.run = async (client, message, args) => {
         return message.channel.send(`Sorry ${message.author}, this user is already muted.`)
 
       await(member.addRole(muterole.id));
-      message.channel.send(`${member} has been muted by ${message.author.tag} for a duration of ${ms(ms(mutetime))} for: ${reason}`);
-      message.member.send(`${member}, you have been muted by ${message.author.tag} for a duration of ${ms(ms(mutetime))} for:${reason}`)
+      message.channel.send(`${member} has been muted by ${message.author} for a duration of ${ms(ms(mutetime))} for: ${reason}`);
+      message.member.send(`${member}, you have been muted by ${message.author} for a duration of ${ms(ms(mutetime))} for:${reason}`)
 
       setTimeout(function(){
         member.removeRole(muterole.id, `Temporary mute expired.`);
