@@ -16,7 +16,7 @@ exports.run = (client, message, args) => {
       return message.reply("well well... We do not say that here.")
     };
 
-    if(message.author === userID) {
+    if(message.author.id === userID) {
       message.delete();
       let botmessage = args.join(" ");
       message.channel.send(botmessage);
