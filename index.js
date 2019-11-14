@@ -15,9 +15,6 @@ var sequelize = new Sequelize('dmmi0dioj6mpk', 'sqknbmnacknhag', '0bcf997703be2c
   logging: false,
 });
 
-db.sequelize = sequelize;
-db.Sequelize = Sequelize;
-
 /*
  * equivalent to: CREATE TABLE tags(
  * name VARCHAR(255),
