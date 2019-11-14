@@ -14,6 +14,7 @@ const sequelize = new Sequelize('dmmi0dioj6mpk', 'sqknbmnacknhag', '0bcf997703be
 	dialect: 'postgres',
 	logging: false,
 });
+
 /*
  * equivalent to: CREATE TABLE tags(
  * name VARCHAR(255),
