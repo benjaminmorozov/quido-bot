@@ -19,7 +19,7 @@ const Tags = sequelize.define('tags', {
 		allowNull: false,
 	},
 });
-const splitArgs = commandArgs.split(' ');
+const splitArgs = args.split(' ');
 const tagName = splitArgs.shift();
 const tagDescription = splitArgs.join(' ');
 
