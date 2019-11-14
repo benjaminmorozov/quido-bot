@@ -40,7 +40,7 @@ const Tags = sequelize.define('tags', {
 
 client.on('ready', () => {
   Tags.sync();
-  console.log(chalk.redBright(`green`), `Successfully loaded and logged in as ${client.user.tag}.`);
+  console.log(chalk.redBright('FATAL ERROR'), 'Something really bad happened!');
   client.user.setPresence({ game: { name: "Quido's Club > All", type: 0 } });
 });
 
