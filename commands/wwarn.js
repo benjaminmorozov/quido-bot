@@ -29,7 +29,7 @@ exports.run = async (client, message, args) => {
     let member = message.mentions.members.first();
 
     const tag = await tags.create({
-      name: member.username,
+      name: member.id,
       description: 'warns',
       username: member.id,
     });
