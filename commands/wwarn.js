@@ -28,6 +28,9 @@ exports.run = async (client, message, args) => {
 
     let member = message.mentions.members.first();
 
+    const splitArgs = args.split(' ');
+    const tagName = splitArgs.shift();
+    const tagDescription = splitArgs.join(' ');
     const tag = await tags.create({
       name: tagName,
       description: tagDescription,
