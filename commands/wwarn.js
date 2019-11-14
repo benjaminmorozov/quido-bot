@@ -1,3 +1,6 @@
+const Discord = require("discord.js");
+const Enmap = require("enmap");
+const Sequelize = require('sequelize');
 const Tags = sequelize.define('tags', {
 	name: {
 		type: Sequelize.STRING,
