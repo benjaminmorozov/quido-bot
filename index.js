@@ -23,7 +23,7 @@ var sequelize = new Sequelize('dmmi0dioj6mpk', 'sqknbmnacknhag', '0bcf997703be2c
  * usage INT
  * );
  */
-const Tags = sequelize.define('tags', {
+const tags = sequelize.define('tags', {
   name: {
     type: Sequelize.STRING,
     unique: true,
