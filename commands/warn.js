@@ -96,6 +96,7 @@ exports.run = async (client, message, args) => {
                   }
                 }
               });
+            message.channel.send(`${user} you have been warned by ${message.author} for ${reason}`);
           };
       };
 

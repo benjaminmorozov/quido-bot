@@ -10,7 +10,7 @@ client.config = config;
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-  client.user.setPresence({ game: { name: "Quido's Club > All", type: 0 } });
+  client.user.setPresence({ game: { name: "q!help", type: 0 } });
 });
 
 fs.readdir("./events/", (err, files) => {
