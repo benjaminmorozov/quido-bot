@@ -1,7 +1,6 @@
 const Discord = require("discord.js");
 const Enmap = require("enmap");
 const Sequelize = require('sequelize');
-const chalk = require('chalk');
 const fs = require("fs");
 const { RichEmbed } = require('discord.js');
 
@@ -40,7 +39,7 @@ const Tags = sequelize.define('tags', {
 
 client.on('ready', () => {
   Tags.sync();
-  console.log(chalk.redBright('FATAL ERROR'), 'Something really bad happened!');
+  console.log(`Successfully loaded and logged in as ${client.user.tag}.`);
   client.user.setPresence({ game: { name: "Quido's Club > All", type: 0 } });
 });
 
