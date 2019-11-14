@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const Enmap = require("enmap");
 const Sequelize = require('sequelize');
 
-exports.run = async (client, message, args, sequelize, tags) => {
+exports.run = async (client, message, args, sequelize) => {
   const tags = sequelize.define('tags', {
     name: {
       type: Sequelize.STRING,
