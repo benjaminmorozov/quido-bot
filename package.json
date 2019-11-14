@@ -19,7 +19,6 @@
     "request-promise-native": "^1.0.8",
     "sequelize": "^5.21.2",
     "snekfetch": "^4.0.4",
-    "sqlite3": "^4.1.0",
     "superagent": "^5.1.0"
   },
   "devDependencies": {},
