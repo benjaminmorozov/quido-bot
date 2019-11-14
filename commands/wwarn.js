@@ -29,9 +29,9 @@ exports.run = async (client, message, args) => {
     let member = message.mentions.members.first();
 
     const tag = await tags.create({
-      name: member.id,
+      name: `${member.username}#${member.discriminator}`,
       description: 'warns',
-      username: member.id,
+      username: `${member.id}`,
     });
 
     return message.reply(`db check successful.`);
