@@ -19,6 +19,9 @@ const Tags = sequelize.define('tags', {
 		allowNull: false,
 	},
 });
+const splitArgs = commandArgs.split(' ');
+const tagName = splitArgs.shift();
+const tagDescription = splitArgs.join(' ');
 
 exports.run = async (client, message, args, sequelize) => {
     if(!message.member.roles.some(r=>["🔱OWNER🔱","Discord Manager & Designer","Administrator", "Moderator","Head Admin","Admin","Helper"].includes(r.name)) )
