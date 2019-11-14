@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const Enmap = require("enmap");
+const Sequelize = require('sequelize');
 const fs = require("fs");
 const { RichEmbed } = require('discord.js');
 
@@ -8,8 +9,39 @@ const config = require("./config.json");
 // We also need to make sure we're attaching the config to the CLIENT so it's accessible everywhere!
 client.config = config;
 
+const sequelize = new Sequelize('database', 'user', 'password', {
+	host: 'localhost',
+	dialect: 'sqlite',
+	logging: false,
+	// SQLite only
+	storage: 'database.sqlite',
+});
+
+/*
+ * equivalent to: CREATE TABLE tags(
+ * name VARCHAR(255),
+ * description TEXT,
+ * username VARCHAR(255),
+ * usage INT
+ * );
+ */
+const Tags = sequelize.define('tags', {
+	name: {
+		type: Sequelize.STRING,
+		unique: true,
+	},
+	description: Sequelize.TEXT,
+	username: Sequelize.STRING,
+	warns: {
+		type: Sequelize.INTEGER,
+		defaultValue: 0,
+		allowNull: false,
+	},
+});
+
 client.on('ready', () => {
-  console.log(`Logged in as ${client.user.tag}!`);
+  Tags.sync();
+  console.log(chalk.redBright(`green`), `Successfully loaded and logged in as ${client.user.tag}.`);
   client.user.setPresence({ game: { name: "q!help", type: 0 } });
 });
 

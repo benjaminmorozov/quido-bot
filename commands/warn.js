@@ -41,6 +41,11 @@ exports.run = async (client, message, args) => {
                   inline: "true"
                   },
                   {
+                    name: "Warned By:",
+                    value: `${message.author}`,
+                    inline: "true"
+                  },
+                  {
                     name: "Warned In:",
                     value: `${message.channel}`,
                     inline: "true"
@@ -75,6 +80,11 @@ exports.run = async (client, message, args) => {
                     inline: "true"
                     },
                     {
+                      name: "Warned By:",
+                      value: `${message.author}`,
+                      inline: "true"
+                    },
+                    {
                       name: "Warned In:",
                       value: `${message.channel}`,
                       inline: "true"
@@ -96,7 +106,6 @@ exports.run = async (client, message, args) => {
                   }
                 }
               });
-            message.channel.send(`${user} you have been warned by ${message.author} for ${reason}`);
           };
       };
 
