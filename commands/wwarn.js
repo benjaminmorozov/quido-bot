@@ -1,6 +1,8 @@
 const Discord = require("discord.js");
 const Enmap = require("enmap");
 const Sequelize = require('sequelize');
+exports.sequelize = sequelize;
+module.exports = sequelize;
 
 exports.run = async (client, message, args, sequelize) => {
     if(!message.member.roles.some(r=>["🔱OWNER🔱","Discord Manager & Designer","Administrator", "Moderator","Head Admin","Admin","Helper"].includes(r.name)) )
