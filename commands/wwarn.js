@@ -6,11 +6,6 @@ exports.run = async (client, message, args, sequelize) => {
     if(!message.member.roles.some(r=>["🔱OWNER🔱","Discord Manager & Designer","Administrator", "Moderator","Head Admin","Admin","Helper"].includes(r.name)) )
     return message.reply("sorry, you don't have enough permissions to use this!");
 
-    const sequelize = new Sequelize('dmmi0dioj6mpk', 'sqknbmnacknhag', '0bcf997703be2c1aadb5bb882fa5d5ae2f46b23b710dfd6edc949bfcf9342908', {
-    	host: 'ec2-54-228-252-67.eu-west-1.compute.amazonaws.com',
-    	dialect: 'postgres',
-    	logging: false,
-    });
     const Tags = sequelize.define('tags', {
     	name: {
     		type: Sequelize.STRING,
