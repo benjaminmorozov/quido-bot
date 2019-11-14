@@ -1,6 +1,7 @@
 const Discord = require("discord.js");
 const Enmap = require("enmap");
 const Sequelize = require('sequelize');
+const chalk = require('chalk');
 const fs = require("fs");
 const { RichEmbed } = require('discord.js');
 
