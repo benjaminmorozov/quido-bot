@@ -3,6 +3,20 @@ const Enmap = require("enmap");
 const Sequelize = require('sequelize');
 
 exports.run = async (client, message, args, sequelize, tags) => {
+  const tags = sequelize.define('tags', {
+    name: {
+      type: Sequelize.STRING,
+      unique: true,
+    },
+    description: Sequelize.TEXT,
+    username: Sequelize.STRING,
+    warns: {
+      type: Sequelize.INTEGER,
+      defaultValue: 0,
+      allowNull: false,
+    },
+  });
+    tags.sync();
     if(!message.member.roles.some(r=>["🔱OWNER🔱","Discord Manager & Designer","Administrator", "Moderator","Head Admin","Admin","Helper"].includes(r.name)) )
     return message.reply("sorry, you don't have enough permissions to use this!");
 
