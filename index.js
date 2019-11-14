@@ -13,7 +13,7 @@ const sequelize = new Sequelize('dmmi0dioj6mpk', 'sqknbmnacknhag', '0bcf997703be
 	host: 'ec2-54-228-252-67.eu-west-1.compute.amazonaws.com',
 	dialect: 'postgres',
 	logging: false,
-
+});
 /*
  * equivalent to: CREATE TABLE tags(
  * name VARCHAR(255),
