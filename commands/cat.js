@@ -7,6 +7,6 @@ exports.run = async (client, message, args) => {
       .setColor(0x333333)
       .setAuthor(`Here’s your Fresh and Instant Cat ❤️:`)
       .setImage(file)
-      .setFooter('If you find a bug, please report it to our staff. ❤️', 'https://cdn.discordapp.com/icons/610434388777369602/08a037cb16972aa3cd069a055d63ca43.webp');
+      .setFooter('Thanks for being a part of our community. ❤️', `${client.user.avatarURL}`);
     message.channel.send(catEmbed);
 };
