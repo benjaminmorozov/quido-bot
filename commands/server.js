@@ -36,7 +36,7 @@ exports.run = (client, message) => {
             },
         ],
         footer: {
-        icon_url: `${message.guild.iconURL}`,
+        icon_url: `${client.user.avatarURL}`,
         text: "Thanks for being a part of our community ❤️"
         }
     }
