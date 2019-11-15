@@ -13,5 +13,5 @@ exports.run = (client, message, args) => {
     message.guild.members.get(taggedUser.id).setNickname(nick);
 
     if(!message.member.roles.some(r=>["🔱OWNER🔱","Discord Manager & Designer","Administrator", "Moderator","Head Admin","Admin","Helper"].includes(r.name)) || taggedUser === message.author)
-    message.author.setNickname(nick);
+    message.guild.members.get(message.author.id).setNickname(nick);
 };
