@@ -1,30 +1,16 @@
+const Discord = require("discord.js");
 exports.run = (client, message) => {
-    message.channel.send({embed: {
-        color: 0xff5353,
-        author: {
-          name: '13 Commands:',
-        },
-        thumbnail: {
-            "url": "http://giphygifs.s3.amazonaws.com/media/MF1kR4YmC2Z20/giphy.gif"
-          },
-        fields: [{
-          name: "Fun:",
-          value: `__${client.config.prefix}cat__ - Get an instant picture of a cute cat. (usage: ${client.config.prefix}cat)\n__${client.config.prefix}dog__ - Get an instant picture of a cute dog. (usage: ${client.config.prefix}dog)\n__${client.config.prefix}8ball__ - Ask a question to the mystic 8ball. (usage: ${client.config.prefix}8ball <question>)`
-          },
-          {
-            name: "Mod:",
-            value: `__${client.config.prefix}ban__ - Bans an user. (usage: ${client.config.prefix}ban <@user> <reason>)\n__${client.config.prefix}kick__ - Kicks an user. (usage: ${client.config.prefix}kick <@user> <reason>)\n__${client.config.prefix}mute__ - Mutes an user. (usage: ${client.config.prefix}mute <@user> <reason>\n__${client.config.prefix}purge__ - Deletes a custom amount of messages. (usage: ${client.config.prefix}purge <amount>)\n__${client.config.prefix}unmute__ - Unmutes an user. (usage: ${client.config.prefix}unmute <@user>)`
-          },
-          {
-            name: "Utils:",
-            value: "$avatar - Displays an avatar of the mentioned user/you.\n$help - Show all the commands.\n$report - Report an user to the server admins.\n$server - Informations about the server.\n$user-info - Displays informations about you.",
-            inline: "true"
-          }
-        ],
-        footer: {
-          icon_url: 'https://images.discordapp.net/avatars/220644154177355777/bd6b28005c26d079486063a4976dfb44.png',
-          text: "If you find a bug, please report it to our staff. ❤️"
-        }
-      }
-    })
+  const emojiNext = '➡'; // unicode emoji are identified by the emoji itself
+  const emojiPrevious = '⬅';
+  const reactionArrow = [emojiPrevious, emojiNext];
+  const baseEmbed = new Discord.RichEmbed()
+  	.setColor('0xff5353')
+  	.setTitle('🔰 List of all commands:')
+  	.setThumbnail('http://giphygifs.s3.amazonaws.com/media/MF1kR4YmC2Z20/giphy.gif')
+  	.addField('# **Fun**', '`q!8ball` - Ask the mystic 8-ball a question.\n`q!cat` - Display a random picture of a cute cat.\n`q!dog` - Display a random picture of a cute doggo.\n`q!nsfw` - Display a random NSFW picture.', false)
+  	.addField('# **Misc**', '`q!avatar` - Display the avatar of any member of this server.\n`q!help` - Display a list of all the commands.\n`q!server` - Display the server info.\n`q!userinfo` - Display some info about a member of this server.', false)
+    .addField('# **Mod**', '`q!addrr` - After reacting to a set message, user will be given a defined role.\n`q!ban` - Ban an user.\n`q!clearwarns` - Clear warns of a set user.\n`q!gcreate` - Create a giveaway in a set channel.\n`q!kick` - Kick an user.\n`q!mute` - Mute an user.\n`q!mutelist` - Display a list of all muted members on the server.\n`q!purge` - Purges/Clears a defined amount of messages.\n`q!say` - Makes the bot send a custom message.\n`q!setstatus` - Change the "playing" status of the bot user.\n`q!tempmute` - Temporarily mute a member for defined amount of time.\n`q!unmute` - Unmute an user.\n`q!warn` - Warn an user. After an enough number of warnings, the user will be punished.\n`q!warns` - Display the number of warnings a user has been given.', false)
+  	.setFooter('Thanks for being a part of our community. ❤️', `${client.user.avatarURL}`);
+
+  message.channel.send(baseEmbed);
 };
