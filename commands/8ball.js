@@ -14,7 +14,7 @@ exports.run = (client, message, args) => {
     } else {
       const baseEmbed = new Discord.RichEmbed()
         .setColor('0xff5353')
-        .addDescription(doMagic8BallVoodoo())
+        .setDescription(doMagic8BallVoodoo())
         .setFooter('Thanks for being a part of our community. ❤️', `${client.user.avatarURL}`);
       message.channel.send(baseEmbed);
     };
