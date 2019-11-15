@@ -5,14 +5,17 @@ exports.run = (client, message, args) => {
         return rand[Math.floor(Math.random()*rand.length)];
     };
     let reason = args.slice(1).join(' ');
-    if(!reason) reason = "Not a valid question.";
-    else {
-    message.channel.send(doMagic8BallVoodoo())
+    const questionmark = "?";
+    if(!message.content.toLowerCase().includes(questionmark)) {
+      return message.reply("ask a valid question.")
+    }
+    if(!reason) {
+      return message.reply("ask a valid question.")
+    } else {
+      const baseEmbed = new Discord.RichEmbed()
+        .setColor('0xff5353')
+        .addDescription(doMagic8BallVoodoo())
+        .setFooter('Thanks for being a part of our community. ❤️', `${client.user.avatarURL}`);
+      message.channel.send(baseEmbed);
     };
-    const baseEmbed = new Discord.RichEmbed()
-      .setColor('0xff5353')
-      .addField('\u200b', doMagic8BallVoodoo(), false)
-      .setFooter('Thanks for being a part of our community. ❤️', `${client.user.avatarURL}`);
-
-    message.channel.send(baseEmbed);
 }
