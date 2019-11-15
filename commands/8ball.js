@@ -11,6 +11,6 @@ exports.run = (client, message, args) => {
     if(!reason) {
       return message.reply("ask a valid question.")
     } else {
-    message.channel.send(doMagic8BallVoodoo())
+    message.channel.send('`${doMagic8BallVoodoo()}`')
     };
 }
