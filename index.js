@@ -3,7 +3,6 @@ const Enmap = require("enmap");
 const Sequelize = require('sequelize');
 const fs = require("fs");
 const { RichEmbed } = require('discord.js');
-const Welcome = require("discord-welcome");
 
 const client = new Discord.Client();
 const config = require("./config.json");
