@@ -1,7 +1,6 @@
-const Discord = require("discord.js");
 exports.run = (client, message, args) => {
     function doMagic8BallVoodoo() {
-        var rand = [':8ball: Absolutely.', ':8ball: Absolutely not.', ':8ball: It is true.', ':8ball: Impossible.', ':8ball: Of course.', ':8ball: I do not think so.', ':8ball: It is true.', ':8ball: It is not true.', ':8ball: I am very undoubtful of that.', ':8ball: I am very doubtful of that.', ':8ball: Sources point to no.', ':8ball: Theories prove it.', ':8ball: Reply hazy try again', ':8ball: Ask again later', ':8ball: Better not tell you now', ':8ball: Cannot predict now', ':8ball: Concentrate and ask again'];
+        var rand = [':8ball: It is certain.', ':8ball: It is decidedly so.', ':8ball: Without a doubt.', ':8ball: Yes, definitely.', ':8ball: As I see it, yes.', ':8ball: Most likely.', ':8ball: Yes.', ':8ball: Signs point to yes.', ':8ball: Better not tell you now.', ':8ball: Cannot predict now.', ':8ball: Don\'t count on it.', ':8ball: My reply is no.', ':8ball: My sources say no.', ':8ball: I\'m very doubtful of that.', ':8ball: Concentrate and try again.', ':8ball: Cannot predict now.', ':8ball: Hell no!'];
         return rand[Math.floor(Math.random()*rand.length)];
     };
     let reason = args.slice(1).join(' ');
@@ -12,10 +11,6 @@ exports.run = (client, message, args) => {
     if(!reason) {
       return message.reply("ask a valid question.")
     } else {
-      const baseEmbed = new Discord.RichEmbed()
-        .setColor('0xff5353')
-        .setDescription(doMagic8BallVoodoo())
-        .setFooter('Thanks for being a part of our community. ❤️', `${client.user.avatarURL}`);
-      message.channel.send(baseEmbed);
+    message.channel.send(doMagic8BallVoodoo())
     };
 }
