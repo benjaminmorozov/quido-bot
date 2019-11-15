@@ -1,6 +1,6 @@
 exports.run = (client, message, args) => {
     function doMagic8BallVoodoo() {
-        var rand = [':8ball: It is certain.', ':8ball: It is decidedly so.', ':8ball: Without a doubt.', ':8ball: Yes, definitely.', ':8ball: As I see it, yes.', ':8ball: Most likely.', ':8ball: Yes.', ':8ball: Signs point to yes.', ':8ball: Better not tell you now.', ':8ball: Cannot predict now.', ':8ball: Don\'t count on it.', ':8ball: My reply is no.', ':8ball: My sources say no.', ':8ball: I\'m very doubtful of that.', ':8ball: Concentrate and try again.', ':8ball: Cannot predict now.', ':8ball: Hell no!'];
+        var rand = ['It is certain.', 'It is decidedly so.', 'Without a doubt.', 'Yes, definitely.', 'As I see it, yes.', 'Most likely.', 'Yes.', 'Signs point to yes.', 'Better not tell you now.', 'Cannot predict now.', 'Don\'t count on it.', 'My reply is no.', 'My sources say no.', 'I\'m very doubtful of that.', 'Concentrate and try again.', 'Cannot predict now.', 'Hell no!'];
         return rand[Math.floor(Math.random()*rand.length)];
     };
     let reason = args.slice(1).join(' ');
@@ -11,6 +11,6 @@ exports.run = (client, message, args) => {
     if(!reason) {
       return message.reply("ask a valid question.");
     } else {
-    message.channel.send('`' + doMagic8BallVoodoo() + '`');
+    message.channel.send(':8ball: `' + doMagic8BallVoodoo() + '`');
     };
 }
