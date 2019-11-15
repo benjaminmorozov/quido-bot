@@ -1,8 +1,5 @@
 const Discord = require("discord.js");
 exports.run = (client, message) => {
-  const emojiNext = '➡'; // unicode emoji are identified by the emoji itself
-  const emojiPrevious = '⬅';
-  const reactionArrow = [emojiPrevious, emojiNext];
   const baseEmbed = new Discord.RichEmbed()
   	.setColor('0xff5353')
   	.setTitle('🔰 List of all commands:')
