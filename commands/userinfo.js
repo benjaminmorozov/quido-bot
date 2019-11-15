@@ -21,8 +21,8 @@ exports.run = (client, message) => {
           },
         ],
         footer: {
-          icon_url: 'https://cdn.discordapp.com/icons/610434388777369602/08a037cb16972aa3cd069a055d63ca43.webp',
-          text: "Thanks for being a part of our community ❤️"
+          icon_url: `${client.user.avatarURL}`,
+          text: "Thanks for being a part of our community ❤"
         }
       }
     });

@@ -5,7 +5,7 @@ let warns = JSON.parse(fs.readFileSync("./warnings.json", "utf8"));
 
 exports.run = async (client, message, args) => {
     if(!message.member.roles.some(r=>["🔱OWNER🔱","Discord Manager & Designer","Administrator", "Moderator","Head Admin","Admin","Helper"].includes(r.name)) )
-    return message.reply("sorry, you don't have enough permissions to use this command!");
+    return message.reply("you don't have enough permissions to execute this command!");
 
     // Let's first check if we have a member and if we can kick them!
     // message.mentions.members is a collection of people that have been mentioned, as GuildMembers.
@@ -36,7 +36,7 @@ exports.run = async (client, message, args) => {
                   name: 'Staff Warning:',
                 },
                 fields: [{
-                  name: "Warned User:",
+                  name: "Warned Member:",
                   value: `<@${user.id}>`,
                   inline: "true"
                   },
@@ -62,7 +62,7 @@ exports.run = async (client, message, args) => {
                   }
                 ],
                 footer: {
-                  icon_url: 'https://images.discordapp.net/avatars/220644154177355777/bd6b28005c26d079486063a4976dfb44.png',
+                  icon_url: `${client.user.avatarURL}`,
                   text: "If you find a bug, please report it to our staff. ❤️"
                 }
               }
@@ -75,7 +75,7 @@ exports.run = async (client, message, args) => {
                     name: 'Warning:',
                   },
                   fields: [{
-                    name: "Warned User:",
+                    name: "Warned Member:",
                     value: `<@${user.id}>`,
                     inline: "true"
                     },
@@ -101,7 +101,7 @@ exports.run = async (client, message, args) => {
                     }
                   ],
                   footer: {
-                    icon_url: 'https://images.discordapp.net/avatars/220644154177355777/bd6b28005c26d079486063a4976dfb44.png',
+                    icon_url: `${client.user.avatarURL}`,
                     text: "If you find a bug, please report it to our staff. ❤️"
                   }
                 }

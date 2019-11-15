@@ -5,9 +5,8 @@ exports.run = (client, message, args) => {
   randomPuppy()
       .then(url => {
         const dogEmbed = new Discord.RichEmbed()
-        .setColor(0x333333)
-        .setImage(url)
-        .setFooter('If you find a bug, please report it to our staff. ❤️', 'https://cdn.discordapp.com/icons/610434388777369602/08a037cb16972aa3cd069a055d63ca43.webp');
+            .setImage(url)
+            .setFooter('Thanks for being a part of our community. ❤️', `${client.user.avatarURL}`);
       message.channel.send(dogEmbed);
     });
 };

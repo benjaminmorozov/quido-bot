@@ -2,7 +2,7 @@ const ms = require("ms");
 
 exports.run = async (client, message, args) => {
     if(!message.member.roles.some(r=>["🔱OWNER🔱","Discord Manager & Designer","Administrator", "Moderator","Head Admin","Admin","Helper"].includes(r.name)) )
-    return message.reply("sorry, you don't have enough permissions to use this!");
+    return message.reply("you don't have enough permissions to execute this command!");
 
     let member = message.mentions.members.first() || message.guild.members.get(args[0]);
     if(!member)
@@ -25,7 +25,7 @@ exports.run = async (client, message, args) => {
     if (message.member.roles.has(OwnerRole.id) || message.member.roles.has(DiscordManagerRole.id)) {
 
       if(message.member.roles.has(muterole.id))
-        return message.channel.send(`Sorry ${message.author}, this user is already muted.`)
+        return message.channel.send(`Sorry ${message.author}, this member is already muted.`)
 
       // Mute the user
       await(member.addRole(muterole.id));
@@ -37,10 +37,10 @@ exports.run = async (client, message, args) => {
       }, ms(mutetime));
     } else {
       if(!member.kickable)
-        return message.channel.send(`Sorry ${message.author}, you cannot mute this user.`);
+        return message.channel.send(`Sorry ${message.author}, you cannot mute this member.`);
 
       if(message.member.roles.has(muterole.id))
-        return message.channel.send(`Sorry ${message.author}, this user is already muted.`)
+        return message.channel.send(`Sorry ${message.author}, this member is already muted.`)
 
       await(member.addRole(muterole.id));
       message.channel.send(`${member} has been muted by ${message.author} for a duration of ${ms(ms(mutetime))} for: ${reason}`);
