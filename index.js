@@ -14,10 +14,6 @@ client.on('ready', () => {
   client.user.setPresence({ game: { name: "Quido's Club > All", type: 0 } });
 });
 
-client.on("guildMemberAdd", member => {
-  member.guild.channels.get('617351547130478621').send('User <@${member.id}> joined the server.');
-})
-
 fs.readdir("./events/", (err, files) => {
   if (err) return console.error(err);
   files.forEach(file => {
