@@ -6,11 +6,11 @@ exports.run = (client, message, args) => {
     let reason = args.slice(1).join(' ');
     const questionmark = "?";
     if(!message.content.toLowerCase().includes(questionmark)) {
-      return message.reply("ask a valid question.")
+      return message.reply("ask a valid question.");
     }
     if(!reason) {
-      return message.reply("ask a valid question.")
+      return message.reply("ask a valid question.");
     } else {
-    message.channel.send('`${doMagic8BallVoodoo()}`')
+    message.channel.send('`' + doMagic8BallVoodoo() + '`');
     };
 }
