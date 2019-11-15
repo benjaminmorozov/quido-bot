@@ -10,7 +10,7 @@ exports.run = (client, message, args) => {
     }
 
     if(message.member.roles.some(r=>["🔱OWNER🔱","Discord Manager & Designer","Administrator", "Moderator","Head Admin","Admin","Helper"].includes(r.name)) || taggedUser === message.mentions.users.first())
-    taggedUser.setNickname(nick);
+    message.guild.members.get(taggedUser.id).setNickname(nick);
 
     if(!message.member.roles.some(r=>["🔱OWNER🔱","Discord Manager & Designer","Administrator", "Moderator","Head Admin","Admin","Helper"].includes(r.name)) || taggedUser === message.author)
     message.author.setNickname(nick);
