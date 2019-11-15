@@ -11,7 +11,7 @@ exports.run = (client, message, args) => {
     };
     const baseEmbed = new Discord.RichEmbed()
       .setColor('0xff5353')
-      .addField('', 'doMagic8BallVoodoo()', false)
+      .addField('\u200b', 'doMagic8BallVoodoo()', false)
       .setFooter('Thanks for being a part of our community. ❤️', `${client.user.avatarURL}`);
 
     message.channel.send(baseEmbed);
