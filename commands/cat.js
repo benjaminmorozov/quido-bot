@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const request = require('request');
 const fetch = require('node-fetch');
-exports.run = (client, message, args) => {
+exports.run = async (client, message, args) => {
     const { file } = await fetch('https://aws.random.cat/meow').then(response => response.json());
     const catEmbed = new Discord.RichEmbed()
       .setColor(0x333333)
