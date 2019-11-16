@@ -1,5 +1,6 @@
 exports.run = (client, message) => {
     const member = message.mentions.users.first() || message.author;
+    let roles = member.roles.map(r => `${r}`).join(' | ');
 
     message.channel.send({embed: {
         color: 0xff5353,
@@ -21,7 +22,7 @@ exports.run = (client, message) => {
           },
           {
             name: "User Roles:",
-            value: `${member.roles.map(r => `${r}`).join(' | ')}`,
+            value: `${roles}`,
             inline: "false"
           },
         ],
