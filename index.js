@@ -17,7 +17,7 @@ db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
 module.exports = db;
-const tags = sequelize.define('tags', {
+var tags = sequelize.define('tags', {
   name: {
     type: Sequelize.STRING,
     unique: true,
