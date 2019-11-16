@@ -5,11 +5,32 @@ const fs = require("fs");
 const { RichEmbed } = require('discord.js');
 
 const client = new Discord.Client();
+
+const sequelize = new Sequelize('dmmi0dioj6mpk', 'sqknbmnacknhag', '0bcf997703be2c1aadb5bb882fa5d5ae2f46b23b710dfd6edc949bfcf9342908', {
+  host: 'ec2-54-228-252-67.eu-west-1.compute.amazonaws.com',
+  dialect: 'postgres',
+  logging: false,
+});
+const tags = sequelize.define('tags', {
+  name: {
+    type: Sequelize.STRING,
+    unique: true,
+  },
+  description: Sequelize.TEXT,
+  username: Sequelize.STRING,
+  warns: {
+    type: Sequelize.INTEGER,
+    defaultValue: 0,
+    allowNull: false,
+  },
+});
+
 const config = require("./config.json");
 // We also need to make sure we're attaching the config to the CLIENT so it's accessible everywhere!
 client.config = config;
 
 client.on('ready', () => {
+  tags.sync();
   console.log(`Successfully loaded and logged in as ${client.user.tag}.`);
   client.user.setPresence({ game: { name: "Quido's Club > All", type: 0 } });
 });
