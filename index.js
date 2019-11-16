@@ -4,6 +4,7 @@ var Sequelize = require('sequelize');
 const fs = require("fs");
 const { RichEmbed } = require('discord.js');
 const client = new Discord.Client();
+const DiscordAntiSpam = require("discord-anti-spam");
 const AntiSpam = new DiscordAntiSpam({
   warnThreshold: 3, // Amount of messages sent in a row that will cause a warning.
   maxInterval: 2000, // Amount of time (in ms) in which messages are cosidered spam.
