@@ -1,28 +1,27 @@
 exports.run = (client, message) => {
-    const member = message.mentions.users.first() || message.author;
-    let roles = member.roles.map(r => `${r}`).join(' | ');
+    const taggedUser = message.mentions.users.first() || message.author;
 
     message.channel.send({embed: {
         color: 0xff5353,
         author: {
-          name: `${member.username}`,
+          name: `${taggedUser.username}`,
         },
         thumbnail: {
-            "url": `${member.avatarURL}`
+            "url": `${taggedUser.avatarURL}`
           },
         fields: [{
             name: "Full Username:",
-            value: `${member.username}#${member.discriminator}`,
+            value: `${taggedUser.username}#${taggedUser.discriminator}`,
             inline: "false"
           },
           {
             name: "User ID:",
-            value: `${member.id}`,
+            value: `${taggedUser.id}`,
             inline: "false"
           },
           {
             name: "User Roles:",
-            value: `${roles}`,
+            value: `${taggedUser.roles.map(r => `${r}`).join(' | ')}`,
             inline: "false"
           },
         ],
