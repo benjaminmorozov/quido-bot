@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const Enmap = require("enmap");
-const Sequelize = require('sequelize');
+var Sequelize = require('sequelize');
 const fs = require("fs");
 const { RichEmbed } = require('discord.js');
 
@@ -11,6 +11,12 @@ const sequelize = new Sequelize('dmmi0dioj6mpk', 'sqknbmnacknhag', '0bcf997703be
   dialect: 'postgres',
   logging: false,
 });
+var db = {};
+
+db.sequelize = sequelize;
+db.Sequelize = Sequelize;
+
+module.exports = db;
 const tags = sequelize.define('tags', {
   name: {
     type: Sequelize.STRING,
