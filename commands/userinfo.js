@@ -1,35 +1,27 @@
 exports.run = (client, message) => {
-    const taggedUser = message.mentions.users.first() || message.author;
-
-    const nitro = taggedUser.premium_type;
-    if(taggedUser.premium_type === 1 || taggedUser.premium_type === 2) {
-      let nitrostatus = "Member does have Nitro subscription purchased.";
-    };
-    if(taggedUser.premium_type === 0 ) {
-      let nitrostatus = "Member does not have the Nitro subscription.";
-    };
+    const member = message.mentions.users.first() || message.author;
 
     message.channel.send({embed: {
         color: 0xff5353,
         author: {
-          name: `${taggedUser.username}`,
+          name: `${member.username}`,
         },
         thumbnail: {
-            "url": `${taggedUser.avatarURL}`
+            "url": `${member.avatarURL}`
           },
         fields: [{
             name: "Full Username:",
-            value: `${taggedUser.username}#${taggedUser.discriminator}`,
+            value: `${member.username}#${member.discriminator}`,
             inline: "false"
           },
           {
             name: "User ID:",
-            value: `${taggedUser.id}`,
+            value: `${member.id}`,
             inline: "false"
           },
           {
-            name: "Nitro:",
-            value: `${nitrostatus}`,
+            name: "User Roles:",
+            value: `${member.roles.map(r => `${r}`).join(' | ')}`,
             inline: "false"
           },
         ],
