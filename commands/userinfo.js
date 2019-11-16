@@ -1,6 +1,13 @@
 exports.run = (client, message) => {
     const taggedUser = message.mentions.users.first() || message.author;
 
+    const nitro = taggedUser.premium_type;
+    if(taggedUser.premium_type === 1 || taggedUser.premium_type === 2) {
+      let nitrostatus = "Member does have Nitro subscription purchased.";
+    } else {
+      let nitrostatus = "Member does not have the Nitro subscription.";
+    };
+
     message.channel.send({embed: {
         color: 0xff5353,
         author: {
@@ -17,6 +24,11 @@ exports.run = (client, message) => {
           {
             name: "User ID:",
             value: `${taggedUser.id}`,
+            inline: "false"
+          },
+          {
+            name: "Nitro:",
+            value: `${nitrostatus}`,
             inline: "false"
           },
         ],
