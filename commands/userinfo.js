@@ -5,7 +5,7 @@ exports.run = (client, message) => {
     if(taggedUser.premium_type === 1 || taggedUser.premium_type === 2) {
       let nitrostatus = "Member does have Nitro subscription purchased.";
     };
-    if(taggedUser.premium_type === )
+    if(taggedUser.premium_type === 0 ) {
       let nitrostatus = "Member does not have the Nitro subscription.";
     };
 
