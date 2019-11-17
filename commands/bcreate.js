@@ -1,9 +1,9 @@
-
-exports.run = (client, message, args, backup) => {
+exports.run = async (client, message, args, backup) => {
   /**
  * @param {object} [Guild] - The discord server you want to backup
  */
- backup.create(Guild).then((backupID) => {
+ backup.setStorageFolder(__dirname+"/backups/");
+ await backup.create(Guild).then((backupID) => {
    const backupEmbed = new Discord.RichEmbed()
    	.setColor('0xff5353')
    	.setTitle('⚠️ Backup:')
