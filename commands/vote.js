@@ -6,7 +6,7 @@ exports.run = async (client, message, args) => {
     if(!reason) {
       return message.reply("you must have something to vote for!");
     } else {
-      if (!message.content.includes("?")) return message.reply("include a ? in your vote!");
+      if (!message.content.includes("?")) return message.reply("a vote must have an exclamation mark!");
     };
 
     message.delete();
