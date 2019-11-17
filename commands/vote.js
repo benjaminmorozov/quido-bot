@@ -5,6 +5,7 @@ exports.run = async (client, message, args) => {
     let reason = args;
     if(!reason)
       return message.reply("you must have something to vote for!");
+    if (!message.content.includes("?")) return message.reply("include a ? in your vote!")
 
     message.delete();
     const pollTopic = await message.channel.send(reason);
