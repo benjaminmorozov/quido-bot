@@ -1,4 +1,4 @@
-exports.run = (client, message, args) => {
+exports.run = async (client, message, args) => {
   /**
  * @param {object} [Guild] - The discord server you want to backup
  */
