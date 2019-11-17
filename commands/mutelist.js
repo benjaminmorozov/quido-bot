@@ -1,7 +1,7 @@
 exports.run = async (client, message) => {
-    if(!message.member.roles.some(r=>["🔱OWNER🔱","Administrator", "Moderator","Head Admin","Admin","Helper"].includes(r.name)) )
+    if(!message.member.roles.some(r=>["🔱OWNER🔱","Administrator","Head Moderator","Moderator","Head Admin","Admin","Helper"].includes(r.name)) )
     return message.reply("you don't have enough permissions to execute this command!");
-    
+
     message.channel.send({embed: {
         color: 0xff5353,
         title: 'All muted members on this server:',

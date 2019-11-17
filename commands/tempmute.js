@@ -1,7 +1,7 @@
 const ms = require("ms");
 
 exports.run = async (client, message, args) => {
-    if(!message.member.roles.some(r=>["🔱OWNER🔱","Discord Manager & Designer","Administrator", "Moderator","Head Admin","Admin","Helper"].includes(r.name)) )
+    if(!message.member.roles.some(r=>["🔱OWNER🔱","Discord Manager & Designer","Administrator","Head Moderator","Moderator","Head Admin","Admin","Helper"].includes(r.name)) )
     return message.reply("you don't have enough permissions to execute this command!");
 
     let member = message.mentions.members.first() || message.guild.members.get(args[0]);

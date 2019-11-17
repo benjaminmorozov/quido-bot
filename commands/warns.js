@@ -4,7 +4,7 @@ const ms = require("ms");
 let warns = JSON.parse(fs.readFileSync("./warnings.json", "utf8"));
 
 exports.run = (client, message, args) => {
-    if(!message.member.roles.some(r=>["🔱OWNER🔱","Discord Manager & Designer","Administrator", "Moderator","Head Admin","Admin","Helper"].includes(r.name)) )
+    if(!message.member.roles.some(r=>["🔱OWNER🔱","Discord Manager & Designer","Administrator","Head Moderator","Moderator","Head Admin","Admin","Helper"].includes(r.name)) )
     return message.reply(" you don't have enough permissions to execute this command!");
 
     // Let's first check if we have a member and if we can kick them!
@@ -19,12 +19,12 @@ exports.run = (client, message, args) => {
     };
 
     warns[member.id].warns++;
-    
+
     fs.writeFile("./warnings.json", JSON.stringify(warns), (err) => {
         if (err) console.log(err)
     });
-  
+
     let warnchannel = client.channels.get(`630403969616707594`);
-    
+
     message.reply(`<@${member.id}> has ${(warns[member.id].warns) - 1} warnings.`);
 };

@@ -1,5 +1,5 @@
 exports.run = async (client, message, args) => {
-    if(!message.member.roles.some(r=>["🔱OWNER🔱","Discord Manager & Designer","Administrator", "Moderator","Head Admin","Admin"].includes(r.name)) )
+    if(!message.member.roles.some(r=>["🔱OWNER🔱","Discord Manager & Designer","Administrator","Head Moderator","Moderator","Head Admin","Admin"].includes(r.name)) )
     return message.reply("you don't have enough permissions to execute this command!");
 
     // Let's first check if we have a member and if we can kick them!
@@ -9,11 +9,11 @@ exports.run = async (client, message, args) => {
     let member = message.mentions.members.first();
     if(!member)
         return message.reply("please mention a valid member of this server.");
-    if(!member.kickable) 
+    if(!member.kickable)
         return message.channel.send(`Sorry ${message.author}, you cannot kick this member.`);
-    
+
     if(!reason) reason = "No reason provided.";
-    
+
     // Now, time for a swift kick in the nuts!
     await member.kick(reason)
         .catch(error => message.channel.send(`Sorry ${message.author}, I couldn't kick because of : ${error}`));
