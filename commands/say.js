@@ -14,11 +14,11 @@ exports.run = (client, message, args) => {
       message.delete();
       return message.reply("well well... We do not say that here.")
     };
-    };
 
     message.delete();
     let botmessage = args.join(" ");
     message.channel.send(botmessage);
+    };
 
     const quidobot = "quido bot";
     const quidobott = "bot quido";
