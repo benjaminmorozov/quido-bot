@@ -5,6 +5,8 @@ const fs = require("fs");
 const ytdl = require('ytdl-core');
 const backup = require("discord-backup");
 const { RichEmbed } = require('discord.js');
+backup.setStorageFolder(__dirname+"/backups/");
+await backup.create(guild); // Backup created in ./backups/
 
 const client = new Discord.Client();
 
