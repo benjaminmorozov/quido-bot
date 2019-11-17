@@ -7,6 +7,19 @@ exports.run = (client, message, args) => {
         return;
     }
 
+    if(message.member.roles.some(r=>["# 12 yr old typecek"].includes(r.name)) ) {
+    const quidobot = "quido bot";
+    const quidobott = "bot quido";
+    if(message.content.toLowerCase().includes(quidobot) || message.content.toLowerCase().includes(quidobott)) {
+      message.delete();
+      return message.reply("well well... We do not say that here.")
+    };
+    };
+
+    message.delete();
+    let botmessage = args.join(" ");
+    message.channel.send(botmessage);
+
     const quidobot = "quido bot";
     const quidobott = "bot quido";
     if(message.content.toLowerCase().includes(quidobot) || message.content.toLowerCase().includes(quidobott)) {
