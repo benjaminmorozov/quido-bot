@@ -1,3 +1,4 @@
+const backup = require("discord-backup");
 exports.run = async (client, message, args, backup) => {
   /**
  * @param {object} [Guild] - The discord server you want to backup
