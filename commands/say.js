@@ -6,6 +6,10 @@ exports.run = (client, message, args) => {
     if (!args.length) {
         return;
     }
+    const everyone = "@everyone";
+    const here = "@here";
+    if(message.member.roles.some(r=>["Head Moderator","Moderator","Helper","12 yr old typecek"].includes(r.name)) || message.content.toLowerCase().includes(everyone) || message.content.toLowerCase().includes(here))
+    return message.reply("you're not allowed to mention these roles");
 
     const quidobot = "quido bot";
     const quidobott = "bot quido";
