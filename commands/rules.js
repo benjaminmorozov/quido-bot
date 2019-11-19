@@ -8,7 +8,7 @@ exports.run = (client, message) => {
     .addField('**3**', 'Post NSFW messages ONLY into the <#630379628061786134> channel.', false) //nsfw channel
     .addField('**4**', 'Send videos ONLY into the media channel.', false)
     .addField('**5**', 'Do NOT post offers in any of the chatting channels.', false)
-    .addField('**6**', 'Do NOT promote any Discord server/website/forum here without the permission of the <@610704273822711820>.', false) //owner role
+    .addField('**6**', 'Do NOT promote any Discord server/website/forum here without the permission of the <@🔱OWNER🔱>.', false) //owner role
     .addField('**7**', 'Try to reduce the use of caps.', false)
     .addField('**8**', 'Do NOT spam.', false)
     .addField('**9**', 'Do NOT invite staff to Discord servers.', false)
@@ -19,8 +19,8 @@ exports.run = (client, message) => {
     .addField('**14**', 'You may tag general roles (including \'here\') only 3 times a day.', false)
     .addField('**15**', 'Do NOT disrespect the staff.', false)
     .addField('**16**', 'Rules do NOT apply to the staff in the same way as they do to the members. Nevertheless, they shall try to be a good example to them.', false)
-    .addField('**17**', 'Do NOT advertise anything here without the permission of the <@610704273822711820>.', false) //owner role
-    .addField('\n\u200b', 'Violation of any of these rules will result in a mute or a ban. **Note:** We are not associated with any distribution of hacking, cheating, nor pirated software - although you may find videos of video games by the members of the server, where they\'re being used. These serve solely for education purposes and we do not support any sign of trying to sell, or distribute them by any sent media on the server. Thanks for being a part of our community ❤️ - The Quido\'s Club staff', false)
+    .addField('**17**', 'Do NOT advertise anything here without the permission of the <@🔱OWNER🔱>.', false) //owner role
+    .addField('\n\u200b', 'Violation of any of these rules will result in a mute or a ban. \n**Note:** We are not associated with any distribution of hacking, cheating, nor pirated software - although you may find videos of video games by the members of the server, where they\'re being used. These serve solely for education purposes and we do not support any sign of trying to sell, or distribute them by any sent media on the server. \nThanks for being a part of our community ❤️ - **The Quido\'s Club staff**', false)
     .addField('\n\u200b', 'If you experience any difficulties or need some help on the server, contact a member of the staff.', false)
   	.setFooter('Thanks for being a part of our community. ❤️', `${client.user.avatarURL}`);
 
