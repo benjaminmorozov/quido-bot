@@ -17,7 +17,7 @@ exports.run = async (client, message, args) => {
     if(message.member.roles.has(OPRole.id)){
       return message.channel.send(`op ban`);
     } else {
-      if(user.roles.has(MemberRole.id)) {
+      if(member.roles.has(MemberRole.id)) {
         return message.channel.send(`ban`);
       } else {
         return message.channel.send(`nope`);
