@@ -30,6 +30,11 @@ exports.run = (client, message) => {
             inline: "true"
             },
             {
+            name: "Server Rules:",
+            value: "<#613420283000520770>",
+            inline: "true"
+            },
+            {
             name: "Server Creation Date:",
             value: `${message.channel.guild.createdAt.toUTCString().substr(0, 16)}`,
             inline: "true"
