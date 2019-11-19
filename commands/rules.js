@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 exports.run = (client, message) => {
-  const rules = ">>> Discord Terms of Service may also apply:
+  const rules = "Discord Terms of Service may also apply:
 ```https://pastebin.com/8VT2HTqD```
 **Server Rules:**
 1. Try to reduce the usage of cursing and the N word.
