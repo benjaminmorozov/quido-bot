@@ -1,6 +1,7 @@
 exports.run = async (client, message, args) => {
-    if(!message.member.roles.some(r=>["🔱OWNER🔱","Discord Manager & Designer","Administrator","Head Admin","Admin"].includes(r.name)) )
-    return message.reply("you don't have enough permissions to execute this command!");
+                                     //owner                designer             main admin           admin
+    if(!message.member.roles.some(r=>["610704273822711820","622715668659437568","631922921475932170","616501517058310184"].includes(r.id)) )
+      return message.reply("you don't have enough permissions to execute this command!");
 
     // Let's first check if we have a member and if we can kick them!
     // message.mentions.members is a collection of people that have been mentioned, as GuildMembers.
@@ -12,14 +13,12 @@ exports.run = async (client, message, args) => {
 
     if(!reason) reason = "No reason provided.";
 
-    let MemberRole = message.guild.roles.find("name", "Member");
-    let OPRole = message.guild.roles.find("name", "🔑");
-    if(message.member.roles.has(OPRole.id)){
+    if(message.member.roles.has(630151131841953792)){ //key role
       await member.ban(reason)
         .catch(error => message.channel.send(`Sorry ${message.author}, I couldn't ban ${member.user} because of : ${error}`));
       message.channel.send(`${member.user} has been banned by ${message.author} because: ${reason}`);
     } else {
-      if(member.roles.has(MemberRole.id)) {
+      if(member.roles.has(613347276647039016)) { //member
         await member.ban(reason)
           .catch(error => message.channel.send(`Sorry ${message.author}, I couldn't ban ${member.user} because of : ${error}`));
         message.channel.send(`${member.user} has been banned by ${message.author} because: ${reason}`);
