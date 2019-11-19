@@ -10,7 +10,7 @@ exports.run = (client, message, args) => {
     const here = "@here";
     if(message.member.roles.some(r=>["Head Moderator","Moderator","Helper","12 yr old typecek"].includes(r.name))) {
       if(message.content.toLowerCase().includes(everyone) || message.content.toLowerCase().includes(here)) {
-        return message.reply("you're not allowed to mention these roles");
+        return message.reply("you're not allowed to mention these roles!");
       };
     };
 
