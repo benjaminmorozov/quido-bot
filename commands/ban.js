@@ -15,16 +15,12 @@ exports.run = async (client, message, args) => {
     let MemberRole = message.guild.roles.find("name", "Member");
     let OPRole = message.guild.roles.find("name", "🔑");
     if(message.member.roles.has(OPRole.id)){
-      await member.ban(reason)
-        .catch(error => message.channel.send(`Sorry ${message.author}, I couldn't ban ${member.user} because of : ${error}`));
-      message.channel.send(`${member.user} has been banned by ${message.author} because: ${reason}`);
+      return message.channel.send(`op ban`);
     } else {
       if(user.roles.has(MemberRole.id)) {
-        await member.ban(reason)
-          .catch(error => message.channel.send(`Sorry ${message.author}, I couldn't ban ${member.user} because of : ${error}`));
-        message.channel.send(`${member.user} has been banned by ${message.author} because: ${reason}`);
+        return message.channel.send(`ban`);
       } else {
-        return message.channel.send(`Sorry ${message.author}, you cannot ban this member.`);
+        return message.channel.send(`nope`);
       };
     };
   };
