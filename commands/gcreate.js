@@ -44,7 +44,6 @@ exports.run = (client, message, args) => {
                 collected.first().delete();
                 msg.delete();
                 message.delete();
-                try {
                   giveaways.start(client.channels.get(room), {
                     time: duration,
                     prize: title,
@@ -52,7 +51,6 @@ exports.run = (client, message, args) => {
                   }).then((gData) => {
                     console.log(gData); // {...} (messageid, end date and more)
                   });
-                };
               });
             });
           });
