@@ -1,16 +1,11 @@
 const Discord = require("discord.js");
 const moment = require('moment'); //npm i moment
 const ms = require('ms') //npm i ms
-    var prefix = '' //Bot Prefix !
-  var time = moment().format('Do MMMM YYYY , hh:mm');
-  var room;
-  var title;
-  var duration;
-  var currentTime = new Date(),
-hours = currentTime.getHours() + 3 ,
-minutes = currentTime.getMinutes(),
-done = currentTime.getMinutes() + duration,
-seconds = currentTime.getSeconds();
+var time = moment().format('Do MMMM YYYY , hh:mm');
+var room;
+var title;
+var duration;
+var currentTime = new Date(), hours = currentTime.getHours() + 3 , minutes = currentTime.getMinutes(), done = currentTime.getMinutes() + duration, seconds = currentTime.getSeconds();
 if (minutes < 10) {
 minutes = "0" + minutes;
 }
