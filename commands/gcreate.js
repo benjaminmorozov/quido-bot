@@ -1,5 +1,5 @@
 const ms = require("ms");
-const giveaways = require("discord-giveaways");
+const giveaways = require("discord-giveaways"),
 exports.run = (client, message, args) => {
     if(!message.member.roles.some(r=>["🔱OWNER🔱","Discord Manager & Designer","Administrator","Head Moderator","Moderator","Head Admin","Admin","Helper"].includes(r.name)) )
     return message.reply("sorry, you don't have enough permissions to use this!");
@@ -15,17 +15,7 @@ exports.run = (client, message, args) => {
         let room = step.slice(2, -1);
         if(!room) return message.channel.send(':disappointed_relieved: I could not find that channel');
         collected.first().delete();
-        msg.edit('🎉 How many winners should there be?').then(msg => {
-          message.channel.awaitMessages(filter, {
-            max: 1,
-            time: 20000,
-            errors: ['time']
-          }).then(collected => {
-            winners = collected.first().content
-            if(!isNaN(winners))
-              return message.channel.send('Enter a valid number.');
-            collected.first().delete();
-          msg.edit('🎉 How long should the giveaway last?').then(msg => {
+        msg.edit('🎉 How long should the giveaway last?').then(msg => {
           message.channel.awaitMessages(filter, {
             max: 1,
             time: 20000,
@@ -44,19 +34,19 @@ exports.run = (client, message, args) => {
                 collected.first().delete();
                 msg.delete();
                 message.delete();
+                try {
                   giveaways.start(client.channels.get(room), {
                     time: duration,
-                    prize: title,
-                    winnersCount: winners
+                    prize: args.slice(2).join(" "),
+                    winnersCount: parseInt(args[1])
                   }).then((gData) => {
                     console.log(gData); // {...} (messageid, end date and more)
                   });
+                });
               });
-            });
-          });
-          });
-          });
-        });
-      });
-    });
-};
+            };
+          };
+        };
+      };
+    };
+  };
