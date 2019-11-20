@@ -64,10 +64,10 @@ exports.run = (client, message, args) => {
                    let endEmbed = new Discord.RichEmbed()
                    .setAuthor(message.author.username, message.author.avatarURL)
                    .setTitle(title)
-                   .addField('Giveaway Ended !🎉',`Winners : ${gFilter} \nEnded at :`)
+                   .addField('Giveaway Ended !🎉',`**Winners :** ${gFilter} \n**Ended at :** ${hours}:${minutes}:${seconds} ${suffix}`)
                    .setTimestamp()
                  m.edit('** 🎉 GIVEAWAY ENDED 🎉**' , {embed: endEmbed});
-                message.guild.channels.find("id" , room).send(`**Congratulations ${gFilter}! You won The \`${title}\`**` , {embed: {}})
+                message.guild.channels.find("id" , room).send(`**Congratulations ${gFilter}! You won The \`${title}\`**`)
             }, ms(duration));
         });
             } catch(e) {
