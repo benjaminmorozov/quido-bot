@@ -10,8 +10,7 @@ exports.run = (client, message, args) => {
         errors: ['time']
       }).then(collected => {
         var step = collected.first().content;
-        let channel = step.replace('#', '');
-        let room = client.channels.get(channel);
+      	let room = step.slice(2, -1);
         message.channel.send(`${room}`)
         if(!room) return message.channel.send(':disappointed_relieved: I could not find that channel');
       });
