@@ -11,7 +11,6 @@ exports.run = (client, message, args) => {
       }).then(collected => {
         var step = collected.first().content;
         let channel = step.replace('#', '');
-        return message.channel.send(channel);
         let room = message.guild.channels.find('id' , channel);
         if(!room) return message.channel.send(':disappointed_relieved: I could not find that channel');
       });
