@@ -1,3 +1,21 @@
+const moment = require('moment'); //npm i moment
+const ms = require('ms') //npm i ms
+var time = moment().format('Do MMMM YYYY , hh:mm');
+var room;
+var title;
+var duration;
+var currentTime = new Date(), hours = currentTime.getHours() + 3 , minutes = currentTime.getMinutes(), done = currentTime.getMinutes() + duration, seconds = currentTime.getSeconds();
+if (minutes < 10) {
+minutes = "0" + minutes;
+}
+var suffix = "AM";
+if (hours >= 12) {
+suffix = "PM";
+hours = hours - 12;
+}
+if (hours == 0) {
+hours = 12;
+}
 exports.run = (client, message, args) => {
     // makes the bot say something and delete the message. As an example, it's open to anyone to use.
     // To get the "message" itself we join the `args` back into a string with spaces:
@@ -20,18 +38,23 @@ exports.run = (client, message, args) => {
           inline: "true"
           },
           {
-            name: "Warned By:",
+            name: "Reported By:",
             value: `${message.author}`,
             inline: "true"
           },
           {
-            name: "Warned In:",
+            name: "Reported In:",
             value: `${message.channel}`,
             inline: "true"
           },
           {
             name: "Reason:",
             value: `${reason}`,
+            inline: "true"
+          },
+          {
+            name: "Report Time:",
+            value: `${hours}:${minutes}:${seconds} ${suffix}`,
             inline: "true"
           }
         ],
