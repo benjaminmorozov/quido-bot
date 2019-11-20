@@ -11,7 +11,7 @@ exports.run = (client, message, args) => {
       }).then(collected => {
         var step = collected.first().content;
         let channel = step.replace('#', '');
-        let room = client.channels.find('id', channel);
+        let room = client.channels.get(channel);
         message.channel.send(`${room}`)
         if(!room) return message.channel.send(':disappointed_relieved: I could not find that channel');
       });
