@@ -1,5 +1,6 @@
 exports.run = async (client, message) => {
-    if(!message.member.roles.some(r=>["🔱OWNER🔱","Administrator","Head Moderator","Moderator","Head Admin","Admin","Helper"].includes(r.name)) )
+                                   //owner                designer             main admin           admin                main mod             mod                  helper
+  if(!message.member.roles.some(r=>["610704273822711820","622715668659437568","631922921475932170","616501517058310184","645728270519631889","610704593558437899","614694328119459840"].includes(r.id)) )
     return message.reply("you don't have enough permissions to execute this command!");
 
     message.channel.send({embed: {
