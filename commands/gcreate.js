@@ -1,3 +1,4 @@
+const Discord = require("discord.js");
 const moment = require('moment'); //npm i moment
 const ms = require('ms') //npm i ms
     var prefix = '' //Bot Prefix !
@@ -66,7 +67,7 @@ exports.run = (client, message, args) => {
             }, ms(duration));
         });
             } catch(e) {
-            message.channel.send(`:heavy_multiplication_x:| **i Don't Have Prem**`);
+            message.channel.send(`Couldn\'t create a giveaway because of an error: ${e}`);
               console.log(e);
             }
           });
