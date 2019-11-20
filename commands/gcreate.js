@@ -38,15 +38,24 @@ exports.run = (client, message, args) => {
             time: 20000,
             errors: ['time']
           }).then(collected => {
-            title = collected.first().content;
+            if(!collected.first().content.match(/[1-60][s,m,h,d,w]/g)) return message.channel.send('**The Bot Not Support This Time**');
+            duration = collected.first().content
             collected.first().delete();
-            msg.delete();
-            message.delete();
+            msg.edit('🎉 What are we giving away?').then(msg => {
+              message.channel.awaitMessages(filter, {
+                max: 1,
+                time: 20000,
+                errors: ['time']
+              }).then(collected => {
+                title = collected.first().content;
+                collected.first().delete();
+                msg.delete();
+                message.delete();
             try {
               let giveEmbed = new Discord.RichEmbed()
               .setDescription(`**${title}** \nReact With 🎉 To Enter! \nTime remaining : ${duration} \n **Created at :** ${hours}:${minutes}:${seconds} ${suffix}`)
               .setFooter(message.author.username, message.author.avatarURL);
-              message.guild.channels.find("id" , room).send(' :heavy_check_mark: **Giveaway Created** :heavy_check_mark:' , {embed: giveEmbed}).then(m => {
+              message.guild.channels.find("id" , room).send(' ' , {embed: giveEmbed}).then(m => {
                  let re = m.react('🎉');
                  setTimeout(() => {
                    let users = m.reactions.get("🎉").users
