@@ -1,3 +1,4 @@
+const moment = require('moment'); //npm i moment
 const ms = require('ms') //npm i ms
     var prefix = '' //Bot Prefix !
   var time = moment().format('Do MMMM YYYY , hh:mm');
