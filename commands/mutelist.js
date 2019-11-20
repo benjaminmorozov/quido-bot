@@ -4,7 +4,7 @@ exports.run = async (client, message) => {
     return message.reply("you don't have enough permissions to execute this command!");
 
   const muted = message.guild.roles.get('630146706930925569').members.map(m=>m.user.tag).join('\n');
-  if(!muted)
+  if(!muted) {
     message.channel.send({embed: {
       color: 0xff5353,
       title: 'There are no muted members on this server.',
@@ -14,7 +14,8 @@ exports.run = async (client, message) => {
       }
     }
   });
-  message.channel.send({embed: {
+  } else {
+    message.channel.send({embed: {
       color: 0xff5353,
       title: 'All muted members on this server:',
       description: `**> ${muted}**`,
@@ -23,5 +24,6 @@ exports.run = async (client, message) => {
         text: "Thanks for being a part of our community ❤️"
       }
     }
-  });
+    });
+  }
 };
