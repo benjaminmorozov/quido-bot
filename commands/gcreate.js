@@ -52,7 +52,7 @@ exports.run = (client, message, args) => {
                   }).then((gData) => {
                     console.log(gData); // {...} (messageid, end date and more)
                   });
-                });
+                };
               });
             };
           };
