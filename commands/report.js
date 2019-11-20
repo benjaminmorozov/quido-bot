@@ -51,13 +51,9 @@ exports.run = (client, message, args) => {
             name: "Reason:",
             value: `${reason}`,
             inline: "true"
-          },
-          {
-            name: "Report Time:",
-            value: `${hours}:${minutes}:${seconds} ${suffix}`,
-            inline: "true"
           }
         ],
+        timestamp: new Date(),
         footer: {
           icon_url: `${client.user.avatarURL}`,
           text: "If you find a bug, please report it to our staff. ❤️"
