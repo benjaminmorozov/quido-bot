@@ -30,6 +30,17 @@ exports.run = async (client, message, args) => {
 
         member.addRole(mutedRole)
         .catch(error => console.log(`Sorry ${message.author}, I couldn't mute because of : ${error}`));
-        message.channel.send(`${member} has been muted by ${message.author} for: ${reason}`);
+        var log = message.guild.channels.find('id', '617351547130478621');
+        if (log != null) {
+          const baseEmbed = new Discord.RichEmbed()
+            .setColor('#45b6fe')
+            .setAuthor(`[MUTE] ${member.username}#${member.discriminator}`, member.avatarURL)
+            .setTitle(`Message edited in #${newMessage.channel.name}`)
+            .addField('Member:', `${member}`, true)
+            .addField('Muted by:', `${message.author}`, true)
+            .addField('Reason:', `${reason}`, true)
+            log.send(baseEmbed);
+          message.channel.send(baseEmbed);
+        }
     }
 };
