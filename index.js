@@ -27,14 +27,13 @@ client.on('messageDelete', function(message) {
 
 });
 
-//message update
 client.on('messageUpdate', function(oldMessage, newMessage) {
   if (newMessage.channel.type == 'text' && newMessage.cleanContent != oldMessage.cleanContent) {
     //post in the guild's log channel               #logs
     var log = newMessage.guild.channels.find('id', '617351547130478621');
     if (log != null) {
       const baseEmbed = new Discord.RichEmbed()
-        .setColor('0xff5353')
+        .setColor('#45b6fe')
         .setAuthor(`${newMessage.author.username}#${newMessage.author.discriminator}`, newMessage.author.avatarURL)
         .setTitle(`Message edited in #${newMessage.channel.name}`)
         .setDescription(`**Before:** ${oldMessage.cleanContent}\n**+After:** ${newMessage.cleanContent}`)
