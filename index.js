@@ -47,7 +47,6 @@ client.on("message", (message) => {
       chat.send(message.content);
     };
   }
-};
 });
 
 fs.readdir("./events/", (err, files) => {
