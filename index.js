@@ -10,7 +10,6 @@ const config = require("./config.json");
 client.config = config;
 
 client.on('ready', () => {
-  tags.sync();
   console.log(`Successfully loaded and logged in as ${client.user.tag}.`);
   client.user.setPresence({ game: { name: "Quido's Club > All", type: 0 } });
 });
