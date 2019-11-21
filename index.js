@@ -14,8 +14,7 @@ client.on('ready', () => {
   client.user.setPresence({ game: { name: "Quido's Club > All", type: 0 } });
 });
 
-//message deleted
-bot.on('messageDelete', function(message) {
+client.on('messageDelete', function(message) {
 
     if(message.channel.type == 'text') {
 
