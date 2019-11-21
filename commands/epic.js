@@ -8,7 +8,7 @@ exports.run = (client, message) => {
   	.addField('**What?**', 'Bad North', false)
   	.addField('**Where?**', 'Epic Games Store', false)
   	.addField('**Until when?**', 'until the 29th of November', false)
-    .addField(" ", "Bad North on Epic Games Store[link](https://www.epicgames.com/store/en-US/product/bad-north/)")
+    .addField("\u200b", "Bad North on Epic Games Store[link](https://www.epicgames.com/store/en-US/product/bad-north/)")
   	.setFooter('Thanks for being a part of our community. ❤️', `${client.user.avatarURL}`);
 
   message.channel.send(baseEmbed);
