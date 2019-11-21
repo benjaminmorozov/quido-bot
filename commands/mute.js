@@ -33,6 +33,7 @@ exports.run = async (client, message, args) => {
             .addField('Reason:', `${reason}`, true)
             log.send(baseEmbed);
           message.channel.send(baseEmbed);
+        }
     } else {
         if(!member.kickable)
             return message.channel.send(`Sorry ${message.author}, you cannot mute this user.`);
