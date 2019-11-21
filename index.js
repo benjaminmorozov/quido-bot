@@ -37,7 +37,7 @@ client.on('messageUpdate', function(oldMessage, newMessage) {
       '\n*New Message*: ' + newMessage.cleanContent);
       const baseEmbed = new Discord.RichEmbed()
         .setColor('0xff5353')
-        .setAuthor(`${newMessage.username}#${newMessage.discriminator}`, newMessage.author.avatarURL)
+        .setAuthor(`${newMessage.author.username}#${newMessage.author.discriminator}`, newMessage.author.avatarURL)
         .setTitle(`Message edited in ${newMessage.channel.name}`)
         .addField('**Fun**', 'ss', false)
         .setFooter('Thanks for being a part of our community. ❤️', `${client.user.avatarURL}`);
