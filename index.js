@@ -21,11 +21,11 @@ client.on('messageDelete', function(message) {
     if (log != null) {
       const baseEmbed = new Discord.RichEmbed()
         .setColor('0xff5353')
-        .setAuthor(`${newMessage.author.username}#${newMessage.author.discriminator}`, newMessage.author.avatarURL)
-        .setTitle(`Message deleted in #${newMessage.channel.name}`)
+        .setAuthor(`${message.author.username}#${message.author.discriminator}`, message.author.avatarURL)
+        .setTitle(`Message deleted in #${message.channel.name}`)
         .setDescription(`${message.cleanContent}`)
         .setTimestamp()
-        .setFooter(`ID: ${newMessage.id}`);
+        .setFooter(`ID: ${message.id}`);
       log.send(baseEmbed);
     }
   };
