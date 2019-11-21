@@ -37,8 +37,8 @@ client.on('messageUpdate', function(oldMessage, newMessage) {
         .setColor('0xff5353')
         .setAuthor(`${newMessage.author.username}#${newMessage.author.discriminator}`, newMessage.author.avatarURL)
         .setTitle(`Message edited in ${newMessage.channel.name}`)
-        .addField('Before:', formatConsoleMessage(oldMessage), true)
-        .addField('+After:', formatConsoleMessage(newMessage), true)
+        .addField('Before:', oldMessage.cleanContent, true)
+        .addField('+After:', newMessage.cleanContent, true)
         .setFooter('Thanks for being a part of our community. ❤️', `${client.user.avatarURL}`);
       log.send(baseEmbed);
   };
