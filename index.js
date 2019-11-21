@@ -15,16 +15,20 @@ client.on('ready', () => {
 });
 
 client.on('messageDelete', function(message) {
-
-    if(message.channel.type == 'text') {
-
-        //post in the guild's log channel            #logs
-        var log = message.guild.channels.find('id', '617351547130478621');
-        if (log != null)
-            log.sendMessage('**[Message Deleted]** ' + message.author + ': ' + message.cleanContent);
-
+  if (newMessage.channel.type == 'text' && newMessage.cleanContent != oldMessage.cleanContent) {
+    //post in the guild's log channel               #logs
+    var log = newMessage.guild.channels.find('id', '617351547130478621');
+    if (log != null) {
+      const baseEmbed = new Discord.RichEmbed()
+        .setColor('0xff5353')
+        .setAuthor(`${newMessage.author.username}#${newMessage.author.discriminator}`, newMessage.author.avatarURL)
+        .setTitle(`Message deleted in #${newMessage.channel.name}`)
+        .setDescription(`${message.cleanContent}`)
+        .setTimestamp()
+        .setFooter(`ID: ${newMessage.id}`);
+      log.send(baseEmbed);
     }
-
+  };
 });
 
 client.on('messageUpdate', function(oldMessage, newMessage) {
