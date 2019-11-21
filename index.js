@@ -29,16 +29,21 @@ client.on('messageDelete', function(message) {
 
 //message update
 client.on('messageUpdate', function(oldMessage, newMessage) {
-
-    if (newMessage.channel.type == 'text' && newMessage.cleanContent != oldMessage.cleanContent) {
-
-        //post in the guild's log channel               #logs
-        var log = newMessage.guild.channels.find('id', '617351547130478621');
-        if (log != null)
-            log.sendMessage('**[Message Updated]** *' + newMessage.author + '*:\n*Old Message*: ' + oldMessage.cleanContent +
-                '\n*New Message*: ' + newMessage.cleanContent);
-    }
-
+  if (newMessage.channel.type == 'text' && newMessage.cleanContent != oldMessage.cleanContent) {
+    //post in the guild's log channel               #logs
+    var log = newMessage.guild.channels.find('id', '617351547130478621');
+    if (log != null)
+      log.sendMessage('**[Message Updated]** *' + newMessage.author + '*:\n*Old Message*: ' + oldMessage.cleanContent +
+      '\n*New Message*: ' + newMessage.cleanContent);
+      const baseEmbed = new Discord.RichEmbed()
+        .setColor('0xff5353')
+        .setAuthor(`${newMessage.username}#${newMessage.discriminator}`, newMessage.author.avatarURL)
+        .setTitle(`Message edited in ${newMessage.channel.name}`)
+        .addField('**Fun**', 'ss', false)
+        .setFooter('Thanks for being a part of our community. ❤️', `${client.user.avatarURL}`);
+      message.channel.send(baseEmbed);
+  };
+}
 });
 
 fs.readdir("./events/", (err, files) => {
