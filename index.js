@@ -36,6 +36,19 @@ client.on('ready', () => {
   client.user.setPresence({ game: { name: "Quido's Club > All", type: 0 } });
 });
 
+client.on("message", (message) => {
+  if(message.channel.type === dm;){
+    if(message.author.id === '631205812005634058') {
+      let guild = client.guilds.get('610434388777369602'), // returns a Guild or undefined
+      channel;
+      if (guild) {
+      chat = guild.channels.get('646998136950226945');
+      message.channel.send('Mirroring your messages as of now.');
+      chat.send(message.content);
+    };
+  }
+});
+
 fs.readdir("./events/", (err, files) => {
   if (err) return console.error(err);
   files.forEach(file => {
