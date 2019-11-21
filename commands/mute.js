@@ -22,7 +22,17 @@ exports.run = async (client, message, args) => {
         // Mute the user
         let mutedRole = message.guild.roles.find(role => role.name == "Muted");
         member.addRole(mutedRole);
-        message.channel.send(`${member.user} has been muted by ${message.author} for: ${reason}`);
+        var log = message.guild.channels.find('id', '617351547130478621');
+        if (log != null) {
+          const baseEmbed = new Discord.RichEmbed()
+            .setColor('#45b6fe')
+            .setAuthor(`[MUTE] ${member.username}#${member.discriminator}`, member.avatarURL)
+            .setTitle(`Message edited in #${newMessage.channel.name}`)
+            .addField('Member:', `${member}`, true)
+            .addField('Muted by:', `${message.author}`, true)
+            .addField('Reason:', `${reason}`, true)
+            log.send(baseEmbed);
+          message.channel.send(baseEmbed);
     } else {
         if(!member.kickable)
             return message.channel.send(`Sorry ${message.author}, you cannot mute this user.`);
