@@ -43,7 +43,6 @@ client.on('messageUpdate', function(oldMessage, newMessage) {
         .setFooter('Thanks for being a part of our community. ❤️', `${client.user.avatarURL}`);
       message.channel.send(baseEmbed);
   };
-}
 });
 
 fs.readdir("./events/", (err, files) => {
