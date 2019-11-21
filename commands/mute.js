@@ -1,3 +1,4 @@
+const Discord = require("discord.js");
 exports.run = async (client, message, args) => {
     if(!message.member.roles.some(r=>["🔱OWNER🔱","Discord Manager & Designer","Administrator","Head Moderator","Moderator","Head Admin","Admin","Helper"].includes(r.name)) )
     return message.reply("you don't have enough permissions to execute this command!");
