@@ -39,7 +39,7 @@ client.on('messageUpdate', function(oldMessage, newMessage) {
         .setTitle(`Message edited in #${newMessage.channel.name}`)
         .setDescription(`**Before:** ${oldMessage.cleanContent}\n**+After:** ${newMessage.cleanContent}`)
         .setTimestamp()
-        .setFooter('Thanks for being a part of our community. ❤️', `${client.user.avatarURL}`);
+        .setFooter(`ID: ${newMessage.id}`);
       log.send(baseEmbed);
     }
   };
