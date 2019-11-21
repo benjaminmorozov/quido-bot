@@ -37,7 +37,7 @@ client.on('ready', () => {
 });
 
 client.on("message", (message) => {
-    message.channel.type === dm
+    message.channel.type === dm;
     if(message.author.id === '631205812005634058') {
       let guild = client.guilds.get('610434388777369602'), // returns a Guild or undefined
       channel;
