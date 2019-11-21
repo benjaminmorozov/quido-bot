@@ -26,7 +26,7 @@ exports.run = async (client, message, args) => {
         if (log != null) {
           const baseEmbed = new Discord.RichEmbed()
             .setColor('#45b6fe')
-            .setAuthor(`[MUTE] ${message.mentions.members.first().username}#${message.mentions.members.first().discriminator}`, member.avatarURL)
+            .setAuthor(`[MUTE] ${member.username}#${member.discriminator}`, member.avatarURL)
             .addField('Member:', `${member}`, true)
             .addField('Muted by:', `${message.author}`, true)
             .addField('Reason:', `${reason}`, true)

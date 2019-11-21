@@ -15,20 +15,22 @@ client.on('ready', () => {
 });
 
 client.on('messageDelete', function(message) {
-  if(message.channel.type == 'text') {
-    //post in the guild's log channel               #logs
-    var log = message.guild.channels.find('id', '617351547130478621');
-    if (log != null) {
-      const baseEmbed = new Discord.RichEmbed()
-        .setColor('0xff5353')
-        .setAuthor(`${message.author.username}#${message.author.discriminator}`, message.author.avatarURL)
-        .setTitle(`Message deleted in #${message.channel.name}`)
-        .setDescription(`${message.cleanContent}`)
-        .setTimestamp()
-        .setFooter(`ID: ${message.id}`);
-      log.send(baseEmbed);
-    }
-  };
+  if (!message.channel.id === '617351547130478621')) {
+    if(message.channel.type == 'text') {
+      //post in the guild's log channel               #logs
+      var log = message.guild.channels.find('id', '617351547130478621');
+      if (log != null) {
+        const baseEmbed = new Discord.RichEmbed()
+          .setColor('0xff5353')
+          .setAuthor(`${message.author.username}#${message.author.discriminator}`, message.author.avatarURL)
+          .setTitle(`Message deleted in #${message.channel.name}`)
+          .setDescription(`${message.cleanContent}`)
+          .setTimestamp()
+          .setFooter(`ID: ${message.id}`);
+          log.send(baseEmbed);
+        }
+      };
+    };
 });
 
 client.on('messageUpdate', function(oldMessage, newMessage) {
