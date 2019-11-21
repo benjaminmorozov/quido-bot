@@ -41,7 +41,7 @@ client.on('messageUpdate', function(oldMessage, newMessage) {
         .setTitle(`Message edited in ${newMessage.channel.name}`)
         .addField('**Fun**', 'ss', false)
         .setFooter('Thanks for being a part of our community. ❤️', `${client.user.avatarURL}`);
-      message.channel.send(baseEmbed);
+      log.send(baseEmbed);
   };
 });
 
