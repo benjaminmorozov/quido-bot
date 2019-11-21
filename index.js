@@ -36,9 +36,9 @@ client.on('messageUpdate', function(oldMessage, newMessage) {
       const baseEmbed = new Discord.RichEmbed()
         .setColor('0xff5353')
         .setAuthor(`${newMessage.author.username}#${newMessage.author.discriminator}`, newMessage.author.avatarURL)
-        .setTitle(`Message edited in ${newMessage.channel.name}`)
-        .addField('Before:', oldMessage.cleanContent, true)
-        .addField('+After:', newMessage.cleanContent, true)
+        .setTitle(`Message edited in #${newMessage.channel.name}`)
+        .setDescription(`**Before:** ${oldMessage.cleanContent}\n**+After:** ${newMessage.cleanContent}`)
+        .setTimestamp()
         .setFooter('Thanks for being a part of our community. ❤️', `${client.user.avatarURL}`);
       log.send(baseEmbed);
     }
