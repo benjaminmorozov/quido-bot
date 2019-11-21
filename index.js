@@ -48,6 +48,7 @@ client.on("message", (message) => {
     };
   }
 };
+});
 
 fs.readdir("./events/", (err, files) => {
   if (err) return console.error(err);
