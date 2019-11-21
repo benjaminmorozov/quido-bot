@@ -4,18 +4,19 @@ exports.run = (client, message, args) => {
     channel;
 
     if (guild) {
-      chat = guild.channels.get('646998136950226945');
-        let botmessage = args.join(" ");
-        chat.send(botmessage);
+    chat = guild.channels.get('646998136950226945');
     message.channel.type === dm;
+    message.channel.send('Mirroring your messages as of now.');
+    [lbl] start:
     message.channel.awaitMessages(filter, {
       max: 1,
       time: 20000,
       errors: ['time']
     }).then(collected => {
-      var step = collected.first().content;
-      let room = step.slice(2, -1);
+      let botmessage = collected.first().content;
+      chat.send(botmessage);
     };
+    [lbl] repeat: goto start;
   };
 };
 };
