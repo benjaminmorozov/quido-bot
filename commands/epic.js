@@ -4,7 +4,7 @@ exports.run = (client, message) => {
   	.setColor('0xff5353')
   	.setTitle('New Free Game:')
     .setDescription('Bad North is now free on Epic Games Store until the 29th of November. After claiming, the game\'s yours to keep forever.')
-  	.setThumbnail('./discordjs.png')
+  	.setThumbnail('./img.png')
   	.addField('**What?**', 'Bad North', false)
   	.addField('**Where?**', 'Epic Games Store', false)
   	.addField('**Until when?**', 'until the 29th of November', false)
