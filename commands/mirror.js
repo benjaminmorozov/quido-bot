@@ -4,9 +4,18 @@ exports.run = (client, message, args) => {
     channel;
 
     if (guild) {
-      channel = guild.channels.get('646998136950226945');
+      chat = guild.channels.get('646998136950226945');
         let botmessage = args.join(" ");
-        channel.send(botmessage);
-      };
+        chat.send(botmessage);
+    message.channel.type === dm;
+    message.channel.awaitMessages(filter, {
+      max: 1,
+      time: 20000,
+      errors: ['time']
+    }).then(collected => {
+      var step = collected.first().content;
+      let room = step.slice(2, -1);
     };
+  };
+};
 };
