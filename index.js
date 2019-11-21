@@ -32,7 +32,7 @@ client.on('messageUpdate', function(oldMessage, newMessage) {
   if (newMessage.channel.type == 'text' && newMessage.cleanContent != oldMessage.cleanContent) {
     //post in the guild's log channel               #logs
     var log = newMessage.guild.channels.find('id', '617351547130478621');
-    if (log != null)
+    if (log != null) {
       const baseEmbed = new Discord.RichEmbed()
         .setColor('0xff5353')
         .setAuthor(`${newMessage.author.username}#${newMessage.author.discriminator}`, newMessage.author.avatarURL)
@@ -41,6 +41,7 @@ client.on('messageUpdate', function(oldMessage, newMessage) {
         .addField('+After:', newMessage.cleanContent, true)
         .setFooter('Thanks for being a part of our community. ❤️', `${client.user.avatarURL}`);
       log.send(baseEmbed);
+    }
   };
 });
 
