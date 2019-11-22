@@ -23,7 +23,10 @@ client.on('messageDelete', function(message) {
       var log = message.guild.channels.find('id', '617351547130478621');
       if (log != null) {
         if (message.attachments.size > 0) {
-          var url = msgAttach.url;
+          function attachIsImage(msgAttach) {
+              var url = msgAttach.url;
+          }
+          attachIsImage();
           const deleteimgEmbed = new Discord.RichEmbed()
             .setColor('0xff5353')
             .setAuthor(`${message.author.username}#${message.author.discriminator}`, message.author.avatarURL)
