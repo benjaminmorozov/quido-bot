@@ -22,7 +22,7 @@ client.on('messageDelete', function(message) {
       //post in the guild's log channel               #logs
       var log = message.guild.channels.find('id', '617351547130478621');
       if (log != null) {
-        msg.attachments.forEach(a => {
+        message.attachments.forEach(a => {
           fs.writeFileSync(`./${a.name}`, a.file); // Write the file to the system synchronously.
           const attachment = new Discord.Attachment(`./${a.name}`, `${a.name}`);
         });
