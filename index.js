@@ -52,6 +52,20 @@ client.on('messageUpdate', function(oldMessage, newMessage) {
   };
 });
 
+bot.on('guildBanAdd', function(guild, user, reason) {
+    //post in the guild's log channel
+    var log = guild.channels.find('name', CHANNEL);
+    if (log != null)
+        log.sendMessage('**[Banned]** ' + user);
+
+    const banEmbed = new Discord.RichEmbed()
+      .setColor('#45b6fe')
+      .setAuthor(`[BAN] ${user.username}#${user.discriminator}`, user.avatarURL)
+      .addField('Member:', `${user}`, true)
+      .addField('Reason:', `${reason}`, true)
+      log.send(banEmbed);
+});
+
 fs.readdir("./events/", (err, files) => {
   if (err) return console.error(err);
   files.forEach(file => {

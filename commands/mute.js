@@ -24,14 +24,14 @@ exports.run = async (client, message, args) => {
         member.addRole(mutedRole);
         var log = message.guild.channels.find('id', '617351547130478621');
         if (log != null) {
-          const baseEmbed = new Discord.RichEmbed()
+          const opmuteEmbed = new Discord.RichEmbed()
             .setColor('#45b6fe')
             .setAuthor(`[MUTE] ${member.username}#${member.discriminator}`, member.avatarURL)
             .addField('Member:', `${member}`, true)
             .addField('Muted by:', `${message.author}`, true)
             .addField('Reason:', `${reason}`, true)
-            log.send(baseEmbed);
-          message.channel.send(baseEmbed);
+            log.send(opmuteEmbed);
+          message.channel.send(opmuteEmbed);
         }
     } else {
         if(!member.kickable)
@@ -43,14 +43,14 @@ exports.run = async (client, message, args) => {
         .catch(error => console.log(`Sorry ${message.author}, I couldn't mute because of : ${error}`));
         var log = message.guild.channels.find('id', '617351547130478621');
         if (log != null) {
-          const baseEmbed = new Discord.RichEmbed()
+          const muteEmbed = new Discord.RichEmbed()
             .setColor('#45b6fe')
             .setAuthor(`[MUTE] ${member.username}#${member.discriminator}`, member.avatarURL)
             .addField('Member:', `${member}`, true)
             .addField('Muted by:', `${message.author}`, true)
             .addField('Reason:', `${reason}`, true)
-            log.send(baseEmbed);
-          message.channel.send(baseEmbed);
+            log.send(muteEmbed);
+          message.channel.send(muteEmbed);
         }
     }
 };
