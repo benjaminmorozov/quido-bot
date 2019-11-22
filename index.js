@@ -24,13 +24,13 @@ client.on('messageDelete', function(message) {
       var log = message.guild.channels.find('id', '617351547130478621');
       if (log != null) {
         message.attachments.forEach(a => {
-          if(msg.attachments.first().filename === `png`){//Download only png (customize this)
+          if(message.attachments.first().filename === `png`){//Download only png (customize this)
             function download(url){
               request.get(url)
                 .on('error', console.error)
                 .pipe(fs.createWriteStream(`${a.filename}`));
               }
-              download(msg.attachments.first().url);//Function I will show later
+              download(message.attachments.first().url);//Function I will show later
           };
           const attachment = new Discord.Attachment(`./${a.filename}`);
       		log.send(`${message.author},`, attachment);
