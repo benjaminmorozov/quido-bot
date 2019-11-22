@@ -57,10 +57,8 @@ client.on('guildBanAdd', function(guild, user, reason) {
     var log = guild.channels.find('id', '617351547130478621');
     if (log != null) {
       const banEmbed = new Discord.RichEmbed()
-        .setColor('#45b6fe')
+        .setColor('0xff5353')
         .setAuthor(`[BAN] ${user.username}#${user.discriminator}`, user.avatarURL)
-        .addField('Member:', `${user}`, true)
-        .addField('Reason:', `${reason}`, true)
         log.send(banEmbed);
     };
 });
