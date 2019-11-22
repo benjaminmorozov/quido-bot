@@ -23,15 +23,15 @@ client.on('messageDelete', function(message) {
       var log = message.guild.channels.find('id', '617351547130478621');
       if (log != null) {
         message.attachments.forEach(a => {
-          fs.writeFileSync(`./${a.name}.png`, a.file); // Write the file to the system synchronously.
-          const attachment = new Discord.Attachment(`./${a.name}.png`, `${a.name}.png`);
+          fs.writeFileSync(`./${a.filename}`, a.filename); // Write the file to the system synchronously.
+          const attachment = new Discord.Attachment(`./${a.filename}`, `${a.filename}`);
         const deleteEmbed = new Discord.RichEmbed()
             .setColor('0xff5353')
             .setAuthor(`${message.author.username}#${message.author.discriminator}`, message.author.avatarURL)
             .setTitle(`Message deleted in #${message.channel.name}`)
             .setDescription(`${message.cleanContent}`)
             .attachFile(attachment)
-            .setImage(`attachment://${a.name}.png`)
+            .setImage(`attachment://${a.filename}`)
             .setTimestamp()
             .setFooter(`ID: ${message.id}`);
         log.send(deleteEmbed);
