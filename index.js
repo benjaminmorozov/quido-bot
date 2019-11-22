@@ -22,14 +22,27 @@ client.on('messageDelete', function(message) {
       //post in the guild's log channel               #logs
       var log = message.guild.channels.find('id', '617351547130478621');
       if (log != null) {
-        const deleteEmbed = new Discord.RichEmbed()
-          .setColor('0xff5353')
-          .setAuthor(`${message.author.username}#${message.author.discriminator}`, message.author.avatarURL)
-          .setTitle(`Message deleted in #${message.channel.name}`)
-          .setDescription(`${message.cleanContent}`)
-          .setTimestamp()
-          .setFooter(`ID: ${message.id}`);
+        if (message.attachments.size > 0) {
+          var url = msgAttach.url;
+          const deleteimgEmbed = new Discord.RichEmbed()
+            .setColor('0xff5353')
+            .setAuthor(`${message.author.username}#${message.author.discriminator}`, message.author.avatarURL)
+            .setTitle(`Message deleted in #${message.channel.name}`)
+            .setDescription(`${message.cleanContent}`)
+            .setImage(url)
+            .setTimestamp()
+            .setFooter(`ID: ${message.id}`);
+          log.send(deleteimgEmbed);
+        } else {
+          const deleteEmbed = new Discord.RichEmbed()
+            .setColor('0xff5353')
+            .setAuthor(`${message.author.username}#${message.author.discriminator}`, message.author.avatarURL)
+            .setTitle(`Message deleted in #${message.channel.name}`)
+            .setDescription(`${message.cleanContent}`)
+            .setTimestamp()
+            .setFooter(`ID: ${message.id}`);
           log.send(deleteEmbed);
+          };
         }
       };
     };
