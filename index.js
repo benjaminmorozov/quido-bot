@@ -74,6 +74,23 @@ client.on('guildBanRemove', function(guild, user) {
   };
 });
 
+//user has joined a guild
+client.on('guildMemberAdd', function(guild, user) {
+  //post in the guild's log channel
+  var log = guild.channels.find('id', '617351547130478621');
+  if (log != null) {
+    const updateEmbed = new Discord.RichEmbed()
+      .setColor('#45b6fe')
+      .setAuthor(`${newMessage.author.username}#${newMessage.author.discriminator}`, newMessage.author.avatarURL)
+      .setTitle(`Member joined`)
+      .setDescription(`${user} count to join\ncreated ${member.user.createdAt}`)
+      .setTimestamp()
+      .setFooter(`ID: ${user.id}`);
+    log.send(updateEmbed);
+  }
+});
+
+
 fs.readdir("./events/", (err, files) => {
   if (err) return console.error(err);
   files.forEach(file => {
