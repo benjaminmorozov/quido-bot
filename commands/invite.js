@@ -1,4 +1,4 @@
-exports.run = (client, message, args) => {
+exports.run = async (client, message, args) => {
   let invite = await message.channel.createInvite({
       maxAge: 10 * 60 * 1000 //maximum time for the invite, in milliseconds
       maxUses: 1 //maximum times it can be used
