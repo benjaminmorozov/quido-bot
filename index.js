@@ -35,27 +35,6 @@ client.on('messageDelete', function(message) {
     };
 });
 
-client.on('messageDeleteBulk', function(message) {
-  if(message.channel.id === '617351547130478621') {
-    return;
-  } else {
-    if(message.channel.type == 'text') {
-      //post in the guild's log channel               #logs
-      var log = message.guild.channels.find('id', '617351547130478621');
-      if (log != null) {
-        const deleteEmbed = new Discord.RichEmbed()
-          .setColor('0xff5353')
-          .setAuthor(`${message.author.username}#${message.author.discriminator}`, message.author.avatarURL)
-          .setTitle(`Message purged in #${message.channel.name}`)
-          .setDescription(`${message.content}`)
-          .setTimestamp()
-          .setFooter(`ID: ${message.id}`);
-          log.send(deleteEmbed);
-        }
-      };
-    };
-});
-
 client.on('messageUpdate', function(oldMessage, newMessage) {
   if (newMessage.channel.type == 'text' && newMessage.cleanContent != oldMessage.cleanContent) {
     //post in the guild's log channel               #logs
