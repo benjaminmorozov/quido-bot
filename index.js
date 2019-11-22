@@ -72,6 +72,10 @@ client.on('guildBanRemove', function(guild, user) {
       .setAuthor(`[UNBAN] ${user.username}#${user.discriminator}`, user.avatarURL)
       log.send(unbanEmbed);
   };
+  let humans = member.guild.members.filter(m => !m.user.bot).size;
+  guild.channels.find('id', '617353228069240833').setName(`Member Count: ${humans}`);
+  let bots = member.guild.members.filter(m => m.user.bot).size;
+  guild.channels.find('id', '617353228597592066').setName(`Bot Count: ${bots}`);
 });
 
 //user has joined a guild
