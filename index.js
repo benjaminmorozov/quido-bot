@@ -1,6 +1,5 @@
 const Discord = require("discord.js");
 const Enmap = require("enmap");
-let request = require(`request`);
 const fs = require("fs");
 const ytdl = require('ytdl-core');
 const { RichEmbed } = require('discord.js');
@@ -23,15 +22,14 @@ client.on('messageDelete', function(message) {
       //post in the guild's log channel               #logs
       var log = message.guild.channels.find('id', '617351547130478621');
       if (log != null) {
-        message.attachments.forEach(a => {
-          if(message.attachments.first().filename === `png`){//Download only png (customize this)
-              request.get(a.url)
-                .on('error', console.error)
-                .pipe(fs.createWriteStream(`${a.filename}`));
-          };
-          const attachment = new Discord.Attachment(`./${a.filename}`);
-      		log.send(`${message.author},`, attachment);
-        });
+        const deleteEmbed = new Discord.RichEmbed()
+          .setColor('0xff5353')
+          .setAuthor(`${message.author.username}#${message.author.discriminator}`, message.author.avatarURL)
+          .setTitle(`Message deleted in #${message.channel.name}`)
+          .setDescription(`${message.cleanContent}`)
+          .setTimestamp()
+          .setFooter(`ID: ${message.id}`);
+          log.send(deleteEmbed);
         }
       };
     };
@@ -98,7 +96,7 @@ client.on('guildMemberAdd', function(guild, user) {
     let bots = member.guild.members.filter(m => m.user.bot).size;
     guild.channels.find('id', '617353228597592066').setName(`Bot Count: ${bots}`);
     var welcomechannel = guild.channels.find('id', '631083427936075789');
-    message.channel.send(`${user} **joined**`);
+    welcomechannel.send(`${user} **joined**`);
   };
 });
 
