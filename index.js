@@ -63,7 +63,7 @@ client.on('guildBanAdd', function(guild, user, reason) {
     };
 });
 
-bot.on('guildBanRemove', function(guild, user) {
+client.on('guildBanRemove', function(guild, user) {
   //post in the guild's log channel
   var log = guild.channels.find('id', '617351547130478621');
   if (log != null) {
