@@ -81,13 +81,17 @@ client.on('guildMemberAdd', function(guild, user) {
   if (log != null) {
     const updateEmbed = new Discord.RichEmbed()
       .setColor('#45b6fe')
-      .setAuthor(`${newMessage.author.username}#${newMessage.author.discriminator}`, newMessage.author.avatarURL)
+      .setAuthor(`${user.username}#${user.discriminator}`, user.avatarURL)
       .setTitle(`Member joined`)
       .setDescription(`${user} count to join\ncreated ${member.user.createdAt}`)
       .setTimestamp()
       .setFooter(`ID: ${user.id}`);
     log.send(updateEmbed);
-  }
+  };
+  let humans = member.guild.members.filter(m => !m.user.bot).size;
+  guild.channels.find('id', '617353228069240833').setName(`Member Count: ${humans}`);
+  let bots = member.guild.members.filter(m => m.user.bot).size;
+  guild.channels.find('id', '617353228597592066').setName(`Bot Count: ${bots}`);
 });
 
 
