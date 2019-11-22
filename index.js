@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const Enmap = require("enmap");
+let request = require(`request`);
 const fs = require("fs");
 const ytdl = require('ytdl-core');
 const { RichEmbed } = require('discord.js');
@@ -22,20 +23,23 @@ client.on('messageDelete', function(message) {
       //post in the guild's log channel               #logs
       var log = message.guild.channels.find('id', '617351547130478621');
       if (log != null) {
-        if (message.attachments.size > 0) {
-          function attachIsImage(msgAttach) {
-              var url = msgAttach.url;
-          }
-          attachIsImage();
-          const deleteimgEmbed = new Discord.RichEmbed()
-            .setColor('0xff5353')
-            .setAuthor(`${message.author.username}#${message.author.discriminator}`, message.author.avatarURL)
-            .setTitle(`Message deleted in #${message.channel.name}`)
-            .setDescription(`${message.cleanContent}`)
-            .setImage(url)
-            .setTimestamp()
-            .setFooter(`ID: ${message.id}`);
-          log.send(deleteimgEmbed);
+        if(msg.attachments.first()){
+          function download(url){
+            request.get(url)
+              .on('error', console.error)
+              .pipe(fs.createWriteStream(`${message.id}.png`));
+            download(msg.attachments.first().url);
+            const imgdeleteEmbed = new Discord.RichEmbed()
+              .setColor('0xff5353')
+              .setAuthor(`${message.author.username}#${message.author.discriminator}`, message.author.avatarURL)
+              .setTitle(`Message deleted in #${message.channel.name}`)
+              .setDescription(`${message.cleanContent}`)
+              .attachFiles([`${message.id}.png`])
+              .setImage(`attachment://${message.id}.png`)
+              .setTimestamp()
+              .setFooter(`ID: ${message.id}`);
+            log.send(imgdeleteEmbed);
+            }
         } else {
           const deleteEmbed = new Discord.RichEmbed()
             .setColor('0xff5353')
