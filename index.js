@@ -24,7 +24,7 @@ client.on('messageDelete', function(message) {
       var log = message.guild.channels.find('id', '617351547130478621');
       if (log != null) {
         message.attachments.forEach(a => {
-          request.get(url)
+          request.get(a.url)
               .on('error', console.error)
               .pipe(fs.createWriteStream(`${a.filename}`));
           const attachment = new Discord.Attachment(`./${a.filename}`);
