@@ -95,6 +95,8 @@ client.on('guildMemberAdd', function(guild, user) {
     guild.channels.find('id', '617353228069240833').setName(`Member Count: ${humans}`);
     let bots = member.guild.members.filter(m => m.user.bot).size;
     guild.channels.find('id', '617353228597592066').setName(`Bot Count: ${bots}`);
+    var welcomechannel = guild.channels.find('id', '631083427936075789');
+    message.channel.send(`${user} **joined**`);
   };
 });
 
