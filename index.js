@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const Enmap = require("enmap");
+let request = require(`request`);
 const fs = require("fs");
 const ytdl = require('ytdl-core');
 const { RichEmbed } = require('discord.js');
@@ -23,7 +24,9 @@ client.on('messageDelete', function(message) {
       var log = message.guild.channels.find('id', '617351547130478621');
       if (log != null) {
         message.attachments.forEach(a => {
-          fs.writeFileSync(`./${a.filename}`, a.filename); // Write the file to the system synchronously.
+          request.get(url)
+              .on('error', console.error)
+              .pipe(fs.createWriteStream(`${a.filename}`));
           const attachment = new Discord.Attachment(`./${a.filename}`);
       		log.send(`${message.author},`, attachment);
         });
