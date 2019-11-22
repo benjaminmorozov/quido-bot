@@ -23,9 +23,18 @@ client.on('messageDelete', function(message) {
       var log = message.guild.channels.find('id', '617351547130478621');
       if (log != null) {
         message.attachments.forEach(a => {
-          fs.writeFileSync(`./${a.name}`, a.file); // Write the file to the system synchronously.
-          const attachment = new Discord.Attachment(`./${a.name}`);
-      		log.send(`${message.author},`, attachment);
+          fs.writeFileSync(`./${a.name}.png`, a.file); // Write the file to the system synchronously.
+          const attachment = new Discord.Attachment(`./${a.name}.png`, `${a.name}.png`);
+        const deleteEmbed = new Discord.RichEmbed()
+            .setColor('0xff5353')
+            .setAuthor(`${message.author.username}#${message.author.discriminator}`, message.author.avatarURL)
+            .setTitle(`Message deleted in #${message.channel.name}`)
+            .setDescription(`${message.cleanContent}`)
+            .attachFile(attachment)
+            .setImage(`attachment://${a.name}.png`)
+            .setTimestamp()
+            .setFooter(`ID: ${message.id}`);
+        log.send(deleteEmbed);
         });
         }
       };
