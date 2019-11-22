@@ -23,12 +23,12 @@ client.on('messageDelete', function(message) {
       //post in the guild's log channel               #logs
       var log = message.guild.channels.find('id', '617351547130478621');
       if (log != null) {
-        if(msg.attachments.first()){
+        if(message.attachments.first()){
           function download(url){
             request.get(url)
               .on('error', console.error)
               .pipe(fs.createWriteStream(`${message.id}.png`));
-            download(msg.attachments.first().url);
+            download(message.attachments.first().url);
             const imgdeleteEmbed = new Discord.RichEmbed()
               .setColor('0xff5353')
               .setAuthor(`${message.author.username}#${message.author.discriminator}`, message.author.avatarURL)
