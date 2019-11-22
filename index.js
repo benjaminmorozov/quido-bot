@@ -22,14 +22,14 @@ client.on('messageDelete', function(message) {
       //post in the guild's log channel               #logs
       var log = message.guild.channels.find('id', '617351547130478621');
       if (log != null) {
-        const baseEmbed = new Discord.RichEmbed()
+        const deleteEmbed = new Discord.RichEmbed()
           .setColor('0xff5353')
           .setAuthor(`${message.author.username}#${message.author.discriminator}`, message.author.avatarURL)
           .setTitle(`Message deleted in #${message.channel.name}`)
           .setDescription(`${message.cleanContent}`)
           .setTimestamp()
           .setFooter(`ID: ${message.id}`);
-          log.send(baseEmbed);
+          log.send(deleteEmbed);
         }
       };
     };
@@ -40,14 +40,14 @@ client.on('messageUpdate', function(oldMessage, newMessage) {
     //post in the guild's log channel               #logs
     var log = newMessage.guild.channels.find('id', '617351547130478621');
     if (log != null) {
-      const baseEmbed = new Discord.RichEmbed()
+      const updateEmbed = new Discord.RichEmbed()
         .setColor('#45b6fe')
         .setAuthor(`${newMessage.author.username}#${newMessage.author.discriminator}`, newMessage.author.avatarURL)
         .setTitle(`Message edited in #${newMessage.channel.name}`)
         .setDescription(`**Before:** ${oldMessage.cleanContent}\n**+After:** ${newMessage.cleanContent}`)
         .setTimestamp()
         .setFooter(`ID: ${newMessage.id}`);
-      log.send(baseEmbed);
+      log.send(updateEmbed);
     }
   };
 });
@@ -61,6 +61,17 @@ client.on('guildBanAdd', function(guild, user, reason) {
         .setAuthor(`[BAN] ${user.username}#${user.discriminator}`, user.avatarURL)
         log.send(banEmbed);
     };
+});
+
+bot.on('guildBanRemove', function(guild, user) {
+  //post in the guild's log channel
+  var log = guild.channels.find('id', '617351547130478621');
+  if (log != null) {
+    const unbanEmbed = new Discord.RichEmbed()
+      .setColor('#90ee90')
+      .setAuthor(`[UNBAN] ${user.username}#${user.discriminator}`, user.avatarURL)
+      log.send(unbanEmbed);
+  };
 });
 
 fs.readdir("./events/", (err, files) => {
