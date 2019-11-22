@@ -32,7 +32,7 @@ client.on('messageDelete', function(message) {
             .setTitle(`Message deleted in #${message.channel.name}`)
             .setDescription(`${message.cleanContent}`)
             .attachFile(attachment)
-            .setImage(`attachment://${a.name}`);
+            .setImage(`attachment://${a.name}`)
             .setTimestamp()
             .setFooter(`ID: ${message.id}`);
         log.send(deleteEmbed);
