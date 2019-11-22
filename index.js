@@ -17,7 +17,7 @@ client.on('ready', () => {
 client.on('messageDelete', function(message) {
   if(message.channel.id === '617351547130478621') {
     return;
-  } else
+  } else {
     if(message.channel.type == 'text') {
       //post in the guild's log channel               #logs
       var log = message.guild.channels.find('id', '617351547130478621');
