@@ -25,7 +25,6 @@ client.on('messageDelete', function(message) {
         message.attachments.forEach(a => {
           fs.writeFileSync(`./${a.name}`, a.file); // Write the file to the system synchronously.
           const attachment = new Discord.Attachment(`./${a.name}`, `${a.name}`);
-        });
         const deleteEmbed = new Discord.RichEmbed()
             .setColor('0xff5353')
             .setAuthor(`${message.author.username}#${message.author.discriminator}`, message.author.avatarURL)
@@ -36,6 +35,7 @@ client.on('messageDelete', function(message) {
             .setTimestamp()
             .setFooter(`ID: ${message.id}`);
         log.send(deleteEmbed);
+        });
         }
       };
     };
