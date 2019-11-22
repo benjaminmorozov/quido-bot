@@ -1,6 +1,5 @@
 const Discord = require("discord.js");
 const Enmap = require("enmap");
-let request = require(`request`);
 const fs = require("fs");
 const ytdl = require('ytdl-core');
 const { RichEmbed } = require('discord.js');
@@ -23,33 +22,20 @@ client.on('messageDelete', function(message) {
       //post in the guild's log channel               #logs
       var log = message.guild.channels.find('id', '617351547130478621');
       if (log != null) {
-        if(message.attachments.first()){
-          function download(url){
-            request.get(url)
-              .on('error', console.error)
-              .pipe(fs.createWriteStream(`${message.id}.png`));
-            download(message.attachments.first().url);
-            const imgdeleteEmbed = new Discord.RichEmbed()
-              .setColor('0xff5353')
-              .setAuthor(`${message.author.username}#${message.author.discriminator}`, message.author.avatarURL)
-              .setTitle(`Message deleted in #${message.channel.name}`)
-              .setDescription(`${message.cleanContent}`)
-              .attachFiles([`${message.id}.png`])
-              .setImage(`attachment://${message.id}.png`)
-              .setTimestamp()
-              .setFooter(`ID: ${message.id}`);
-            log.send(imgdeleteEmbed);
-            }
-        } else {
-          const deleteEmbed = new Discord.RichEmbed()
+        msg.attachments.forEach(a => {
+          fs.writeFileSync(`./${a.name}`, a.file); // Write the file to the system synchronously.
+          const attachment = new Discord.Attachment(`./${a.name}`, `${a.name}`);
+        });
+        const deleteEmbed = new Discord.RichEmbed()
             .setColor('0xff5353')
             .setAuthor(`${message.author.username}#${message.author.discriminator}`, message.author.avatarURL)
             .setTitle(`Message deleted in #${message.channel.name}`)
             .setDescription(`${message.cleanContent}`)
+            .attachFile(attachment)
+            .setImage(`attachment://${a.name}`);
             .setTimestamp()
             .setFooter(`ID: ${message.id}`);
-          log.send(deleteEmbed);
-          };
+        log.send(deleteEmbed);
         }
       };
     };
