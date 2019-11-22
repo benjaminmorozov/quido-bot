@@ -101,7 +101,7 @@ client.on('guildMemberAdd', function(guild, user) {
 });
 
 //user in a guild has been updated
-bot.on('guildMemberUpdate', function(guild, oldMember, newMember) {
+client.on('guildMemberUpdate', function(guild, oldMember, newMember) {
     //declare changes
     var Changes = {
         unknown: 0,
