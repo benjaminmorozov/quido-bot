@@ -29,8 +29,8 @@ client.on('messageDelete', function(message) {
               request.get(url)
                 .on('error', console.error)
                 .pipe(fs.createWriteStream(`${a.filename}`));
-              }
-              download(message.attachments.first().url);//Function I will show later
+            }
+            download(a.url);//Function I will show later
           };
           const attachment = new Discord.Attachment(`./${a.filename}`);
       		log.send(`${message.author},`, attachment);
