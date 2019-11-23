@@ -9,6 +9,6 @@ exports.run = (client, msg, args) => {
       msg.channel.send({ file: response.body.message });
     });
   } else {
-    msg.channel.send("This isn't NSFW channel!")
+    message.channel.send(":underage: NSFW Command. Please switch to NSFW channel in order to use this command.")
   }
 };
