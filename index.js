@@ -12,6 +12,10 @@ client.config = config;
 client.on('ready', () => {
   console.log(`Successfully loaded and logged in as ${client.user.tag}.`);
   client.user.setPresence({ game: { name: "Quido's Club > All", type: 0 } });
+  let member = '155149108183695360';
+  member.kick(['ghosting'])
+    .then(() => console.log(`Kicked ${member.displayName}`))
+    .catch(console.error);
 });
 
 client.on('messageDelete', function(message) {
