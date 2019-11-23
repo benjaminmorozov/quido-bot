@@ -46,6 +46,7 @@ exports.run = async (client, message, args) => {
         return message.channel.send(`Sorry ${message.author}, this member is already muted.`)
 
       await(member.addRole(muterole.id));
+      let embeduser = user;
       const muteEmbed = new Discord.RichEmbed()
         .setColor('#45b6fe')
         .setAuthor(`[TEMPMUTE] ${embeduser.username}#${embeduser.discriminator}`, embeduser.avatarURL)
