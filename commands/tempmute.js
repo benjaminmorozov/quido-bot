@@ -25,9 +25,15 @@ exports.run = async (client, message, args) => {
       } else {
       // Mute the user
       await(member.addRole(muterole.id));
-      message.channel.send(`${member} has been muted by ${message.author} for a duration of ${ms(ms(mutetime))} for: ${reason}`);
-      member.send(`${member}, you have been muted by ${message.author} for a duration of ${ms(ms(mutetime))} for: ${reason}`)
-
+      const opmuteEmbed = new Discord.RichEmbed()
+        .setColor('#45b6fe')
+        .setAuthor(`[TEMPMUTE] ${embeduser.username}#${embeduser.discriminator}`, embeduser.avatarURL)
+        .addField('Member:', `${member}`, true)
+        .addField('Muted by:', `${message.author}`, true)
+        .addField('Mute duration:', `${mutetime}`, true)
+        .addField('Reason:', `${reason}`, true)
+        log.send(opmuteEmbed);
+      message.channel.send(opmuteEmbed);
       setTimeout(function(){
         member.removeRole(muterole.id, `Temporary mute expired.`);
       }, ms(mutetime));
@@ -38,9 +44,15 @@ exports.run = async (client, message, args) => {
         return message.channel.send(`Sorry ${message.author}, this member is already muted.`)
 
       await(member.addRole(muterole.id));
-      message.channel.send(`${member} has been muted by ${message.author} for a duration of ${ms(ms(mutetime))} for: ${reason}`);
-      message.member.send(`${member}, you have been muted by ${message.author} for a duration of ${ms(ms(mutetime))} for:${reason}`)
-
+      const muteEmbed = new Discord.RichEmbed()
+        .setColor('#45b6fe')
+        .setAuthor(`[TEMPMUTE] ${embeduser.username}#${embeduser.discriminator}`, embeduser.avatarURL)
+        .addField('Member:', `${member}`, true)
+        .addField('Muted by:', `${message.author}`, true)
+        .addField('Mute duration:', `${mutetime}`, true)
+        .addField('Reason:', `${reason}`, true)
+        log.send(muteEmbed);
+      message.channel.send(muteEmbed);
       setTimeout(function(){
         member.removeRole(muterole.id, `Temporary mute expired.`);
       }, ms(mutetime));
