@@ -58,7 +58,7 @@ client.on('messageUpdate', function(oldMessage, newMessage) {
 
 client.on('guildBanAdd', function(guild, user, reason) {
     //post in the guild's log channel
-    var log = guild.channels.find('id', '617351547130478621');
+    var log = client.guild.channels.find('id', '617351547130478621');
     if (log != null) {
       const banEmbed = new Discord.RichEmbed()
         .setColor('#FF470F')
@@ -72,7 +72,7 @@ client.on('guildBanAdd', function(guild, user, reason) {
 
 client.on('guildBanRemove', function(guild, user) {
   //post in the guild's log channel
-  var log = guild.channels.find('id', '617351547130478621');
+  var log = client.guild.channels.find('id', '617351547130478621');
   if (log != null) {
     const unbanEmbed = new Discord.RichEmbed()
       .setColor('#90ee90')
@@ -88,7 +88,7 @@ client.on('guildBanRemove', function(guild, user) {
 //user has joined a guild
 client.on('guildMemberAdd', function(guild, user) {
   //post in the guild's log channel
-  var log = guild.channels.find('id', '617351547130478621');
+  var log = client.guild.channels.find('id', '617351547130478621');
   if (log != null) {
     const updateEmbed = new Discord.RichEmbed()
       .setColor('#45b6fe')
