@@ -4,6 +4,7 @@ const fs = require("fs");
 const ytdl = require('ytdl-core');
 const { RichEmbed } = require('discord.js');
 const client = new Discord.Client();
+const getImages = require('/util/getImages');
 
 const config = require("./config.json");
 // We also need to make sure we're attaching the config to the CLIENT so it's accessible everywhere!
@@ -19,6 +20,7 @@ client.on('messageDelete', function(message) {
     return;
   } else {
     if(message.channel.type == 'text') {
+      getImages(newMessage).forEach((image, index) => {
       //post in the guild's log channel               #logs
       var log = message.guild.channels.find('id', '617351547130478621');
       if (log != null) {
@@ -26,11 +28,13 @@ client.on('messageDelete', function(message) {
           .setColor('#FF470F')
           .setAuthor(`${message.author.username}#${message.author.discriminator}`, message.author.avatarURL)
           .setDescription(`**Message sent by ${message.author} deleted in ${message.channel}**\n${message.cleanContent}`)
+          .setImage(image)
           .setTimestamp()
           .setFooter(`Author: ${message.author.id} | Message ID: ${message.id}`);
-          log.send(deleteEmbed);
+        log.send(deleteEmbed);
         }
-      };
+      }
+    };
     };
 });
 
@@ -57,8 +61,11 @@ client.on('guildBanAdd', function(guild, user, reason) {
     var log = guild.channels.find('id', '617351547130478621');
     if (log != null) {
       const banEmbed = new Discord.RichEmbed()
-        .setColor('0xff5353')
+        .setColor('#FF470F')
         .setAuthor(`[BAN] ${user.username}#${user.discriminator}`, user.avatarURL)
+        .addField('User', `${user}`, false)
+        .addField('Reason', `${reason}`, false)
+        .setImage(user.avatarURL);
         log.send(banEmbed);
     };
 });
