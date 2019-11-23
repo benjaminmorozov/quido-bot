@@ -84,7 +84,6 @@ client.on('guildBanRemove', function(guild, user) {
       .setAuthor(`[BAN] ${embeduser.username}#${embeduser.discriminator}`, embeduser.avatarURL)
       .setThumbnail(`${embeduser.avatarURL}`)
       .addField('Member:', `${user}`, true)
-      .addField('Reason:', `${reason}`, true)
     log.send(unbanEmbed);
     let humans = member.guild.members.filter(m => !m.user.bot).size;
     guild.channels.find('id', '617353228069240833').setName(`Member Count: ${humans}`);
