@@ -60,6 +60,7 @@ client.on('messageUpdate', function(oldMessage, newMessage) {
 });
 
 client.on('guildBanAdd', function(guild, user, reason) {
+  let embeduser = member.user;
     //post in the guild's log channel
     var log = client.guilds.find('id','610434388777369602').channels.find('id','617351547130478621');
     if (log != null) {
@@ -74,6 +75,7 @@ client.on('guildBanAdd', function(guild, user, reason) {
 });
 
 client.on('guildBanRemove', function(guild, user) {
+  let embeduser = member.user;
   //post in the guild's log channel
   var log = client.guilds.find('id','610434388777369602').channels.find('id','617351547130478621');
   if (log != null) {
@@ -93,16 +95,17 @@ client.on('guildBanRemove', function(guild, user) {
 
 //user has joined a guild
 client.on('guildMemberAdd', function(guild, user) {
+  let embeduser = member.user;
   //post in the guild's log channel
   var log = client.guilds.find('id','610434388777369602').channels.find('id','617351547130478621');
   if (log != null) {
     const updateEmbed = new Discord.RichEmbed()
       .setColor('#45b6fe')
-      .setAuthor(`${user.username}#${user.discriminator}`, user.avatarURL)
+      .setAuthor(`${embeduser.username}#${embeduser.discriminator}`, embeduser.avatarURL)
       .setTitle(`Member joined`)
       .setDescription(`${user} count to join\ncreated ${member.user.createdAt}`)
       .setTimestamp()
-      .setFooter(`ID: ${user.id}`);
+      .setFooter(`ID: ${embeduser.id}`);
     log.send(updateEmbed);
     let humans = member.guild.members.filter(m => !m.user.bot).size;
     guild.channels.find('id', '617353228069240833').setName(`Member Count: ${humans}`);
