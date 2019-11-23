@@ -59,6 +59,38 @@ client.on('messageUpdate', function(oldMessage, newMessage) {
   };
 });
 
+client.on('guildBanAdd', function(guild, user, reason) {
+    //post in the guild's log channel
+    var log = member.guild.channels.find('id', '617351547130478621');
+    if (log != null) {
+      const banEmbed = new Discord.RichEmbed()
+        .setColor('#FF470F')
+        .setAuthor(`[BAN] ${embeduser.username}#${embeduser.discriminator}`, embeduser.avatarURL)
+        .setThumbnail(`${embeduser.avatarURL}`)
+        .addField('Member:', `${member}`, true)
+        .addField('Reason:', `${reason}`, true)
+      log.send(banEmbed);
+    };
+});
+
+client.on('guildBanRemove', function(guild, user) {
+  //post in the guild's log channel
+  var log = member.guild.channels.find('id', '617351547130478621');
+  if (log != null) {
+    const unbanEmbed = new Discord.RichEmbed()
+      .setColor('#FF470F')
+      .setAuthor(`[BAN] ${embeduser.username}#${embeduser.discriminator}`, embeduser.avatarURL)
+      .setThumbnail(`${embeduser.avatarURL}`)
+      .addField('Member:', `${member}`, true)
+      .addField('Reason:', `${reason}`, true)
+    log.send(unbanEmbed);
+    let humans = member.guild.members.filter(m => !m.user.bot).size;
+    guild.channels.find('id', '617353228069240833').setName(`Member Count: ${humans}`);
+    let bots = member.guild.members.filter(m => m.user.bot).size;
+    guild.channels.find('id', '617353228597592066').setName(`Bot Count: ${bots}`);
+  };
+});
+
 //user has joined a guild
 client.on('guildMemberAdd', function(guild, user) {
   //post in the guild's log channel

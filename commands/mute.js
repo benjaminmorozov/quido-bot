@@ -26,7 +26,6 @@ exports.run = async (client, message, args) => {
           const opmuteEmbed = new Discord.RichEmbed()
             .setColor('#45b6fe')
             .setAuthor(`[MUTE] ${embeduser.username}#${embeduser.discriminator}`, embeduser.avatarURL)
-            .setThumbnail(`${embeduser.avatarURL}`)
             .addField('Member:', `${member}`, true)
             .addField('Muted by:', `${message.author}`, true)
             .addField('Reason:', `${reason}`, true)
@@ -43,7 +42,7 @@ exports.run = async (client, message, args) => {
         if (log != null) {
           const muteEmbed = new Discord.RichEmbed()
             .setColor('#45b6fe')
-            .setAuthor(`[MUTE] ${member.username}#${member.discriminator}`, member.avatarURL)
+            .setAuthor(`[MUTE] ${embeduser.username}#${embeduser.discriminator}`, embeduser.avatarURL)
             .addField('Member:', `${member}`, true)
             .addField('Muted by:', `${message.author}`, true)
             .addField('Reason:', `${reason}`, true)
