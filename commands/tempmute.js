@@ -5,6 +5,7 @@ exports.run = async (client, message, args) => {
     return message.reply("you don't have enough permissions to execute this command!");
 
     let member = message.mentions.members.first() || message.guild.members.get(args[0]);
+    let embeduser = member.user;
     if(!member)
       return message.reply("please mention a valid member of this server.");
 
@@ -26,7 +27,6 @@ exports.run = async (client, message, args) => {
       } else {
       // Mute the user
       await(member.addRole(muterole.id));
-      let embeduser = user;
       const opmuteEmbed = new Discord.RichEmbed()
         .setColor('#45b6fe')
         .setAuthor(`[TEMPMUTE] ${embeduser.username}#${embeduser.discriminator}`, embeduser.avatarURL)
@@ -46,7 +46,6 @@ exports.run = async (client, message, args) => {
         return message.channel.send(`Sorry ${message.author}, this member is already muted.`)
 
       await(member.addRole(muterole.id));
-      let embeduser = user;
       const muteEmbed = new Discord.RichEmbed()
         .setColor('#45b6fe')
         .setAuthor(`[TEMPMUTE] ${embeduser.username}#${embeduser.discriminator}`, embeduser.avatarURL)
