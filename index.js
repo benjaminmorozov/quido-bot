@@ -85,10 +85,6 @@ client.on('guildBanRemove', function(guild, user) {
       .setThumbnail(`${embeduser.avatarURL}`)
       .addField('Member:', `${user}`, true)
     log.send(unbanEmbed);
-    let humans = member.guild.members.filter(m => !m.user.bot).size;
-    guild.channels.find('id', '617353228069240833').setName(`Member Count: ${humans}`);
-    let bots = member.guild.members.filter(m => m.user.bot).size;
-    guild.channels.find('id', '617353228597592066').setName(`Bot Count: ${bots}`);
   };
 });
 
@@ -106,10 +102,6 @@ client.on('guildMemberAdd', function(guild, user) {
       .setTimestamp()
       .setFooter(`ID: ${user.id}`);
     log.send(updateEmbed);
-    let humans = member.guild.members.filter(m => !m.user.bot).size;
-    guild.channels.find('id', '617353228069240833').setName(`Member Count: ${humans}`);
-    let bots = member.guild.members.filter(m => m.user.bot).size;
-    guild.channels.find('id', '617353228597592066').setName(`Bot Count: ${bots}`);
     var welcomechannel = guild.channels.find('id', '631083427936075789');
     welcomechannel.send(`${user} **joined**`);
   };
