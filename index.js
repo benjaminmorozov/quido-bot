@@ -33,7 +33,7 @@ client.on('messageDelete', function(message) {
           .setFooter(`Author: ${message.author.id} | Message ID: ${message.id}`);
         log.send(deleteEmbed);
         }
-      }
+      })
     };
     };
 });
