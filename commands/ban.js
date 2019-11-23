@@ -30,7 +30,6 @@ exports.run = async (client, message, args) => {
         .setThumbnail(`${embeduser.avatarURL}`)
         .addField('Member:', `${member}`, true)
         .addField('Reason:', `${reason}`, true)
-        log.send(banmuteEmbed);
       message.channel.send(banmuteEmbed);
     } else {
         return message.reply('you cannot ban this member.');

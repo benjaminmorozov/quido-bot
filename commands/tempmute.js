@@ -11,6 +11,8 @@ exports.run = async (client, message, args) => {
 
     let reason = args.splice(2).join(" ")
 
+    var log = client.guilds.find('id','610434388777369602').channels.find('id','617351547130478621');
+
     if(!reason) reason = "No reason provided";
 
     let mutetime = args[1];
