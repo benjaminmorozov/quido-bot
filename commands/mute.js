@@ -13,12 +13,10 @@ exports.run = async (client, message, args) => {
 
     if(!reason) reason = "No reason provided.";
 
-    if(member.roles.find(r => r.name === "Muted"))
+    if(member.roles.has('630146706930925569'))
         return message.reply("this user is already muted.");
 
-    let OwnerRole = message.guild.roles.find("name", "🔱OWNER🔱");
-    let DiscordManagerRole = message.guild.roles.find("name", "Discord Manager & Designer");
-    if (message.member.roles.has(OwnerRole.id) || message.member.roles.has(DiscordManagerRole.id)) {
+    if(message.member.roles.some(r=>['630151131841953792'].includes(r.id))){
         // Mute the user
         let mutedRole = message.guild.roles.find(role => role.name == "Muted");
         member.addRole(mutedRole);
@@ -34,9 +32,7 @@ exports.run = async (client, message, args) => {
           message.channel.send(opmuteEmbed);
         }
     } else {
-        if(!member.kickable)
-            return message.channel.send(`Sorry ${message.author}, you cannot mute this user.`);
-        // This is the role you want to assign to the user
+      if(member.roles.has('613347276647039016')) {
         let mutedRole = message.guild.roles.find(role => role.name == "Muted");
 
         member.addRole(mutedRole)
@@ -51,6 +47,9 @@ exports.run = async (client, message, args) => {
             .addField('Reason:', `${reason}`, true)
             log.send(muteEmbed);
           message.channel.send(muteEmbed);
-        }
-    }
+      } else {
+          return message.reply('you cannot mute this member.');
+      };
+    };
+  };
 };
