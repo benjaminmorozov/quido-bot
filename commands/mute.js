@@ -24,7 +24,7 @@ exports.run = async (client, message, args) => {
         if (log != null) {
           const opmuteEmbed = new Discord.RichEmbed()
             .setColor('#45b6fe')
-            .setAuthor(`[MUTE] ${member.username}#${member.discriminator}`, member.avatarURL)
+            .setAuthor(`[MUTE] ${member}#${member.discriminator}`, member.avatarURL)
             .addField('Member:', `${member}`, true)
             .addField('Muted by:', `${message.author}`, true)
             .addField('Reason:', `${reason}`, true)
