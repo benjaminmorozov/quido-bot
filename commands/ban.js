@@ -1,3 +1,4 @@
+const Discord = require("discord.js");
 exports.run = async (client, message, args) => {
                                    //owner                blade                designer             main admin           admin
   if(!message.member.roles.some(r=>['610704273822711820','627253814717710370','622715668659437568','631922921475932170','616501517058310184','645728270519631889'].includes(r.id)))
