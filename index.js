@@ -61,7 +61,7 @@ client.on('messageUpdate', function(oldMessage, newMessage) {
 
 client.on('guildBanAdd', function(guild, user, reason) {
     //post in the guild's log channel
-    var log = user.guild.channels.find('id', '617351547130478621');
+    var log = client.guilds.find('id','610434388777369602').channels.find('id','617351547130478621')
     if (log != null) {
       const banEmbed = new Discord.RichEmbed()
         .setColor('#FF470F')
@@ -75,7 +75,7 @@ client.on('guildBanAdd', function(guild, user, reason) {
 
 client.on('guildBanRemove', function(guild, user) {
   //post in the guild's log channel
-  var log = user.guild.channels.find('id', '617351547130478621');
+  var log = client.guilds.find('id','610434388777369602').channels.find('id','617351547130478621')
   if (log != null) {
     const unbanEmbed = new Discord.RichEmbed()
       .setColor('#FF470F')
