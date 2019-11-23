@@ -40,12 +40,13 @@ client.on('messageUpdate', function(oldMessage, newMessage) {
     var log = newMessage.guild.channels.find('id', '617351547130478621');
     if (log != null) {
       const updateEmbed = new Discord.RichEmbed()
-        .setColor('#45b6fe')
+        .setColor('#117EA6')
         .setAuthor(`${newMessage.author.username}#${newMessage.author.discriminator}`, newMessage.author.avatarURL)
-        .setTitle(`Message edited in #${newMessage.channel.name}`)
-        .setDescription(`**Before:** ${oldMessage.cleanContent}\n**+After:** ${newMessage.cleanContent}`)
+        .setDescription(`**Message edited in ${newMessage.channel}**`)
+        .addField('Before', `${oldMessage.cleanContent}`, false)
+        .addField('After', `${newMessage.cleanContent}`, false)
         .setTimestamp()
-        .setFooter(`ID: ${newMessage.id}`);
+        .setFooter(`Author: ${newMessage.author.id} | Message ID: ${newMessage.id}`);
       log.send(updateEmbed);
     }
   };
