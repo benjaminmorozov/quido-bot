@@ -60,7 +60,7 @@ client.on('messageUpdate', function(oldMessage, newMessage) {
 });
 
 client.on('guildBanAdd', function(guild, user, reason) {
-  let embeduser = member.user;
+  let embeduser = user;
     //post in the guild's log channel
     var log = client.guilds.find('id','610434388777369602').channels.find('id','617351547130478621');
     if (log != null) {
@@ -75,7 +75,7 @@ client.on('guildBanAdd', function(guild, user, reason) {
 });
 
 client.on('guildBanRemove', function(guild, user) {
-  let embeduser = member.user;
+  let embeduser = user;
   //post in the guild's log channel
   var log = client.guilds.find('id','610434388777369602').channels.find('id','617351547130478621');
   if (log != null) {
@@ -95,7 +95,7 @@ client.on('guildBanRemove', function(guild, user) {
 
 //user has joined a guild
 client.on('guildMemberAdd', function(guild, user) {
-  let embeduser = member.user;
+  let embeduser = user;
   //post in the guild's log channel
   var log = client.guilds.find('id','610434388777369602').channels.find('id','617351547130478621');
   if (log != null) {
