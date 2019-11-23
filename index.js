@@ -23,12 +23,11 @@ client.on('messageDelete', function(message) {
       var log = message.guild.channels.find('id', '617351547130478621');
       if (log != null) {
         const deleteEmbed = new Discord.RichEmbed()
-          .setColor('0xff5353')
+          .setColor('#FF470F')
           .setAuthor(`${message.author.username}#${message.author.discriminator}`, message.author.avatarURL)
-          .setTitle(`Message deleted in #${message.channel.name}`)
-          .setDescription(`${message.cleanContent}`)
+          .setDescription(`**Message sent by ${message.author} deleted in ${message.channel}**\n${message.cleanContent}`)
           .setTimestamp()
-          .setFooter(`ID: ${message.id}`);
+          .setFooter(`Author: ${message.author.id} | Message ID: ${message.id}`);
           log.send(deleteEmbed);
         }
       };
