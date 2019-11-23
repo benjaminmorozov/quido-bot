@@ -20,7 +20,6 @@ exports.run = async (client, message, args) => {
       .setThumbnail(`${embeduser.avatarURL}`)
       .addField('Member:', `${member}`, true)
       .addField('Reason:', `${reason}`, true)
-      log.send(banmuteEmbed);
     message.channel.send(banmuteEmbed);
   } else {
     if(member.roles.has('613347276647039016')) {
