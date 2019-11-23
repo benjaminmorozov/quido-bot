@@ -20,7 +20,6 @@ client.on('messageDelete', function(message) {
     return;
   } else {
     if(message.channel.type == 'text') {
-      getImages(newMessage).forEach((image, index) => {
       //post in the guild's log channel               #logs
       var log = message.guild.channels.find('id', '617351547130478621');
       if (log != null) {
@@ -28,18 +27,17 @@ client.on('messageDelete', function(message) {
           .setColor('#FF470F')
           .setAuthor(`${message.author.username}#${message.author.discriminator}`, message.author.avatarURL)
           .setDescription(`**Message sent by ${message.author} deleted in ${message.channel}**\n${message.cleanContent}`)
-          .setImage(image)
           .setTimestamp()
           .setFooter(`Author: ${message.author.id} | Message ID: ${message.id}`);
         log.send(deleteEmbed);
       };
-      });
     };
     };
 });
 
 client.on('messageUpdate', function(oldMessage, newMessage) {
   if (newMessage.channel.type == 'text' && newMessage.cleanContent != oldMessage.cleanContent) {
+    getImages(newMessage).forEach((image, index) => {
     //post in the guild's log channel               #logs
     var log = newMessage.guild.channels.find('id', '617351547130478621');
     if (log != null) {
@@ -49,10 +47,12 @@ client.on('messageUpdate', function(oldMessage, newMessage) {
         .setDescription(`**Message edited in ${newMessage.channel}**`)
         .addField('Before', `${oldMessage.cleanContent}`, false)
         .addField('After', `${newMessage.cleanContent}`, false)
+        .setImage(image)
         .setTimestamp()
         .setFooter(`Author: ${newMessage.author.id} | Message ID: ${newMessage.id}`);
       log.send(updateEmbed);
-    }
+    };
+  });
   };
 });
 
