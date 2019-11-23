@@ -4,7 +4,7 @@ const fs = require("fs");
 const ytdl = require('ytdl-core');
 const { RichEmbed } = require('discord.js');
 const client = new Discord.Client();
-const getImages = require('/util/getImages');
+const getImages = require('./util/getImages');
 
 const config = require("./config.json");
 // We also need to make sure we're attaching the config to the CLIENT so it's accessible everywhere!
@@ -32,8 +32,8 @@ client.on('messageDelete', function(message) {
           .setTimestamp()
           .setFooter(`Author: ${message.author.id} | Message ID: ${message.id}`);
         log.send(deleteEmbed);
-        }
-      })
+      };
+      });
     };
     };
 });
