@@ -13,7 +13,7 @@ exports.run = async (client, message, args) => {
 
     if(!reason) reason = "No reason provided.";
 
-    if(message.author.roles.has(630151131841953792)){ //key role
+    if(message.member.roles.has(630151131841953792)){ //key role
       await member.ban(reason)
         .catch(error => message.channel.send(`Sorry ${message.author}, I couldn't ban ${member.user} because of : ${error}`));
       message.channel.send(`${member.user} has been banned by ${message.author} because: ${reason}`);
