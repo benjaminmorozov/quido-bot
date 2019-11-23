@@ -6,9 +6,9 @@ exports.run = async (client, message, args) => {
 
   let reason = args.join(" ").slice(22);
   let member = message.mentions.members.first();
-  let embeduser = member.user;
   if(!member)
     return message.reply("mention a valid member of this server.")
+  let embeduser = member.user;
 
   if(!reason) reason = "No reason provided.";
 
