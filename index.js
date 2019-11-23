@@ -80,8 +80,8 @@ client.on('guildBanRemove', function(guild, user) {
   var log = client.guilds.find('id','610434388777369602').channels.find('id','617351547130478621');
   if (log != null) {
     const unbanEmbed = new Discord.RichEmbed()
-      .setColor('#FF470F')
-      .setAuthor(`[BAN] ${embeduser.username}#${embeduser.discriminator}`, embeduser.avatarURL)
+      .setColor('#45b6fe')
+      .setAuthor(`[UNBAN] ${embeduser.username}#${embeduser.discriminator}`, embeduser.avatarURL)
       .setThumbnail(`${embeduser.avatarURL}`)
       .addField('Member:', `${user}`, true)
     log.send(unbanEmbed);
@@ -98,13 +98,13 @@ client.on('guildMemberAdd', function(guild, user) {
   //post in the guild's log channel
   var log = client.guilds.find('id','610434388777369602').channels.find('id','617351547130478621');
   if (log != null) {
-    const updateEmbed = new Discord.RichEmbed()
+    const joinEmbed = new Discord.RichEmbed()
       .setColor('#45b6fe')
-      .setAuthor(`${embeduser.username}#${embeduser.discriminator}`, embeduser.avatarURL)
+      .setAuthor(`${user.username}#${user.discriminator}`, user.avatarURL)
       .setTitle(`Member joined`)
       .setDescription(`${user} count to join\ncreated ${member.user.createdAt}`)
       .setTimestamp()
-      .setFooter(`ID: ${embeduser.id}`);
+      .setFooter(`ID: ${user.id}`);
     log.send(updateEmbed);
     let humans = member.guild.members.filter(m => !m.user.bot).size;
     guild.channels.find('id', '617353228069240833').setName(`Member Count: ${humans}`);
