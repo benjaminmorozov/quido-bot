@@ -8,7 +8,7 @@ exports.run = async (client, message, args) => {
   if(!member)
     return message.reply("mention a valid member of this server.")
 
-  if(!reson) reason = "No reason provided.";
+  if(!reason) reason = "No reason provided.";
 
   if(message.member.roles.some(r=>['630151131841953792'].includes(r.id))){
     await member.ban(reason)
