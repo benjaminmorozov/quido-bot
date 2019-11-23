@@ -26,6 +26,7 @@ exports.run = async (client, message, args) => {
       } else {
       // Mute the user
       await(member.addRole(muterole.id));
+      let embeduser = user;
       const opmuteEmbed = new Discord.RichEmbed()
         .setColor('#45b6fe')
         .setAuthor(`[TEMPMUTE] ${embeduser.username}#${embeduser.discriminator}`, embeduser.avatarURL)
