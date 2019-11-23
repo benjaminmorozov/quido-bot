@@ -1,5 +1,4 @@
 const ms = require("ms");
-
 exports.run = async (client, message, args) => {
     if(!message.member.roles.some(r=>["🔱OWNER🔱","Discord Manager & Designer","Administrator","Head Moderator","Moderator","Head Admin","Admin","Helper"].includes(r.name)) )
     return message.reply("you don't have enough permissions to execute this command!");
@@ -20,13 +19,10 @@ exports.run = async (client, message, args) => {
     // This is the role you want to assign to the user
     let muterole = message.guild.roles.find(role => role.name == "Muted");
 
-    let OwnerRole = message.guild.roles.find("name", "🔱OWNER🔱");
-    let DiscordManagerRole = message.guild.roles.find("name", "Discord Manager & Designer");
-    if (message.member.roles.has(OwnerRole.id) || message.member.roles.has(DiscordManagerRole.id)) {
-
-      if(message.member.roles.has(muterole.id))
+    if(message.member.roles.some(r=>['630151131841953792'].includes(r.id))){
+      if(message.member.roles.has(muterole.id)) {
         return message.channel.send(`Sorry ${message.author}, this member is already muted.`)
-
+      } else {
       // Mute the user
       await(member.addRole(muterole.id));
       message.channel.send(`${member} has been muted by ${message.author} for a duration of ${ms(ms(mutetime))} for: ${reason}`);
@@ -35,10 +31,9 @@ exports.run = async (client, message, args) => {
       setTimeout(function(){
         member.removeRole(muterole.id, `Temporary mute expired.`);
       }, ms(mutetime));
+    };
     } else {
-      if(!member.kickable)
-        return message.channel.send(`Sorry ${message.author}, you cannot mute this member.`);
-
+    if(member.roles.has('613347276647039016')) {
       if(message.member.roles.has(muterole.id))
         return message.channel.send(`Sorry ${message.author}, this member is already muted.`)
 
@@ -49,5 +44,8 @@ exports.run = async (client, message, args) => {
       setTimeout(function(){
         member.removeRole(muterole.id, `Temporary mute expired.`);
       }, ms(mutetime));
+    } else {
+        return message.reply('you cannot mute this member.');
     };
+  };
 };
