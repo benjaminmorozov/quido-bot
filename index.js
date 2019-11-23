@@ -20,6 +20,7 @@ client.on('messageDelete', function(message) {
     return;
   } else {
     if(message.channel.type == 'text') {
+      getImages(message).forEach((image, index) => {
       //post in the guild's log channel               #logs
       var log = message.guild.channels.find('id', '617351547130478621');
       if (log != null) {
@@ -27,10 +28,12 @@ client.on('messageDelete', function(message) {
           .setColor('#FF470F')
           .setAuthor(`${message.author.username}#${message.author.discriminator}`, message.author.avatarURL)
           .setDescription(`**Message sent by ${message.author} deleted in ${message.channel}**\n${message.cleanContent}`)
+          .setImage(image)
           .setTimestamp()
           .setFooter(`Author: ${message.author.id} | Message ID: ${message.id}`);
         log.send(deleteEmbed);
       };
+      });
     };
     };
 });
