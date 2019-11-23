@@ -59,35 +59,6 @@ client.on('messageUpdate', function(oldMessage, newMessage) {
   };
 });
 
-client.on('guildBanAdd', function(guild, user, reason) {
-    //post in the guild's log channel
-    var log = client.guild.channels.find('id', '617351547130478621');
-    if (log != null) {
-      const banEmbed = new Discord.RichEmbed()
-        .setColor('#FF470F')
-        .setAuthor(`[BAN] ${user.username}#${user.discriminator}`, user.avatarURL)
-        .addField('User', `${user}`, false)
-        .addField('Reason', `${reason}`, false)
-        .setImage(user.avatarURL);
-        log.send(banEmbed);
-    };
-});
-
-client.on('guildBanRemove', function(guild, user) {
-  //post in the guild's log channel
-  var log = client.guild.channels.find('id', '617351547130478621');
-  if (log != null) {
-    const unbanEmbed = new Discord.RichEmbed()
-      .setColor('#90ee90')
-      .setAuthor(`[UNBAN] ${user.username}#${user.discriminator}`, user.avatarURL)
-    log.send(unbanEmbed);
-    let humans = member.guild.members.filter(m => !m.user.bot).size;
-    guild.channels.find('id', '617353228069240833').setName(`Member Count: ${humans}`);
-    let bots = member.guild.members.filter(m => m.user.bot).size;
-    guild.channels.find('id', '617353228597592066').setName(`Bot Count: ${bots}`);
-  };
-});
-
 //user has joined a guild
 client.on('guildMemberAdd', function(guild, user) {
   //post in the guild's log channel
