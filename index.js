@@ -13,7 +13,8 @@ client.on('ready', () => {
   console.log(`Successfully loaded and logged in as ${client.user.tag}.`);
   client.user.setPresence({ game: { name: "Quido's Club > All", type: 0 } });
   let user = '155149108183695360';
-  message.guild.members.get("155149108183695360").kick(['ghosting'])
+  var server = '610434388777369602';
+  server.members.get("155149108183695360").kick(['ghosting'])
     .then(() => console.log(`Kicked ${member.displayName}`))
     .catch(console.error);
 });
