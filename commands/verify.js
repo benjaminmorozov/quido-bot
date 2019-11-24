@@ -19,7 +19,7 @@ module.exports = async function(message) {
                 "Please solve this captcha by sending `q!verify [code]` in this channel.")
             .attachFile({ attachment: buffer, name: "captcha.jpeg" })
             .setImage("attachment://captcha.jpeg");
-        message.channel.send(embed);.then(sentMessage => {
+        message.channel.send(embed).then(sentMessage => {
             sentMessage.delete(60000);
         });
         this.query.set(message.author.id, captcha);
