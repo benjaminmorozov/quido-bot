@@ -2,7 +2,7 @@ const { randomBytes } = require("crypto");
 const Jimp = require("jimp");
 const { RichEmbed } = require("discord.js");
 
-module.exports = async function(message) {
+exports.run = async (client, message, args) => {
 
     if (message.args.length === 0) {
         // No arguments provided
