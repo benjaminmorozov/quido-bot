@@ -8,7 +8,7 @@ exports.run = async (client, message, args) => {
   let member = message.mentions.members.first();
   if(!member)
     return message.reply("mention a valid member of this server.")
-  if(member.user.id = message.author.id)
+  if(member.id = message.author.id)
     return message.reply("you cannot ban yourself.")
   let embeduser = member.user;
 
