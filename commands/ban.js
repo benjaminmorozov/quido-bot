@@ -14,7 +14,7 @@ exports.run = async (client, message, args) => {
 
   if(!reason) reason = "No reason provided.";
 
-  if(message.author.roles.some(r=>['630151131841953792'].includes(r.id))){
+  if(message.member.roles.some(r=>['630151131841953792'].includes(r.id))){
     await member.ban(reason);
     const banmuteEmbed = new Discord.RichEmbed()
       .setColor('#FF470F')
