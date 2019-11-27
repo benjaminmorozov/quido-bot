@@ -1,6 +1,9 @@
 const moment = require("moment");
-exports.run = (client, message) => {
+exports.run = (client, message, args) => {
     const member = message.mentions.users.first() || message.author;
+
+    if(args.includes('@'))
+      return message.reply('mention a valid member of this server.');
 
     message.channel.send({embed: {
         color: 0xff5353,
