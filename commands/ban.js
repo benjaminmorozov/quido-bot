@@ -12,27 +12,31 @@ exports.run = async (client, message, args) => {
     return message.reply(`you cannot ban yourself.`)
   let embeduser = member.user;
 
+  var log = message.guild.channels.find('id', '617351547130478621');
+
   if(!reason) reason = "No reason provided.";
 
   if(message.member.roles.some(r=>['630151131841953792'].includes(r.id))){
     await member.ban(reason);
-    const banmuteEmbed = new Discord.RichEmbed()
+    const opbanEmbed = new Discord.RichEmbed()
       .setColor('#FF470F')
       .setAuthor(`[BAN] ${embeduser.username}#${embeduser.discriminator}`, embeduser.avatarURL)
       .setThumbnail(`${embeduser.avatarURL}`)
       .addField('Member:', `${member}`, true)
       .addField('Reason:', `${reason}`, true)
-    message.channel.send(banmuteEmbed);
+    message.channel.send(opbanEmbed);
+    log.send(opbanEmbed);
   } else {
     if(member.roles.has('613347276647039016')) {
       await member.ban(reason);
-      const banmuteEmbed = new Discord.RichEmbed()
+      const banEmbed = new Discord.RichEmbed()
         .setColor('#FF470F')
         .setAuthor(`[BAN] ${embeduser.username}#${embeduser.discriminator}`, embeduser.avatarURL)
         .setThumbnail(`${embeduser.avatarURL}`)
         .addField('Member:', `${member}`, true)
         .addField('Reason:', `${reason}`, true)
-      message.channel.send(banmuteEmbed);
+      message.channel.send(banEmbed);
+      log.send(banEmbed);
     } else {
         return message.reply('you cannot ban this member.');
     };

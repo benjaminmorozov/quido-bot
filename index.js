@@ -59,21 +59,6 @@ client.on('messageUpdate', function(oldMessage, newMessage) {
   };
 });
 
-client.on('guildBanAdd', function(guild, user, reason) {
-  let embeduser = user;
-    //post in the guild's log channel
-    var log = client.guilds.find('id','610434388777369602').channels.find('id','617351547130478621');
-    if (log != null) {
-      const banEmbed = new Discord.RichEmbed()
-        .setColor('#FF470F')
-        .setAuthor(`[BAN] ${embeduser.username}#${embeduser.discriminator}`, embeduser.avatarURL)
-        .setThumbnail(`${embeduser.avatarURL}`)
-        .addField('Member:', `${user}`, true)
-        .addField('Reason:', `${reason}`, true)
-      log.send(banEmbed);
-    };
-});
-
 client.on('guildBanRemove', function(guild, user) {
   let embeduser = user;
   //post in the guild's log channel

@@ -15,13 +15,13 @@ exports.run = (client, message) => {
             inline: "false"
           },
           {
-            name: "User ID:",
+            name: "Member ID:",
             value: `${member.id}`,
             inline: "false"
           },
           {
-            name: "User Roles:",
-            value: `${member.id}`,
+            name: "Member Join Date:",
+            value: `${moment.utc(member.JoinedAt).format('DD/MM/YY')}`,
             inline: "false"
           },
         ],
