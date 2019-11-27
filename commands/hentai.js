@@ -1,14 +1,14 @@
-const discord = require('discord.js');
-const superagent = require('superagent')
+const superagent = require("snekfetch");
+const Discord = require('discord.js')
 
-exports.run = (client, msg, args) => {
-  if (msg.channel.nsfw === true) {
-    superagent.get('https://nekobot.xyz/api/image')
-    .query({ type: 'hentai_anal'})
-    .end((err, response) => {
-      msg.channel.send({ file: response.body.message });
-    });
-  } else {
-    msg.channel.send(":underage: NSFW Command. Please switch to NSFW channel in order to use this command.")
-  }
-};
+exports.run = async (client, message, args, level) => {
+    if (!message.channel.nsfw) return message.channel.send(':underage: NSFW Command. Please switch to NSFW channel in order to use this command.')
+    superagent.get('https://nekos.life/api/v2/img/hentai')
+        .end((err, response) => {
+      const lewdembed = new Discord.RichEmbed()
+      .setImage(response.body.url)
+      .setURL(response.body.url);
+  message.channel.send(lewdembed);
+    })
+
+}
