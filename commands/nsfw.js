@@ -12,7 +12,6 @@ const subreddits = [
 
 
 exports.run = (client, message, args) => {
-  var errMessage = errors[Math.round(Math.random() * (errors.length - 1))];
   if (!message.channel.nsfw) {
     message.react('💢');
     return message.channel.send(errMessage);
