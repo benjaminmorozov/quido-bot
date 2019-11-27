@@ -161,20 +161,19 @@ client.on('guildMemberUpdate', (oldMember, newMember) => {
                 log.sendMessage('**[User Role Removed]** ' + newMember + ': ' + removedRole);
                 break;
             case Changes.username:
-                const updateEmbed = new Discord.RichEmbed()
-                    .setColor('#117EA6')
-                    .setTitle(`Nickname change`)
-                    .setAuthor(`${newMessage.author.username}#${newMessage.author.discriminator}`, newMessage.author.avatarURL)
-                    .setDescription(`**Before:** ${oldMember.user.username + '#' + oldMember.user.discriminator}\n**After:** ${newMember.user.username + '#' + newMember.user.discriminator}`)
-                    .setTimestamp()
-                    .setFooter(`Member ID: ${newMember.id}`);
-                log.send(updateEmbed);
+                log.sendMessage('**[User Username Changed]** ' + newMember + ': Username changed from ' +
+                    oldMember.user.username + '#' + oldMember.user.discriminator + ' to ' +
+                    newMember.user.username + '#' + newMember.user.discriminator);
                 break;
             case Changes.nickname:
-                log.sendMessage('**[User Nickname Changed]** ' + newMember + ': ' +
-                    (oldMember.nickname != null ? 'Changed nickname from ' + oldMember.nickname +
-                        + newMember.nickname : 'Set nickname') + ' to ' +
-                    (newMember.nickname != null ? newMember.nickname + '.' : 'original username.'));
+                const updateEmbed = new Discord.RichEmbed()
+                  .setColor('#117EA6')
+                  .setTitle(`Nickname change`)
+                  .setAuthor(`${newMember.username}#${newMember.discriminator}`, newMember.avatarURL)
+                  .setDescription(`**Before:** ${oldMember.nickname}\n**After:** ${newMember.nickname}`)
+                  .setTimestamp()
+                  .setFooter(`Member ID: ${newMember.id}`);
+                log.send(updateEmbed);
                 break;
             case Changes.avatar:
                 log.sendMessage('**[User Avatar Changed]** ' + newMember);
