@@ -33,7 +33,7 @@ exports.run = (client, message, args) => {
         ],
         footer: {
           icon_url: `${client.user.avatarURL}`,
-          text: "Thanks for being a part of our community ❤ - If you find a bug, please report it using the q!bugreport command."
+          text: "Thanks for being a part of our community ❤"
         }
       }
     });
