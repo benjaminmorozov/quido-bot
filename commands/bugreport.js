@@ -12,7 +12,7 @@ exports.run = (client, message, args) => {
       	.addField('**Sent In:**', `\'${message.guild.name}\' - \'${message.channel}\'`, false)
       	.addField('**Message:**', `${reportmessage}`, false)
       	.setFooter(`Member ID: ${message.author.id}`);
-      message.channel.send(bugreportEmbed);
+      user.send(bugreportEmbed);
     });
     message.reply("thanks for submitting your bug report. The bug will be reviewed and fixed in no time!");
 };
