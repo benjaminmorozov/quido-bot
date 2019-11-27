@@ -1,4 +1,4 @@
-const fs = require("moment");
+const moment = require("moment");
 exports.run = (client, message) => {
     const member = message.mentions.users.first() || message.author;
 
