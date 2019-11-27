@@ -10,7 +10,7 @@ exports.run = (client, message, args) => {
       	.setTitle('BUG REPORT:')
       	.addField('**Sent By:**', `${message.author.username}#${message.author.discriminator}`, false)
       	.addField('**Sent In:**', `\'${message.guild.name}\' - \'${message.channel}\'`, false)
-      	.addField('**Message:**', `${reportmessage}`, false)
+      	.addField('**Bug Report:**', `${reportmessage}`, false)
       	.setFooter(`Member ID: ${message.author.id}`);
       user.send(bugreportEmbed);
     });
