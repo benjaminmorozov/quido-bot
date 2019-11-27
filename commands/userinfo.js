@@ -2,9 +2,6 @@ const moment = require("moment");
 exports.run = (client, message, args) => {
     const member = message.mentions.users.first() || message.author;
 
-    if(args.includes('@'))
-      return message.reply('mention a valid member of this server.');
-
     message.channel.send({embed: {
         color: 0xff5353,
         author: {
@@ -25,7 +22,7 @@ exports.run = (client, message, args) => {
           },
           {
             name: "Member Join Date:",
-            value: `${moment.utc(member.JoinedAt).format('DD/MM/YY')}`,
+            value: `${moment.utc(member.JoinedAt).format('dddd DD/MM/YYYY')}`,
             inline: "false"
           },
         ],
