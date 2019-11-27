@@ -75,8 +75,8 @@ client.on('guildBanRemove', function(guild, user) {
   };
 });
 
-//user in a guild has been updated
-client.on('guildMemberUpdate', function(guild, oldUser, newUser) {
+client.on('guildMemberUpdate', (oldMember, newMember) => {
+  const guild = newMember.guild;
 
     //declare changes
     var Changes = {
@@ -91,8 +91,8 @@ client.on('guildMemberUpdate', function(guild, oldUser, newUser) {
 
     //check if roles were removed
     var removedRole = '';
-    oldUser.roles.every(function(value) {
-        if(newUser.roles.find('id', value.id) == null) {
+    oldMember.roles.every(function(value) {
+        if(newMember.roles.find('id', value.id) == null) {
             change = Changes.removedRole;
             removedRole = value.name;
         }
@@ -100,49 +100,49 @@ client.on('guildMemberUpdate', function(guild, oldUser, newUser) {
 
     //check if roles were added
     var addedRole = '';
-    newUser.roles.every(function(value) {
-        if(oldUser.roles.find('id', value.id) == null) {
+    newMember.roles.every(function(value) {
+        if(oldMember.roles.find('id', value.id) == null) {
             change = Changes.addedRole;
             addedRole = value.name;
         }
     });
 
     //check if username changed
-    if(newUser.user.username != oldUser.user.username)
+    if(newMember.user.username != oldMember.user.username)
         change = Changes.username;
 
     //check if nickname changed
-    if(newUser.nickname != oldUser.nickname)
+    if(newMember.nickname != oldMember.nickname)
         change = Changes.nickname;
 
     //check if avatar changed
-    if(newUser.user.avatarURL != oldUser.user.avatarURL)
+    if(newMember.user.avatarURL != oldMember.user.avatarURL)
         change = Changes.avatar;
 
     //log to console
     switch(change) {
         case Changes.unknown:
-            console.log('[' + guild.name + '][UPDUSR] ' + newUser.user.username + '#' + newUser.user.discriminator);
+            console.log('[' + guild.name + '][UPDUSR] ' + newMember.user.username + '#' + newMember.user.discriminator);
             break;
         case Changes.addedRole:
-            console.log('[' + guild.name + '][ADDROLE] ' + newUser.user.username +'#' +  newUserr.user.discriminator +
+            console.log('[' + guild.name + '][ADDROLE] ' + newMember.user.username +'#' +  newMember.user.discriminator +
                 ': ' + addedRole);
             break;
         case Changes.removedRole:
-            console.log('[' + guild.name + '][REMROLE] ' + newUser.user.username + '#' + newUser.user.discriminator +
+            console.log('[' + guild.name + '][REMROLE] ' + newMember.user.username + '#' + newMember.user.discriminator +
                 ': ' + removedRole);
             break;
         case Changes.username:
-            console.log('[' + guild.name + '][UPDUSRNM] ' + oldUser.user.username + '#' + oldUser.user.discriminator +
-                ' is now ' + newUser.user.username + '#' + newUser.user.discriminator);
+            console.log('[' + guild.name + '][UPDUSRNM] ' + oldMember.user.username + '#' + oldMember.user.discriminator +
+                ' is now ' + newMember.user.username + '#' + newMember.user.discriminator);
             break;
         case Changes.nickname:
-            console.log('[' + guild.name + '][UPDUSRNK] ' + newUser.user.username + '#' + newUser.user.discriminator +
-                (oldUser.nickname != null ? ' (' + oldUser.nickname + ')' : '') +
-                (newUser.nickname != null ? ' is now ' + newUser.nickname : ' no longer has a nickname.'));
+            console.log('[' + guild.name + '][UPDUSRNK] ' + newMember.user.username + '#' + newMember.user.discriminator +
+                (oldMember.nickname != null ? ' (' + oldMember.nickname + ')' : '') +
+                (newMember.nickname != null ? ' is now ' + newMember.nickname : ' no longer has a nickname.'));
             break;
         case Changes.avatar:
-            console.log('[' + guild.name + '][UPDAVT] ' + newUser.user.username + '#' + newUser.user.discriminator);
+            console.log('[' + guild.name + '][UPDAVT] ' + newMember.user.username + '#' + newMember.user.discriminator);
             break;
     }
 
@@ -152,27 +152,27 @@ client.on('guildMemberUpdate', function(guild, oldUser, newUser) {
     if (log != null) {
         switch(change) {
             case Changes.unknown:
-                log.sendMessage('**[User Update]** ' + newUser);
+                log.sendMessage('**[User Update]** ' + newMember);
                 break;
             case Changes.addedRole:
-                log.sendMessage('**[User Role Added]** ' + newUser + ': ' + addedRole);
+                log.sendMessage('**[User Role Added]** ' + newMember + ': ' + addedRole);
                 break;
             case Changes.removedRole:
-                log.sendMessage('**[User Role Removed]** ' + newUserr + ': ' + removedRole);
+                log.sendMessage('**[User Role Removed]** ' + newMember + ': ' + removedRole);
                 break;
             case Changes.username:
-                log.sendMessage('**[User Username Changed]** ' + newUser + ': Username changed from ' +
-                    oldUser.user.username + '#' + oldUser.user.discriminator + ' to ' +
-                    newUser.user.username + '#' + newUser.user.discriminator);
+                log.sendMessage('**[User Username Changed]** ' + newMember + ': Username changed from ' +
+                    oldMember.user.username + '#' + oldMember.user.discriminator + ' to ' +
+                    newMember.user.username + '#' + newMember.user.discriminator);
                 break;
             case Changes.nickname:
-                log.sendMessage('**[User Nickname Changed]** ' + newUser + ': ' +
-                    (oldUser.nickname != null ? 'Changed nickname from ' + oldUser.nickname +
-                        + newUser.nickname : 'Set nickname') + ' to ' +
-                    (newUser.nickname != null ? newUserr.nickname + '.' : 'original username.'));
+                log.sendMessage('**[User Nickname Changed]** ' + newMember + ': ' +
+                    (oldMember.nickname != null ? 'Changed nickname from ' + oldMember.nickname +
+                        + newMember.nickname : 'Set nickname') + ' to ' +
+                    (newMember.nickname != null ? newMember.nickname + '.' : 'original username.'));
                 break;
             case Changes.avatar:
-                log.sendMessage('**[User Avatar Changed]** ' + newUser);
+                log.sendMessage('**[User Avatar Changed]** ' + newMember);
                 break;
         }
     }
