@@ -169,7 +169,7 @@ client.on('guildMemberUpdate', (oldMember, newMember) => {
                 const updateEmbed = new Discord.RichEmbed()
                   .setColor('#117EA6')
                   .setTitle(`Nickname change`)
-                  .setAuthor(`${newMember.username}#${newMember.discriminator}`, newMember.avatarURL)
+                  .setAuthor(`${newMember.user.username}#${newMember.user.discriminator}`, newMember.avatarURL)
                   .setDescription(`**Before:** ${oldMember.nickname}\n**After:** ${newMember.nickname}`)
                   .setTimestamp()
                   .setFooter(`Member ID: ${newMember.id}`);
