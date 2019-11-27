@@ -15,13 +15,14 @@ client.on('ready', () => {
   client.user.setPresence({ game: { name: "Quido's Club > All", type: 0 } });
 });
 
-client.on('messageDelete', function(message) {
+client.on('messageDelete', async function(message) {
   if(message.channel.id === '617351547130478621') {
     return;
   } else {
     if(message.channel.type == 'text') {
       getImages(message).forEach((image, index) => {
       //post in the guild's log channel               #logs
+      let logs = await msg.guild.fetchAuditLogs({type: 72});
       var log = message.guild.channels.find('id', '617351547130478621');
       if (log != null) {
         let entry = logs.entries.first();
@@ -45,7 +46,6 @@ client.on('messageUpdate', function(oldMessage, newMessage) {
     //post in the guild's log channel               #logs
     var log = newMessage.guild.channels.find('id', '617351547130478621');
     if (log != null) {
-      let entry = logs.entries.first();
       const updateEmbed = new Discord.RichEmbed()
         .setColor('#117EA6')
         .setAuthor(`${newMessage.author.username}#${newMessage.author.discriminator}`, newMessage.author.avatarURL)
