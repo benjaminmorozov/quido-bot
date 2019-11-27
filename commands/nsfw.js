@@ -21,7 +21,7 @@ exports.run = (client, message, args) => {
 
   randomPuppy(randSubreddit)
     .then(url => {
-      const embed = new Discord.MessageEmbed()
+      const embed = new Discord.RichEmbed()
         .setFooter(`${randSubreddit}`)
         .setDescription(`[Image URL](${url})`)
         .setImage(url)
