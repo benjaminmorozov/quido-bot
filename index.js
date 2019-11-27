@@ -20,7 +20,7 @@ client.on('messageDelete', async function(message) {
     return;
   } else {
     if(message.channel.type == 'text') {
-      getImages(message).forEach((image, index) => {
+      getImages(message).forEach((image, index) async => {
       //post in the guild's log channel               #logs
       let logs = await msg.guild.fetchAuditLogs({type: 72});
       var log = message.guild.channels.find('id', '617351547130478621');
