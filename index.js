@@ -170,7 +170,7 @@ client.on('guildMemberUpdate', (oldMember, newMember) => {
                   .setColor('#117EA6')
                   .setTitle(`Nickname change`)
                   .setAuthor(`${newMessage.author.username}#${newMessage.author.discriminator}`, newMessage.author.avatarURL)
-                  .setDescription(`**Before:** ${oldMember.user.username + '#' + oldMember.user.discriminator}\n**After:** ${(newMember.nickname != null ? ' is now ' + newMember.nickname : ' no longer has a nickname.'));}`)
+                  .setDescription(`**Before:** ${oldMember.user.username + '#' + oldMember.user.discriminator}\n**After:** ${(newMember.nickname != null ? ' is now ' + newMember.nickname : ' no longer has a nickname.'))}`)
                   .setTimestamp()
                   .setFooter(`Member ID: ${newMember.id}`);
                 log.send(updateEmbed);
