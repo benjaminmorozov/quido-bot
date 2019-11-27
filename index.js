@@ -16,7 +16,7 @@ client.on('ready', () => {
 });
 
 client.on('messageDelete', async function(message) {
-  let logs = await msg.guild.fetchAuditLogs({type: 72});
+  let logs = await message.guild.fetchAuditLogs({type: 72});
   if(message.channel.id === '617351547130478621') {
     return;
   } else {
