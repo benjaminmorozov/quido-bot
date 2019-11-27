@@ -161,9 +161,14 @@ client.on('guildMemberUpdate', (oldMember, newMember) => {
                 log.sendMessage('**[User Role Removed]** ' + newMember + ': ' + removedRole);
                 break;
             case Changes.username:
-                log.sendMessage('**[User Username Changed]** ' + newMember + ': Username changed from ' +
-                    oldMember.user.username + '#' + oldMember.user.discriminator + ' to ' +
-                    newMember.user.username + '#' + newMember.user.discriminator);
+                const updateEmbed = new Discord.RichEmbed()
+                    .setColor('#117EA6')
+                    .setTitle(`Nickname change`)
+                    .setAuthor(`${newMessage.author.username}#${newMessage.author.discriminator}`, newMessage.author.avatarURL)
+                    .setDescription(`**Before:** ${oldMember.user.username + '#' + oldMember.user.discriminator}\n**After:** ${newMember.user.username + '#' + newMember.user.discriminator}`)
+                    .setTimestamp()
+                    .setFooter(`Member ID: ${newMember.id}`);
+                log.send(updateEmbed);
                 break;
             case Changes.nickname:
                 log.sendMessage('**[User Nickname Changed]** ' + newMember + ': ' +
