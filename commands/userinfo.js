@@ -21,6 +21,11 @@ exports.run = (client, message, args) => {
             inline: "false"
           },
           {
+            name: "Account Creation Date:",
+            value: `${moment.utc(member.createdAt).format('dddd DD/MM/YYYY')}`,
+            inline: "false"
+          },
+          {
             name: "Member Join Date:",
             value: `${moment.utc(member.JoinedAt).format('dddd DD/MM/YYYY')}`,
             inline: "false"
