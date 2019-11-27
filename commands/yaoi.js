@@ -17,5 +17,5 @@ exports.run = async (client, message, args, level) => {
             .setURL(image.common.file_url);
           return message.channel.send({ embed });
         };
-      };
+      });
 };
