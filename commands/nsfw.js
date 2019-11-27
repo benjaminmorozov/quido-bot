@@ -1,4 +1,3 @@
-Learn more or give us feedback
 const superagent = require("snekfetch");
 const Discord = require('discord.js')
 
