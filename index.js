@@ -16,13 +16,13 @@ client.on('ready', () => {
 });
 
 client.on('messageDelete', async function(message) {
+  let logs = await msg.guild.fetchAuditLogs({type: 72});
   if(message.channel.id === '617351547130478621') {
     return;
   } else {
     if(message.channel.type == 'text') {
-      getImages(message).forEach((image, index) async => {
+      getImages(message).forEach((image, index) => {
       //post in the guild's log channel               #logs
-      let logs = await msg.guild.fetchAuditLogs({type: 72});
       var log = message.guild.channels.find('id', '617351547130478621');
       if (log != null) {
         let entry = logs.entries.first();
