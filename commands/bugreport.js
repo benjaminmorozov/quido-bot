@@ -9,7 +9,7 @@ exports.run = (client, message, args) => {
       	.setColor('0xff5353')
       	.setTitle('BUG REPORT:')
       	.addField('**Sent By:**', `${message.author.username}#${message.author.discriminator}`, false)
-      	.addField('**Sent In:**', `\'${client.guilds.get(message.author).name}\' - \'${message.channel}\'`, false)
+      	.addField('**Sent In:**', `\'${message.guild.name}\' - \'${message.channel}\'`, false)
       	.addField('**Message:**', `${reportmessage}`, false)
       	.setFooter(`Member ID: ${message.author.id}`);
       message.channel.send(bugreportEmbed);
