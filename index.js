@@ -170,7 +170,7 @@ client.on('guildMemberUpdate', (oldMember, newMember) => {
                   .setColor('#117EA6')
                   .setTitle(`Nickname change`)
                   .setAuthor(`${newMember.user.username}#${newMember.user.discriminator}`, newMember.user.avatarURL)
-                  .setDescription(`**Before:** ${oldMember.user.nickname}\n**After:** ${newMember.user.nickname}`)
+                  .setDescription(`**Before:** ${oldMember.nickname}\n**After:** ${newMember.nickname}`)
                   .setTimestamp()
                   .setFooter(`Member ID: ${newMember.id}`);
                 log.send(updateEmbed);
