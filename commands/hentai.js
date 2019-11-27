@@ -6,8 +6,8 @@ exports.run = async (client, message, args, level) => {
     superagent.get('https://nekos.life/api/v2/img/hentai')
         .end((err, response) => {
       const lewdembed = new Discord.RichEmbed()
-      .setImage(response.body.url)
-      .setURL(response.body.url);
+        .setImage(response.body.url)
+        .setURL(response.body.url);
   message.channel.send(lewdembed);
     })
 
