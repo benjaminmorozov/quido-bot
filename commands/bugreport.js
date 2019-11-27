@@ -14,5 +14,5 @@ exports.run = (client, message, args) => {
       	.setFooter(`Member ID: ${message.author.id}`);
       message.channel.send(bugreportEmbed);
     });
-    message.reply("Thanks for submitting your bug report. It will be reviewed and the bug will be fixed in no time!");
+    message.reply("thanks for submitting your bug report. The bug will be reviewed and fixed in no time!");
 };
