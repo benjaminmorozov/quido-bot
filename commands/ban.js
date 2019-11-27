@@ -24,6 +24,8 @@ exports.run = async (client, message, args) => {
       .setThumbnail(`${embeduser.avatarURL}`)
       .addField('Member:', `${member}`, true)
       .addField('Reason:', `${reason}`, true)
+      .setTimestamp()
+      .setFooter(`Member ID: ${embeduser.id}`);
     message.channel.send(opbanEmbed);
     log.send(opbanEmbed);
   } else {
@@ -35,6 +37,8 @@ exports.run = async (client, message, args) => {
         .setThumbnail(`${embeduser.avatarURL}`)
         .addField('Member:', `${member}`, true)
         .addField('Reason:', `${reason}`, true)
+        .setTimestamp()
+        .setFooter(`Member ID: ${embeduser.id}`);
       message.channel.send(banEmbed);
       log.send(banEmbed);
     } else {

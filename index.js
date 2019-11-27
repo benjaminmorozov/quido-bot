@@ -69,6 +69,8 @@ client.on('guildBanRemove', function(guild, user) {
       .setAuthor(`[UNBAN] ${embeduser.username}#${embeduser.discriminator}`, embeduser.avatarURL)
       .setThumbnail(`${embeduser.avatarURL}`)
       .addField('Member:', `${user}`, true)
+      .setTimestamp()
+      .setFooter(`Member ID: ${embeduser.id}`);
     log.send(unbanEmbed);
   };
 });
