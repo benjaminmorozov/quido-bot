@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "booru": "^2.0.3",
     "chalk": "^3.0.0",
     "crypto": "^1.0.1",
     "discord-anti-spam": "^2.0.4",
