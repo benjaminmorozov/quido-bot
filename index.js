@@ -24,10 +24,11 @@ client.on('messageDelete', function(message) {
       //post in the guild's log channel               #logs
       var log = message.guild.channels.find('id', '617351547130478621');
       if (log != null) {
+        let entry = logs.entries.first();
         const deleteEmbed = new Discord.RichEmbed()
           .setColor('#FF470F')
           .setAuthor(`${message.author.username}#${message.author.discriminator}`, message.author.avatarURL)
-          .setDescription(`**Message sent by ${message.author} deleted in ${message.channel}**\n${message.cleanContent}`)
+          .setDescription(`**Message sent by ${message.author} deleted in ${message.channel}**\n${message.cleanContent}\nDeleted by: ${entry.executor}`)
           .setImage(image)
           .setTimestamp()
           .setFooter(`Author: ${message.author.id} | Message ID: ${message.id}`);
@@ -44,6 +45,7 @@ client.on('messageUpdate', function(oldMessage, newMessage) {
     //post in the guild's log channel               #logs
     var log = newMessage.guild.channels.find('id', '617351547130478621');
     if (log != null) {
+      let entry = logs.entries.first();
       const updateEmbed = new Discord.RichEmbed()
         .setColor('#117EA6')
         .setAuthor(`${newMessage.author.username}#${newMessage.author.discriminator}`, newMessage.author.avatarURL)
