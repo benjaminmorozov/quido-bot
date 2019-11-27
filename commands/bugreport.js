@@ -4,7 +4,14 @@ exports.run = (client, message, args) => {
     }
     let reportmessage = args.join(" ");
     client.fetchUser("207044528027205634",false).then(user => {
-      user.send(reportmessage);
+      const bugreportEmbed = new Discord.RichEmbed()
+      	.setColor('0xff5353')
+      	.setTitle('BUG REPORT:')
+      	.addField('**Sent By:**', `${message.author.username}#${message.author.discriminator}`, false)
+      	.addField('**Sent In:**', `\'${client.guilds.get(message.author).name}\' - \'${message.channel}\'`, false)
+      	.addField('**Message:**', `${reportmessage}`, false)
+      	.setFooter(`Member ID: ${message.author.id}`);
+      message.channel.send(bugreportEmbed);
     });
-    message.reply("bug report was sent to the staff ❤️. Thanks for being a part of our community.");
+    message.reply("Thanks for submitting your bug report. It will be reviewed and the bug will be fixed in no time!");
 };
