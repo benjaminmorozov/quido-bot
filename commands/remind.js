@@ -1,5 +1,5 @@
 exports.run = async (client, message, args) => {
-  var message = msg;
+  var message = message;
   try {
 
     // Variables
