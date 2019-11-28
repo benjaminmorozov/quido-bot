@@ -1,6 +1,6 @@
 exports.run = async (client, message, args) => {
   let splitMessage = args.join(" ");
-  var filteredMessage = args.split(splitMessage[0], '');
+  var filteredMessage = args.join(splitMessage[0], '');
   function reminder() {
     message.reply("\n**REMINDER:**\n" + filteredMessage);
   }
