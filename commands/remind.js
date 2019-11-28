@@ -1,4 +1,4 @@
-exports.run = async (client, message, args, { remind }) => {
+exports.run = async (client, message, args) => {
   var message = msg;
   try {
 
