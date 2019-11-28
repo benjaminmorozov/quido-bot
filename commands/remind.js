@@ -60,4 +60,8 @@ exports.run = async (client, message, args) => {
       setTimeout(function(){
         member.removeRole(muterole.id, `Temporary mute expired.`);
       }, ms(mutetime));
+    } else {
+        return message.reply('you cannot mute this member.');
+    };
+  };
 };
