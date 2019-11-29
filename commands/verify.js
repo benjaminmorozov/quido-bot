@@ -1,6 +1,6 @@
 exports.run = async (client, message, args) => {
   console.log(args);
-  if(message.channel.type === dm) {
+  if(message.guild === null) {
     if (args == code) {
       const verifyEmbed = new Discord.RichEmbed()
         .setColor('#00D166')
