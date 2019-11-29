@@ -78,7 +78,7 @@ client.on('guildMemberAdd', member => {
         let verifiedRole = message.guild.roles.find(role => role.id == "613347276647039016");
         client.guilds.get("610434388777369602").member.roles.add(verifiedRole)
       } else {
-        let invite = await message.channel.createInvite({
+        let invite = message.channel.createInvite({
             maxAge: 0, //maximum time for the invite, in milliseconds
             maxUses: 1 //maximum times it can be used
           }, .catch(console.log);
