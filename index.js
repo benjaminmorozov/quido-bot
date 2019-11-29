@@ -14,6 +14,46 @@ client.on('ready', () => {
   client.user.setPresence({ game: { name: "Quido's Club > All", type: 0 } });
 });
 
+const shortcode = (n) => {
+    const possible = 'ABCDEFGHIJKLMNPQRSTUVWXYZabcdefghjklmnopqrstuvwxyz0123456789'
+    let text = ''
+    for (var i = 0; i < n + 1; i++) text += possible.charAt(Math.floor(Math.random() * possible.length))
+    return text;
+}
+
+client.on('guildMemberAdd', (member) => {
+    if (member.user.bot || member.guild.id !== config.guild) return
+    const token = shortcode(8)
+    const captchaEmbed = new Discord.RichEmbed()
+    	.setColor('0xff5353')
+    	.setTitle('Welcome To Quido\'s Club!')
+    	.addField('Captcha', 'Please complete the captcha below to gain access to the server.\n**NOTE:** This is **Case Sensitive** .\n\n**Why?**\nThis is to protect the server against malicious raids using automated bots.', false)
+    	.addField('Your Captcha:', `${token}`, false)
+    	.setFooter('Thanks for being a part of our community. ❤️', `${client.user.avatarURL}`);
+    member.send(captchaEmbed);
+    member.user.token = token
+})
+
+client.on('message', (message) => {
+    if (message.author.bot || !message.author.token || message.channel.type !== `dm`) return
+    if (message.content !== (verifymsg.replace('{token}', message.author.token))) return
+    message.channel.send({
+        embed: {
+            color: Math.floor(Math.random() * (0xFFFFFF + 1)),
+            description: completemsg,
+            timestamp: new Date(),
+            footer: {
+                text: `Verification Success`
+            }
+        }
+    })
+    let verifiedRole = message.guild.roles.find(role => role.name == "Member");
+    client.guilds.get("610434388777369602").member(message.author).roles.add(verifiedRole)
+        .then(console.log(`TOKEN: ${message.author.token} :: Role Member added to member ${message.author.id}`))
+        .catch(console.error)
+})
+
+
 client.on('messageDelete', async function(message) {
   if(message.channel.id === '617351547130478621') {
     return;
