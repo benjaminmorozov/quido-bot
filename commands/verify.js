@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 exports.run = async (client, message, args) => {
-  let reason = args.join(" ").slice(22);
+  let reason = args.join(" ");
   const member = message.author;
   member.send(reason);
   if(message.guild === null) {
