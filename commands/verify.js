@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 exports.run = async (client, message, args) => {
   let reason = args.join(" ").slice(22);
   const member = message.author;
-  console.log(reason);
+  member.send(reason);
   if(message.guild === null) {
     if (reason == code) {
       const verifyEmbed = new Discord.RichEmbed()
