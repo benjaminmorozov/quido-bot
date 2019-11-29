@@ -4,7 +4,7 @@ exports.run = async (client, message, args) => {
   const member = message.author;
   member.send(reason);
   if(message.guild === null) {
-    if (reason == code) {
+    if(reason === code) {
       const verifyEmbed = new Discord.RichEmbed()
         .setColor('#00D166')
         .setTitle('Verified!')
