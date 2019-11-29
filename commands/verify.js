@@ -1,4 +1,4 @@
-const {code} = require('./index.js');
+const {code} = require('index.js');
 exports.run = async (client, message, args) => {
   console.log(args);
   if(message.channel.type === dm) {
