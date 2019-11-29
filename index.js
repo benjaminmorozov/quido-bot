@@ -58,7 +58,7 @@ client.on('guildMemberAdd', member => {
     // A real basic message with the information we need.
     logChannel.send(`${member} **joined**; Invited by **${inviter.username}** (**${invite.uses}** invites).`);
   });
-  let code = makeid(5);
+  const code = makeid(5);
   const joinverifyEmbed = new Discord.RichEmbed()
   	.setColor('#117EA6')
   	.setTitle('Welcome to Quido\'s Club!')
