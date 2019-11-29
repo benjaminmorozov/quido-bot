@@ -42,7 +42,7 @@ client.on('ready', () => {
   });
 });
 
-client.on('guildMemberAdd', member, message => {
+client.on('guildMemberAdd', function(message, member) {
   // To compare, we need to load the current invite list.
   member.guild.fetchInvites().then(guildInvites => {
     // This is the *existing* invites for the guild.
@@ -66,7 +66,9 @@ client.on('guildMemberAdd', member, message => {
   	.addField('**Code:**', code, false)
   	.setFooter('Thanks for being a part of our community. ❤️', `${client.user.avatarURL}`);
   member.send(joinverifyEmbed);
-  const collector = new Discord.MessageCollector(message.channel, m => m.author.id === message.author.id, { time: 3600000 });
+  const filter = m => (m.content.includes('discord') && m.author.id != client.user.id);
+  const channel = message.channel;
+  const collector = channel.createMessageCollector(filter, { time: 3600000 });
   collector.on('collect', message => {
       if (message.content == code) {
         const verifyEmbed = new Discord.RichEmbed()
