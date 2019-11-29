@@ -15,7 +15,6 @@
     "crypto": "^1.0.1",
     "discord-anti-spam": "^2.0.4",
     "discord.js": "^11.5.1",
-    "discord.js-musicbot-addon": "^13.8.1",
     "edit-json-file": "^1.3.2",
     "enmap": "^5.2.3",
     "fs": "0.0.1-security",
@@ -33,8 +32,10 @@
     "request-promise-native": "^1.0.8",
     "sequelize": "^5.21.2",
     "sherlockjs": "^1.4.0",
+    "simple-youtube-api": "^5.2.1",
     "snekfetch": "^4.0.4",
-    "superagent": "^5.1.1"
+    "superagent": "^5.1.1",
+    "ytdl-core": "^1.0.3"
   },
   "devDependencies": {},
   "description": ""
