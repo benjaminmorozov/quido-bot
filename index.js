@@ -14,6 +14,16 @@ client.on('ready', () => {
   client.user.setPresence({ game: { name: "Quido's Club > All", type: 0 } });
 });
 
+function makeid(length) {
+   var result           = '';
+   var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+   var charactersLength = characters.length;
+   for ( var i = 0; i < length; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+   }
+   return result;
+}
+
 // Initialize the invite cache
 const invites = {};
 
@@ -48,6 +58,13 @@ client.on('guildMemberAdd', member => {
     // A real basic message with the information we need.
     logChannel.send(`${member} **joined**; Invited by **${inviter.username}** (**${invite.uses}** invites).`);
   });
+  const joinverifyEmbed = new Discord.RichEmbed()
+  	.setColor('0xff5353')
+  	.setTitle('Welcome to Quido\'s Club!')
+    .setDescription(`Please verify yourself using the "q!verify [code]" command. Replace the [code] with the code below.`)
+  	.addField('**Code:**', makeid(5), false)
+  	.setFooter('Thanks for being a part of our community. ❤️', `${client.user.avatarURL}`);
+  member.send(joinverifyEmbed);
 });
 
 
