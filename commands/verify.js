@@ -1,6 +1,7 @@
 const { randomBytes } = require("crypto");
 const Jimp = require("jimp");
 const { RichEmbed } = require("discord.js");
+const query = new Map();
 
 exports.run = async (client, message, args) => {
     if (args.length === 0) {
