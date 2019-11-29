@@ -89,12 +89,12 @@ client.on('guildMemberAdd', member => {
           .setFooter('Thanks for being a part of our community. ❤️', `${client.user.avatarURL}`);
         member.send(verifyEmbed);
         client.guilds.get("610434388777369602").member.kick('Sent a wrong verification code.')
-      }
-  } else {
-    return;
-  };
+      };
+    } else {
+      return;
+    };
+  });
 });
-
 
 client.on('messageDelete', async function(message) {
   if(message.channel.id === '617351547130478621') {
