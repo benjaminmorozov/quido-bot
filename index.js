@@ -10,6 +10,8 @@ const config = require("./config.json");
 client.config = config;
 
 client.on('ready', () => {
+  // Initialize the invite cache
+  const invites = {};
   // Load all invites for all guilds and save them to the cache.
   client.guilds.forEach(g => {
     g.fetchInvites().then(guildInvites => {
