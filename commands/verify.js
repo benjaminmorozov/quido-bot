@@ -3,9 +3,6 @@ const Jimp = require("jimp");
 const { RichEmbed } = require("discord.js");
 
 exports.run = async (client, message, args) => {
-  // Check if channel name is "verify" or in verificationChannels array
-  if (message.channel.id !== (this.config.servers[(message.guild || {id: "0"}).id] || {verificationChannel: "0"}).verificationChannel && message.channel.name !== "verify") return;
-
   if (message.args.length === 0) {
       // No arguments provided
 
