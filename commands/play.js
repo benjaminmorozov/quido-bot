@@ -1,2 +1,3 @@
-exports.run = async (client, message, args, ytdl) => {
+const ytdl = require('ytdl-core');
+exports.run = async (client, message, args) => {
 };
