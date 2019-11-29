@@ -25,9 +25,6 @@ exports.run = async (client, message, args) => {
         this.query.set(message.author.id, captcha);
 
     } else {
-        // Arguments provided
-        if (!this.query.has(message.author.id)) return message.reply("⛔ | Please request a captcha by sending `" + this.config.prefix + "verify`");
-
         const captcha = this.query.get(message.author.id);
 
         if (message.args[0] !== captcha) return message.reply("⛔ | Invalid captcha!");
