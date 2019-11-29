@@ -1,9 +1,10 @@
 const Discord = require("discord.js");
 exports.run = async (client, message, args) => {
+  let reason = args.join(" ").slice(22);
   const member = message.author;
-  console.log(args);
+  console.log(reason);
   if(message.guild === null) {
-    if (args == code) {
+    if (reason == code) {
       const verifyEmbed = new Discord.RichEmbed()
         .setColor('#00D166')
         .setTitle('Verified!')
