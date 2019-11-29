@@ -10,14 +10,6 @@ const config = require("./config.json");
 client.config = config;
 
 client.on('ready', () => {
-  // Initialize the invite cache
-  const invites = {};
-  // Load all invites for all guilds and save them to the cache.
-  client.guilds.forEach(g => {
-    g.fetchInvites().then(guildInvites => {
-      invites[g.id] = guildInvites;
-    });
-  });
   console.log(`Successfully loaded and logged in as ${client.user.tag}.`);
   client.user.setPresence({ game: { name: "Quido's Club > All", type: 0 } });
 });
@@ -30,6 +22,14 @@ const shortcode = (n) => {
 }
 
 client.on('guildMemberAdd', (member) => {
+  // Initialize the invite cache
+  const invites = {};
+  // Load all invites for all guilds and save them to the cache.
+  client.guilds.forEach(g => {
+    g.fetchInvites().then(guildInvites => {
+      invites[g.id] = guildInvites;
+    });
+  });
   member.guild.fetchInvites().then(guildInvites => {
     // This is the *existing* invites for the guild.
     const ei = invites[member.guild.id];
