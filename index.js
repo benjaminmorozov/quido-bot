@@ -42,7 +42,7 @@ client.on('ready', () => {
   });
 });
 
-client.on('guildMemberAdd', function(message, member) {
+client.on('guildMemberAdd', member => {
   // To compare, we need to load the current invite list.
   member.guild.fetchInvites().then(guildInvites => {
     // This is the *existing* invites for the guild.
