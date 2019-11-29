@@ -14,22 +14,26 @@ client.on('ready', () => {
   client.user.setPresence({ game: { name: "Quido's Club > All", type: 0 } });
 });
 
-const shortcode = (n) => {
-    const possible = 'ABCDEFGHIJKLMNPQRSTUVWXYZabcdefghjklmnopqrstuvwxyz0123456789'
-    let text = ''
-    for (var i = 0; i < n + 1; i++) text += possible.charAt(Math.floor(Math.random() * possible.length))
-    return text;
-}
+// Initialize the invite cache
+const invites = {};
 
-client.on('guildMemberAdd', (member) => {
-  // Initialize the invite cache
-  const invites = {};
+// A pretty useful method to create a delay without blocking the whole script.
+const wait = require('util').promisify(setTimeout);
+
+client.on('ready', () => {
+  // "ready" isn't really ready. We need to wait a spell.
+  wait(1000);
+
   // Load all invites for all guilds and save them to the cache.
   client.guilds.forEach(g => {
     g.fetchInvites().then(guildInvites => {
       invites[g.id] = guildInvites;
     });
   });
+});
+
+client.on('guildMemberAdd', member => {
+  // To compare, we need to load the current invite list.
   member.guild.fetchInvites().then(guildInvites => {
     // This is the *existing* invites for the guild.
     const ei = invites[member.guild.id];
@@ -40,11 +44,11 @@ client.on('guildMemberAdd', (member) => {
     // This is just to simplify the message being sent below (inviter doesn't have a tag property)
     const inviter = client.users.get(invite.inviter.id);
     // Get the log channel (change to your liking)
+    const logChannel = member.guild.channels.find(channel => channel.id === "631083427936075789");
     // A real basic message with the information we need.
-    var welcomechannel = client.guilds.find('id','610434388777369602').channels.find('id','631083427936075789');
-    welcomechannel.sendMessage(`${member} **joined**; Invited by **${inviter.tag}** (**${invite.uses} invites**)`);
+    logChannel.send(`${member.user.tag} joined using invite code ${invite.code} from ${inviter.tag}. Invite was used ${invite.uses} times since its creation.`);
   });
-})
+});
 
 client.on('message', (message) => {
     if (message.author.bot || !message.author.token || message.channel.type !== `dm`) return
