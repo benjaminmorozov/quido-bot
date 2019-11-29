@@ -10,6 +10,12 @@ const config = require("./config.json");
 client.config = config;
 
 client.on('ready', () => {
+  // Load all invites for all guilds and save them to the cache.
+  client.guilds.forEach(g => {
+    g.fetchInvites().then(guildInvites => {
+      invites[g.id] = guildInvites;
+    });
+  });
   console.log(`Successfully loaded and logged in as ${client.user.tag}.`);
   client.user.setPresence({ game: { name: "Quido's Club > All", type: 0 } });
 });
@@ -22,8 +28,20 @@ const shortcode = (n) => {
 }
 
 client.on('guildMemberAdd', (member) => {
-  var log = client.guilds.find('id','610434388777369602').channels.find('id','617351547130478621');
-  log.sendMessage(`MEMBER ${member} joined`);
+  member.guild.fetchInvites().then(guildInvites => {
+    // This is the *existing* invites for the guild.
+    const ei = invites[member.guild.id];
+    // Update the cached invites for the guild.
+    invites[member.guild.id] = guildInvites;
+    // Look through the invites, find the one for which the uses went up.
+    const invite = guildInvites.find(i => ei.get(i.code).uses < i.uses);
+    // This is just to simplify the message being sent below (inviter doesn't have a tag property)
+    const inviter = client.users.get(invite.inviter.id);
+    // Get the log channel (change to your liking)
+    // A real basic message with the information we need.
+    var welcomechannel = client.guilds.find('id','610434388777369602').channels.find('id','631083427936075789');
+    welcomechannel.sendMessage(`${member} **joined**; Invited by **${inviter.tag}** (**${invite.uses} invites**)`);
+  });
 })
 
 client.on('message', (message) => {
