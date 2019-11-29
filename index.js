@@ -46,7 +46,7 @@ client.on('guildMemberAdd', member => {
     // Get the log channel (change to your liking)
     const logChannel = member.guild.channels.find(channel => channel.id === "631083427936075789");
     // A real basic message with the information we need.
-    logChannel.send(`${member.user.tag} **joined**; Invited by **${inviter.tag}** (${invite.uses} invites).`);
+    logChannel.send(`${member} **joined**; Invited by **${inviter.tag}** (${invite.uses} invites).`);
   });
 });
 
