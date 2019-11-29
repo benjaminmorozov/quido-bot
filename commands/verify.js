@@ -1,4 +1,3 @@
-const {code} = require('index');
 exports.run = async (client, message, args) => {
   console.log(args);
   if(message.channel.type === dm) {
