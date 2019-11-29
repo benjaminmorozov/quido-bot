@@ -22,6 +22,8 @@ exports.run = async (client, message, args) => {
         .setColor('#FF470F')
         .setTitle('Wrong Verification Code!')
         .setDescription(`Please, retry the verification process by rejoining the server using this invite: ${invite}`)
+        .addField('Correct Code:', code, false)
+        .addField('Input:', reason, false)
         .setFooter('Thanks for being a part of our community. ❤️', `${client.user.avatarURL}`);
       member.send(verifyEmbed);
       client.guilds.get("610434388777369602").member.kick('Sent a wrong verification code.')
