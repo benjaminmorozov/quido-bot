@@ -22,16 +22,8 @@ const shortcode = (n) => {
 }
 
 client.on('guildMemberAdd', (member) => {
-    if (member.user.bot || member.guild.id !== config.guild) return
-    const token = shortcode(8)
-    const captchaEmbed = new Discord.RichEmbed()
-    	.setColor('0xff5353')
-    	.setTitle('Welcome To Quido\'s Club!')
-    	.addField('Captcha', 'Please complete the captcha below to gain access to the server.\n**NOTE:** This is **Case Sensitive** .\n\n**Why?**\nThis is to protect the server against malicious raids using automated bots.', false)
-    	.addField('Your Captcha:', `${token}`, false)
-    	.setFooter('Thanks for being a part of our community. ❤️', `${client.user.avatarURL}`);
-    member.send(captchaEmbed);
-    member.user.token = token
+  var log = client.guilds.find('id','610434388777369602').channels.find('id','617351547130478621');
+  log.sendMessage(`MEMBER ${member} joined`);
 })
 
 client.on('message', (message) => {
@@ -49,7 +41,7 @@ client.on('message', (message) => {
     })
     let verifiedRole = message.guild.roles.find(role => role.name == "Member");
     client.guilds.get("610434388777369602").member(message.author).roles.add(verifiedRole)
-        .then(console.log(`TOKEN: ${message.author.token} :: Role Member added to member ${message.author.id}`))
+        .then(console.log(`Verified member ${message.author.id} using TOKEN ${message.author.token}`))
         .catch(console.error)
 })
 
