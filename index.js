@@ -66,10 +66,8 @@ client.on('guildMemberAdd', member => {
   	.addField('**Code:**', code, false)
   	.setFooter('Thanks for being a part of our community. ❤️', `${client.user.avatarURL}`);
   member.send(joinverifyEmbed);
-  const filter = m => (m.content.includes('discord') && m.author.id != client.user.id);
-  const channel = message.channel;
-  const collector = channel.createMessageCollector(filter, { time: 3600000 });
-  collector.on('collect', message => {
+  client.on("message", message => {
+    if(message.channel.type === dm) {
       if (message.content == code) {
         const verifyEmbed = new Discord.RichEmbed()
           .setColor('#00D166')
@@ -92,8 +90,9 @@ client.on('guildMemberAdd', member => {
         member.send(verifyEmbed);
         client.guilds.get("610434388777369602").member.kick('Sent a wrong verification code.')
       }
-  });
-  member.kick('Didn\'t complete the verification process in time.')
+  } else {
+    return;
+  };
 });
 
 
