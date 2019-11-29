@@ -58,11 +58,12 @@ client.on('guildMemberAdd', member => {
     // A real basic message with the information we need.
     logChannel.send(`${member} **joined**; Invited by **${inviter.username}** (**${invite.uses}** invites).`);
   });
+  let code = makeid(5);
   const joinverifyEmbed = new Discord.RichEmbed()
-  	.setColor('0xff5353')
+  	.setColor('#117EA6')
   	.setTitle('Welcome to Quido\'s Club!')
     .setDescription(`Please verify yourself using the "q!verify [code]" command. Replace the [code] with the code below.`)
-  	.addField('**Code:**', makeid(5), false)
+  	.addField('**Code:**', code, false)
   	.setFooter('Thanks for being a part of our community. ❤️', `${client.user.avatarURL}`);
   member.send(joinverifyEmbed);
 });
