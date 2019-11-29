@@ -3,7 +3,7 @@ const Jimp = require("jimp");
 const { RichEmbed } = require("discord.js");
 
 exports.run = async (client, message, args) => {
-    if (message.args.length === 0) {
+    if (args.length === 0) {
         // No arguments provided
 
         const captcha = randomBytes(32).toString("hex").substr(0, 6);
