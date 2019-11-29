@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 exports.run = async (client, message, args) => {
+  const member = message.author;
   console.log(args);
   if(message.guild === null) {
     if (args == code) {
