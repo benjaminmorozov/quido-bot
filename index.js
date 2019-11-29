@@ -81,7 +81,7 @@ client.on('guildMemberAdd', member => {
         let invite = client.guilds.get("610434388777369602").channels.find('id', '646418925986250762').createInvite({
             maxAge: 0, //maximum time for the invite, in milliseconds
             maxUses: 1 //maximum times it can be used
-          }, .catch(console.log);
+          }.catch(console.log);
         const verifyEmbed = new Discord.RichEmbed()
           .setColor('#FF470F')
           .setTitle('Wrong Verification Code!')
