@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 
-const scoreSchema = mongoose.Schema({
+const ScoreSchema = mongoose.Schema({
     userID: String,
     serverID: String,
     score: Number,
 });
 
-module.exports = mongoose.model("Score", scoreSchema);
+module.exports = mongoose.model("Score", ScoreSchema);
