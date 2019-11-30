@@ -72,6 +72,7 @@ client.on('guildMemberAdd', member => {
   const verificationsentEmbed = new Discord.RichEmbed()
     .setColor('#7289DA')
     .setTitle('Captcha Sent')
+    .addField('**Sent To:**', `${member.username}#${member.discriminator}`, true)
     .addField('**Code:**', code, true)
     .setTimestamp()
     .setFooter(`Member: ${member.id}`);
