@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const WarnSchema = mongoose.Schema({
+const WarnsSchema = mongoose.Schema({
     userID: String,
     serverID: String,
     reason: String,
