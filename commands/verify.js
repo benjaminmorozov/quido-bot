@@ -11,7 +11,7 @@ exports.run = async (client, message, args) => {
         .setDescription(`Thanks for verifying. Have a nice experience!`)
         .setFooter('Thanks for being a part of our community. ❤️', `${client.user.avatarURL}`);
       member.send(verifyEmbed);
-      guild.member.addRole('613347276647039016');
+      member.addRole('613347276647039016');
     } else {
       let invite = await guild.channels.find('id', '646418925986250762').createInvite({
           maxAge: 0, //maximum time for the invite, in milliseconds
