@@ -3,8 +3,8 @@ exports.run = async (client, message, args) => {
   let reason = args.join(" ");
   const member = verifymember;
   if(message.guild === null) {
-    var log = newMessage.guild.channels.find('id', '617351547130478621');
     let guild = client.guilds.get("610434388777369602");
+    var log = guild.channels.find('id', '617351547130478621');
     if(reason === code) {
       const verifyEmbed = new Discord.RichEmbed()
         .setColor('#00D166')
