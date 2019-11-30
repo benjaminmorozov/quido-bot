@@ -12,23 +12,27 @@ const Score = require("../models/score.js")
 
 const imageUrlRegex = /\?size=2048$/g;
 
+Score.findOne({userID: message.author.id, serverID: message.guild.id}, (err, score) => {
+async function profile(member, score) {
+  try {
+    const result = await fetch(member.user.displayAvatarURL.replace(imageUrlRegex, "?size=128"));
+    if (!result.ok) throw new Error("Failed to get the avatar.");
+    const avatar = await result.buffer();
+
+    // The reason for the displayName length check, is we don't want the name of the user going outside
+    // the box we're going to be making later, so we grab all the characters from the 0 index through
+    // to the 17th index and cut the rest off, then append `...`.
+    const name = member.displayName.length > 20 ? member.displayName.substring(0, 17) + "..." : member.displayName;
+
+    // ...
+  } catch (error) {
+    await message.channel.send(`Something happened: ${error.message}`);
+  };
+};
+});
+
 exports.run = async (client, message, args) => {
   Score.findOne({userID: message.author.id, serverID: message.guild.id}, (err, score) => {
-  async function profile(member, score) {
-    try {
-      const result = await fetch(member.user.displayAvatarURL.replace(imageUrlRegex, "?size=128"));
-      if (!result.ok) throw new Error("Failed to get the avatar.");
-      const avatar = await result.buffer();
-
-      // The reason for the displayName length check, is we don't want the name of the user going outside
-      // the box we're going to be making later, so we grab all the characters from the 0 index through
-      // to the 17th index and cut the rest off, then append `...`.
-      const name = member.displayName.length > 20 ? member.displayName.substring(0, 17) + "..." : member.displayName;
-
-      // ...
-    } catch (error) {
-      await message.channel.send(`Something happened: ${error.message}`);
-    };
     return new Canvas(400, 180)
       // Create the Blurple rectangle on the right side of the image.
       .setColor("#7289DA")
