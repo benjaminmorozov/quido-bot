@@ -3,6 +3,7 @@ exports.run = async (client, message, args) => {
   let reason = args.join(" ");
   const member = message.author;
   if(message.guild === null) {
+    let guild = client.guilds.get("610434388777369602");
     if(reason === code) {
       const verifyEmbed = new Discord.RichEmbed()
         .setColor('#00D166')
@@ -10,10 +11,10 @@ exports.run = async (client, message, args) => {
         .setDescription(`Thanks for verifying. Have a nice experience!`)
         .setFooter('Thanks for being a part of our community. ❤️', `${client.user.avatarURL}`);
       member.send(verifyEmbed);
-      let verifiedRole = client.guilds.get("610434388777369602").roles.find(role => role.id == "613347276647039016");
-      client.guilds.get("610434388777369602").member.user.addRole(verifiedRole);
+      let verifiedRole = guild.roles.find(role => role.id == "613347276647039016");
+      guild.member.addRole(verifiedRole);
     } else {
-      let invite = await client.guilds.get("610434388777369602").channels.find('id', '646418925986250762').createInvite({
+      let invite = await guild.channels.find('id', '646418925986250762').createInvite({
           maxAge: 0, //maximum time for the invite, in milliseconds
           maxUses: 1 //maximum times it can be used
         }).catch(console.log);
@@ -25,7 +26,7 @@ exports.run = async (client, message, args) => {
         .addField('**Input:**', `hm ${reason}`, false)
         .setFooter('Thanks for being a part of our community. ❤️', `${client.user.avatarURL}`);
       member.send(verifyEmbed);
-      client.guilds.get("610434388777369602").member.kick('Sent a wrong verification code.')
+      guild.member.kick('Sent a wrong verification code.')
     };
   } else {
     return;
