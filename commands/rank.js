@@ -74,7 +74,7 @@ exports.run = async (client, message, args) => {
       // Let's add all the points!
       .addText(`Score: ${score}`, 241, 136)
       .toBuffer()
-  }
+  });
   const buffer = await profile(message.member, score.score);
   const filename = `profile-${message.author.id}.jpg`;
   const attachment = new Attachment(buffer, filename);
