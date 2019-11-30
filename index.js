@@ -60,6 +60,7 @@ client.on('guildMemberAdd', member => {
     logChannel.send(`${member} **joined**; Invited by **${inviter.username}** (**${invite.uses}** invites).`);
   });
   global.code = makeid(5);
+  var log = newMessage.guild.channels.find('id', '617351547130478621');
   const joinverifyEmbed = new Discord.RichEmbed()
   	.setColor('#117EA6')
   	.setTitle('Welcome to Quido\'s Club!')
@@ -67,6 +68,13 @@ client.on('guildMemberAdd', member => {
   	.addField('**Code:**', code, false)
   	.setFooter('Thanks for being a part of our community. ❤️', `${client.user.avatarURL}`);
   member.send(joinverifyEmbed);
+  const verificationsentEmbed = new Discord.RichEmbed()
+    .setColor('#7289DA')
+    .setTitle('Captcha Sent')
+    .addField('**Code:**', code, true)
+    .setTimestamp()
+    .setFooter(`Member: ${member.id}`);
+  log.send(verificationsentEmbed);
 });
 
 client.on('messageDelete', async function(message) {

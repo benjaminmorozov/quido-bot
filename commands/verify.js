@@ -3,6 +3,7 @@ exports.run = async (client, message, args) => {
   let reason = args.join(" ");
   const member = verifymember;
   if(message.guild === null) {
+    var log = newMessage.guild.channels.find('id', '617351547130478621');
     let guild = client.guilds.get("610434388777369602");
     if(reason === code) {
       const verifyEmbed = new Discord.RichEmbed()
@@ -12,6 +13,13 @@ exports.run = async (client, message, args) => {
         .setFooter('Thanks for being a part of our community. ❤️', `${client.user.avatarURL}`);
       member.send(verifyEmbed);
       member.addRole('613347276647039016');
+      const verificationcompletedEmbed = new Discord.RichEmbed()
+        .setColor('#7289DA')
+        .setTitle('Captcha Completed')
+        .addField('**Code:**', code, true)
+        .setTimestamp()
+        .setFooter(`Member: ${member.id}`);
+      log.send(verificationcompletedEmbed);
     } else {
       let invite = await guild.channels.find('id', '646418925986250762').createInvite({
           maxAge: 0, //maximum time for the invite, in milliseconds
@@ -21,10 +29,18 @@ exports.run = async (client, message, args) => {
         .setColor('#FF470F')
         .setTitle('Wrong Verification Code!')
         .setDescription(`Please, retry the verification process by rejoining the server using this invite: ${invite}`)
-        .addField('**Correct Code:**', `hm ${code}`, false)
-        .addField('**Input:**', `hm ${reason}`, false)
+        .addField('**Correct Code:**', `${code}`, false)
+        .addField('**Input:**', `${reason}`, false)
         .setFooter('Thanks for being a part of our community. ❤️', `${client.user.avatarURL}`);
       member.send(verifyEmbed);
+      const verificationfailedEmbed = new Discord.RichEmbed()
+        .setColor('#FF470F')
+        .setTitle('Captcha Failed')
+        .addField('**Requested Code:**', code, true)
+        .addField('**Input:**', reson, true)
+        .setTimestamp()
+        .setFooter(`Member: ${member.id}`);
+      log.send(verificationfailedEmbed);
       member.kick('Sent a wrong verification code.')
     };
   } else {
