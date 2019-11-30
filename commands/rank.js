@@ -13,7 +13,7 @@ exports.run = async (client, message, args) => {
     .setTitle("Score")
     .setColor("#4000FF")
     .setThumbnail(message.author.displayAvatarURL);
-    if(!money){
+    if(!score){
       embed.addField("Score", "0", true);
       return message.channel.send(embed);
     } else {
