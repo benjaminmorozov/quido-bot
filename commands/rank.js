@@ -22,7 +22,7 @@ exports.run = async (client, message, args) => {
   })
 };
 
-async function profile(message, score) {
+const profile = async function(message, score) {
   Score.findOne({userID: message.author.id, serverID: message.guild.id}, (err, score) => {
   const member = message.member;
 
