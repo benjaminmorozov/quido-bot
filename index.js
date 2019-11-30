@@ -4,6 +4,11 @@ const fs = require("fs");
 const { RichEmbed } = require('discord.js');
 const client = new Discord.Client();
 const getImages = require('./util/getImages');
+const mongoose = require("mognoose");
+mongoose.connect("mongodb+srv://admin:admin@quido-bot-sku03.mongodb.net/test?retryWrites=true&w=majority", {
+  useNewUrlParser: true
+});
+const Score = require("./models/score.js")
 
 const config = require("./config.json");
 // We also need to make sure we're attaching the config to the CLIENT so it's accessible everywhere!
