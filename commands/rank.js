@@ -6,13 +6,14 @@ mongoose.connect("mongodb+srv://admin:admin@quido-bot-sku03.mongodb.net/test?ret
 const Score = require("../models/score.js")
 
 exports.run = async (client, message, args) => {
-  Score.findOne({userID: message.author.id, serverID: message.guild.id}, (err, score) => {
+  const member = message.mentions.users.first() || message.author;
+  Score.findOne({userID: member.id, serverID: message.guild.id}, (err, score) => {
     if(err) console.log(err);
 
     let embed = new Discord.RichEmbed()
     .setTitle("Score")
     .setColor("#117EA6")
-    .setThumbnail(message.author.displayAvatarURL);
+    .setThumbnail(member.displayAvatarURL);
     if(!score){
       embed.addField("Score", "0", true);
       return message.channel.send(embed);
