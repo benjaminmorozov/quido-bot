@@ -10,7 +10,7 @@ exports.run = async (client, message, args) => {
   let reason = args.join(" ").slice(22);
   if(!reason) reason = "No reason provided.";
   const member = message.mentions.users.first()
-  Warns.findOne({userID: member.id, serverID: message.guild.id}, (err, score) => {
+  Warns.findOne({userID: member.id, serverID: message.guild.id}, (err, warns) => {
     if(err) console.log(err);
     if(!warns){
       const newWarns = new Warns({
