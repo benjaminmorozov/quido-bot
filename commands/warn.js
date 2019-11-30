@@ -14,8 +14,8 @@ exports.run = async (client, message, args) => {
     // message.mentions.members is a collection of people that have been mentioned, as GuildMembers.
     // We can also support getting the member by ID, which would be args[0]
     let reason = args.join(" ").slice(22);
-    let user = message.mentions.members.first();
-    if(!user)
+    let member = message.mentions.members.first();
+    if(!member)
         return message.reply("please mention a valid member of this server.");
 
     if(!reason) reason = "No reason provided.";
@@ -45,7 +45,7 @@ exports.run = async (client, message, args) => {
       let ModeratorRole = message.guild.roles.find("name", "Moderator");
       let AdminRole = message.guild.roles.find("name", "Admin");
       let Member = message.guild.roles.find("name", "Member");
-      if(user.roles.has(HelperRole.id) || user.roles.has(ModeratorRole.id) || user.roles.has(AdminRole.id)){
+      if(member.roles.has(HelperRole.id) || member.roles.has(ModeratorRole.id) || member.roles.has(AdminRole.id)){
         let warnchannel = client.channels.get(`630412977094524957`);
             warnchannel.send({embed: {
                 color: 0xff5353,
@@ -54,7 +54,7 @@ exports.run = async (client, message, args) => {
                 },
                 fields: [{
                   name: "Warned Member:",
-                  value: `<@${user.id}>`,
+                  value: `${member}`,
                   inline: "true"
                   },
                   {
@@ -84,7 +84,7 @@ exports.run = async (client, message, args) => {
                 }
               }
             });
-        } else if(user.roles.has(Member.id)){
+        } else if(member.roles.has(Member.id)){
           let warnchannel = client.channels.get(`630403969616707594`);
               warnchannel.send({embed: {
                   color: 0xff5353,
@@ -93,7 +93,7 @@ exports.run = async (client, message, args) => {
                   },
                   fields: [{
                     name: "Warned Member:",
-                    value: `<@${user.id}>`,
+                    value: `${member}`,
                     inline: "true"
                     },
                     {
@@ -133,7 +133,7 @@ exports.run = async (client, message, args) => {
                 },
                 fields: [{
                   name: "Warned Member:",
-                  value: `<@${user.id}>`,
+                  value: `${member}`,
                   inline: "true"
                   },
                   {
