@@ -1,12 +1,9 @@
 const Discord = require("discord.js");
 exports.run = async (client, message, args) => {
-  let guild = client.guilds.get("610434388777369602");
-  if(guild.member.roles.some(r=>['613347276647039016'].includes(r.id)))
-    return message.reply("You are already verified!");
-
   let reason = args.join(" ");
   const member = verifymember;
   if(message.guild === null) {
+    let guild = client.guilds.get("610434388777369602");
     var log = guild.channels.find('id', '617351547130478621');
     if(reason === code) {
       const verifyEmbed = new Discord.RichEmbed()
