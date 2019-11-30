@@ -1,5 +1,8 @@
 const Discord = require("discord.js");
 exports.run = async (client, message, args) => {
+  let allowedRole = message.guild.roles.find("name", "Member");
+  if (message.member.roles.has(member.id)
+    return message.author.reply('you are already verified!')
   let reason = args.join(" ");
   if(!reason) reason = "none";
   const member = verifymember;
