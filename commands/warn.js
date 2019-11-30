@@ -26,12 +26,12 @@ exports.run = async (client, message, args) => {
     var warnslog = client.guilds.find('id','610434388777369602').channels.find('id','630403969616707594');
     let embed = new Discord.RichEmbed()
     .setColor('#45b6fe')
-    .setAuthor(`[WARN] ${embeduser.username}#${embeduser.discriminator}`, embeduser.avatarURL)
-    .addField('Member:', `${user}`, true)
+    .setAuthor(`[WARN] ${member.username}#${member.discriminator}`, member.avatarURL)
+    .addField('Member:', `${member}`, true)
     .addField('Warned by:', `${message.author}`, true)
     .addField('Reason:', `${reason}`, true)
     .setTimestamp()
-    .setFooter(`Member ID: ${embeduser.id}`);
+    .setFooter(`Member ID: ${member.id}`);
     if(!warns){
       embed.addField("Warns Total:", "1", true);
       return warnslog.send(embed);
