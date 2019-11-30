@@ -11,7 +11,7 @@ exports.run = async (client, message, args) => {
         .setFooter('Thanks for being a part of our community. ❤️', `${client.user.avatarURL}`);
       member.send(verifyEmbed);
       let verifiedRole = client.guilds.get("610434388777369602").roles.find(role => role.id == "613347276647039016");
-      client.guilds.get("610434388777369602").message.author.addRole(verifiedRole);
+      client.guilds.get("610434388777369602").member.addRole(verifiedRole);
     } else {
       let invite = await client.guilds.get("610434388777369602").channels.find('id', '646418925986250762').createInvite({
           maxAge: 0, //maximum time for the invite, in milliseconds
