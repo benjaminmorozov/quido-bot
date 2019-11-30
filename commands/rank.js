@@ -79,5 +79,5 @@ exports.run = async (client, message, args) => {
   const filename = `profile-${message.author.id}.jpg`;
   const attachment = new Attachment(buffer, filename);
   await message.channel.send(attachment);
-  });
+  };
 };
