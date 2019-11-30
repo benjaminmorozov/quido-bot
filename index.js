@@ -60,7 +60,8 @@ client.on('guildMemberAdd', member => {
     logChannel.send(`${member} **joined**; Invited by **${inviter.username}** (**${invite.uses}** invites).`);
   });
   global.code = makeid(5);
-  var log = newMessage.guild.channels.find('id', '617351547130478621');
+  let guild = client.guilds.get("610434388777369602");
+  var log = guild.channels.find('id', '617351547130478621');
   const joinverifyEmbed = new Discord.RichEmbed()
   	.setColor('#117EA6')
   	.setTitle('Welcome to Quido\'s Club!')
