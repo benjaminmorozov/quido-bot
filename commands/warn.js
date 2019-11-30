@@ -25,7 +25,7 @@ exports.run = async (client, message, args) => {
       if(err) console.log(err);
       if(!warns){
         const newWarns = new Warns({
-          userID: message.author.id,
+          userID: member.id,
           serverID: message.guild.id,
           reason: reason,
           warns: warnstoadd
@@ -35,7 +35,7 @@ exports.run = async (client, message, args) => {
       } else {
         warns.warns = warns.warns + warnstoadd;
         warns.save().catch(err => consolelog(err));
-      }
+      };
 
     let OwnerRole = message.guild.roles.find("name", "🔱OWNER🔱");
     let DiscordManagerRole = message.guild.roles.find("name", "Discord Manager & Designer");
