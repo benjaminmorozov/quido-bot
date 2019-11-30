@@ -1,4 +1,3 @@
-const Canvas = require('canvas');
 const Discord = require("discord.js");
 const mongoose = require("mongoose");
 mongoose.connect("mongodb+srv://admin:admin@quido-bot-sku03.mongodb.net/test?retryWrites=true&w=majority", {
