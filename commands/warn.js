@@ -36,7 +36,6 @@ exports.run = async (client, message, args) => {
         warns.warns = warns.warns + warnstoadd;
         warns.save().catch(err => consolelog(err));
       }
-    });
 
     let OwnerRole = message.guild.roles.find("name", "🔱OWNER🔱");
     let DiscordManagerRole = message.guild.roles.find("name", "Discord Manager & Designer");
@@ -164,4 +163,5 @@ exports.run = async (client, message, args) => {
               }
             });
       };
+  });
 };
