@@ -11,7 +11,7 @@ exports.run = async (client, message, args) => {
 
     let embed = new Discord.RichEmbed()
     .setTitle("Score")
-    .setColor("#4000FF")
+    .setColor("#117EA6")
     .setThumbnail(message.author.displayAvatarURL);
     if(!score){
       embed.addField("Score", "0", true);
