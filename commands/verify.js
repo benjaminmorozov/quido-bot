@@ -25,7 +25,7 @@ exports.run = async (client, message, args) => {
         .addField('**Input:**', `hm ${reason}`, false)
         .setFooter('Thanks for being a part of our community. ❤️', `${client.user.avatarURL}`);
       member.send(verifyEmbed);
-      guild.member.kick('Sent a wrong verification code.')
+      member.kick('Sent a wrong verification code.')
     };
   } else {
     return;
