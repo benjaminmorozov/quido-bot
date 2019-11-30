@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 
-const warnSchema = mongoose.Schema({
+const scoreSchema = mongoose.Schema({
     userID: String,
     serverID: String,
     score: Number,
 });
 
-module.exports = mongoose.model("Money", moneySchema);
+module.exports = mongoose.model("Score", scoreSchema);
