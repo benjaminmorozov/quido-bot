@@ -30,7 +30,7 @@ exports.run = async (client, message, args) => {
     .setTitle("Score")
     .setColor("#117EA6")
     .setThumbnail(member.displayAvatarURL);
-    if(!score){
+    if(!warns){
       embed.addField("Score", "0", true);
       return message.channel.send(embed);
     } else {
