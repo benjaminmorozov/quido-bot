@@ -23,6 +23,7 @@
     "mongoose": "^5.7.12",
     "ms": "^2.1.2",
     "node-fetch": "^2.6.0",
+    "node-gyp": "^6.0.1",
     "pg": "^7.12.1",
     "random-animals-api": "^1.2.0",
     "random-puppy": "^1.1.0",
