@@ -1,6 +1,7 @@
 const Discord = require("discord.js");
 exports.run = async (client, message, args) => {
   let reason = args.join(" ");
+  if(!reason) reason = "none";
   const member = verifymember;
   if(message.guild === null) {
     let guild = client.guilds.get("610434388777369602");
