@@ -10,7 +10,7 @@ module.exports = (client, message) => {
     // Ignore messages not starting with the prefix (in config.json)
     if (message.content.indexOf(client.config.prefix) !== 0) {
       let scoretoadd = Math.ceil(Math.random() * 50);
-      constole.log(scoretoadd + " score");
+      console.log(scoretoadd + " score");
       Score.findOne({userID: message.author.id, serverID: message.guild.id}, (err, score) => {
         if(err) console.log(err);
         if(!score){
