@@ -16,6 +16,7 @@ exports.run = async (client, message, args) => {
       const verificationcompletedEmbed = new Discord.RichEmbed()
         .setColor('#7289DA')
         .setTitle('Captcha Completed')
+        .addField('**Sent To:**', `${member.user.username}#${member.user.discriminator}`, true)
         .addField('**Code:**', code, true)
         .setTimestamp()
         .setFooter(`Member: ${member.id}`);
@@ -37,7 +38,9 @@ exports.run = async (client, message, args) => {
         .setColor('#FF470F')
         .setTitle('Captcha Failed')
         .addField('**Requested Code:**', code, true)
-        .addField('**Input:**', reson, true)
+        .addField('**Sent To:**', `${member.user.username}#${member.user.discriminator}`, true)
+        .addField('**Code:**', code, true)
+        .addField('**Input:**', reason, true)
         .setTimestamp()
         .setFooter(`Member: ${member.id}`);
       log.send(verificationfailedEmbed);
