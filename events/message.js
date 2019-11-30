@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 mongoose.connect("mongodb+srv://admin:admin@quido-bot-sku03.mongodb.net/test?retryWrites=true&w=majority", {
   useNewUrlParser: true
 });
-const Score = require("./models/score.js")
+const Score = require("../models/score.js")
 module.exports = (client, message) => {
     // Ignore all bots
     if (message.author.bot) return;
