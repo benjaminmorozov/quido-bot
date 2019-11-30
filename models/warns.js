@@ -4,7 +4,6 @@ const WarnsSchema = mongoose.Schema({
     userID: String,
     serverID: String,
     reason: String,
-    warns: Number,
-});
+}, { timestamps: { createdAt: 'created_at'} });
 
 module.exports = mongoose.model("Warns", WarnsSchema);

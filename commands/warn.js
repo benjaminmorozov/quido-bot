@@ -6,36 +6,39 @@ mongoose.connect("mongodb+srv://admin:admin@quido-bot-sku03.mongodb.net/test?ret
 const Warns = require("../models/warns.js")
 
 exports.run = async (client, message, args) => {
+                                   //owner                designer             main admin           admin                main mod             mod                  helper
+  if(!message.member.roles.some(r=>["610704273822711820","622715668659437568","631922921475932170","616501517058310184","645728270519631889","610704593558437899","614694328119459840"].includes(r.id)) )
+    return message.reply("you don't have enough permissions to execute this command!");
+
   let warnstoadd = 1;
   let reason = args.join(" ").slice(22);
   if(!reason) reason = "No reason provided.";
   const member = message.mentions.users.first()
   Warns.findOne({userID: member.id, serverID: message.guild.id}, (err, warns) => {
     if(err) console.log(err);
-    if(!warns){
-      const newWarns = new Warns({
-        userID: member.id,
-        serverID: message.guild.id,
-        reason: reason,
-        warns: warnstoadd
-      })
+    const newWarns = new Warns({
+      userID: member.id,
+      serverID: message.guild.id,
+      reason: reason
 
       newWarns.save().catch(err => console.log(err));
-    } else {
-      warns.warns = warns.warns + warnstoadd;
-      warns.save().catch(err => consolelog(err));
-    }
+    });
 
+    var warnslog = client.guilds.find('id','610434388777369602').channels.find('id','630403969616707594');
     let embed = new Discord.RichEmbed()
-    .setTitle("Score")
-    .setColor("#117EA6")
-    .setThumbnail(member.displayAvatarURL);
+    .setColor('#45b6fe')
+    .setAuthor(`[WARN] ${embeduser.username}#${embeduser.discriminator}`, embeduser.avatarURL)
+    .addField('Member:', `${user}`, true)
+    .addField('Warned by:', `${message.author}`, true)
+    .addField('Reason:', `${reason}`, true)
+    .setTimestamp()
+    .setFooter(`Member ID: ${embeduser.id}`);
     if(!warns){
-      embed.addField("Score", "0", true);
-      return message.channel.send(embed);
+      embed.addField("Warns Total:", "1", true);
+      return warnslog.send(embed);
     } else {
-      embed.addField("Score", warns.warns, true);
-      return message.channel.send(embed);
+      embed.addField("Warns Total:", warns.warns, true);
+      return warnslog.send(embed);
     }
   })
 };
