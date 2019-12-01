@@ -8,7 +8,25 @@ module.exports = (client, message) => {
     if (message.author.bot) return;
 
     // Ignore messages not starting with the prefix (in config.json)
-    if (message.content.indexOf(client.config.prefix) !== 0) return;
+    if (message.content.indexOf(client.config.prefix) !== 0) {
+      let scoretoadd = Math.ceil(Math.random() * 50);
+      Score.findOne({userID: message.author.id, serverID: message.guild.id}, (err, score) => {
+        if(err) console.log(err);
+        if(!score){
+          const newScore = new Score({
+            userID: message.author.id,
+            serverID: message.guild.id,
+            score: scoretoadd
+          })
+
+          newScore.save().catch(err => console.log(err));
+        } else {
+          score.score = score.score + scoretoadd;
+          score.save().catch(err => consolelog(err));
+        }
+      })
+      return;
+    };
     // Our standard argument/command name definition.
     const args = message.content.slice(client.config.prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
