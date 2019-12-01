@@ -129,6 +129,7 @@ client.on('messageUpdate', function(oldMessage, newMessage) {
 });
 
 client.on('guildBanRemove', function(guild, user) {
+
   let embeduser = user;
   //post in the guild's log channel
   var log = client.guilds.find('id','610434388777369602').channels.find('id','617351547130478621');
