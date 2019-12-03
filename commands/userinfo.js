@@ -2,12 +2,15 @@ const Discord = require("discord.js");
 const moment = require("moment");
 exports.run = (client, message, args) => {
     const member = message.mentions.users.first() || message.author;
-    if(member.avatarURL === 'null')
-      let member.avatarURL = 'https://i.pinimg.com/originals/b8/5d/0b/b85d0b60c0283fe7fd3f34cd0df87f15.png';
+    if(member.avatarURL === 'null') {
+      let avatarURL = 'https://i.pinimg.com/originals/b8/5d/0b/b85d0b60c0283fe7fd3f34cd0df87f15.png';
+    } else {
+      let avatarURL = member.avatarURL;
+    }
     const userinfoEmbed= new Discord.RichEmbed()
       .setColor('0xff5353')
       .setAuthor(`${member.username}`)
-      .setThumbnail(`${member.avatarURL}`)
+      .setThumbnail(`${avatarURL}`)
       .addField('**Full Username:**', `${member.username}#${member.discriminator}`, false)
       .addField('**Member ID:**', `${member.id}`, false)
       .addField('**Account Creation Date:**', `${moment.utc(member.createdAt).format('dddd DD/MM/YYYY')}`, false)
