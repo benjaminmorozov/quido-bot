@@ -11,5 +11,5 @@ exports.run = (client, message, args) => {
         .addField('**Member Join Date:**', `${moment.utc(member.JoinedAt).format('dddd DD/MM/YYYY')}`, false)
         .setFooter('Thanks for being a part of our community. ❤️', `${client.user.avatarURL}`);
       message.channel.send(userinfoEmbed);
-    });
+    };
 }
