@@ -3,8 +3,7 @@ const moment = require("moment");
 exports.run = (client, message, args) => {
     const member = message.mentions.users.first() || message.author;
     var avatar = member.avatarURL;
-    if(avatar == null) avatar = "https://i.pinimg.com/originals/b8/5d/0b/b85d0b60c0283fe7fd3f34cd0df87f15.png";
-    message.channel.send(`${member.avatarURL}`)
+    if(avatar == null) avatar = "https://discordapp.com/assets/0e291f67c9274a1abdddeb3fd919cbaa.png";
     const userinfoEmbed= new Discord.RichEmbed()
       .setColor('0xff5353')
       .setAuthor(`${member.username}`)
