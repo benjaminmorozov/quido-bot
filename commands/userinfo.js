@@ -1,3 +1,4 @@
+const Discord = require("discord.js");
 const moment = require("moment");
 exports.run = (client, message, args) => {
     const member = message.mentions.users.first() || message.author;
