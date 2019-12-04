@@ -20,5 +20,5 @@ exports.run = async (client, message, args) => {
       .addField('Warns:', `${count}`, true)
       .setTimestamp()
       .setFooter(`Member ID: ${member.id}`);
-    embed.addField("Warns Total:", count, true);
+    message.channel.send(embed);
 };
