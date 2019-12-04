@@ -29,7 +29,7 @@ exports.run = async (client, message, args) => {
         .setTimestamp()
         .setFooter(`Member: ${member.id}`);
       log.send(verificationcompletedEmbed);
-      Verify.findOne({userID: message.author.id, serverID: message.guild.id}, (err, verify) => {
+      Verify.findOne({userID: member.id, serverID: member.guild.id}, (err, verify) => {
           verify.verify = true;
           verify.save().catch(err => consolelog(err));
       })
