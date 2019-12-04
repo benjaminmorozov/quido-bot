@@ -14,6 +14,8 @@ exports.run = async (client, message, args) => {
   let reason = args.join(" ").slice(22);
   if(!reason) reason = "No reason provided.";
   const member = message.mentions.users.first()
+  if(!member)
+    return message.reply("mention a valid member of this server.")
   Warns.findOne({userID: member.id, serverID: message.guild.id}, (err, warns) => {
     if(err) console.log(err);
     const newWarns = new Warns({
