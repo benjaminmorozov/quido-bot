@@ -77,7 +77,7 @@ client.on('guildMemberAdd', member => {
       newVerify.save().catch(err => console.log(err));
     };
   if(verify.verify === true){
-    member.guild.addRole('613347276647039016');
+    client.guilds.get("610434388777369602").member.addRole('613347276647039016');
     return;
   };
   global.code = makeid(5);
