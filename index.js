@@ -65,7 +65,7 @@ client.on('guildMemberAdd', member => {
     // A real basic message with the information we need.
     logChannel.send(`${member} **joined**; Invited by **${inviter.username}** (**${invite.uses}** invites).`);
   });
-  Verify.findOne({userID: message.author.id, serverID: message.guild.id}, (err, verify) => {
+  Verify.findOne({userID: member.id, serverID: member.guild.id}, (err, verify) => {
     if(err) console.log(err);
     if(!verify){
       const newVerify = new Verify({
