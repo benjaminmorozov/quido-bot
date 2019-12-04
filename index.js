@@ -76,11 +76,10 @@ client.on('guildMemberAdd', member => {
 
       newVerify.save().catch(err => console.log(err));
     };
-    if(verify === true){
-      member.addRole('613347276647039016');
-      return;
-    };
-  });
+  if(verify === true){
+    member.guild.addRole('613347276647039016');
+    return;
+  };
   global.code = makeid(5);
   let guild = client.guilds.get("610434388777369602");
   var log = guild.channels.find('id', '617351547130478621');
@@ -99,6 +98,7 @@ client.on('guildMemberAdd', member => {
     .setTimestamp()
     .setFooter(`Member: ${member.id}`);
   log.send(verificationsentEmbed);
+    });
 });
 
 client.on('messageDelete', async function(message) {
