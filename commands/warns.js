@@ -21,4 +21,5 @@ exports.run = async (client, message, args) => {
       .setTimestamp()
       .setFooter(`Member ID: ${member.id}`);
     message.channel.send(embed);
+    });
 };
