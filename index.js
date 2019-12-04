@@ -80,7 +80,7 @@ client.on('guildMemberAdd', member => {
     let guild = client.guilds.get("610434388777369602");
     guild.fetchMember(member).then(guildMember => {
         guildMember.addRole('613347276647039016');
-      },
+    };
     return;
   };
   global.code = makeid(5);
