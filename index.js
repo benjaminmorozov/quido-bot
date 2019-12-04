@@ -69,8 +69,8 @@ client.on('guildMemberAdd', member => {
     if(err) console.log(err);
     if(!verify){
       const newVerify = new Verify({
-        userID: message.author.id,
-        serverID: message.guild.id,
+        userID: member.id,
+        serverID: member.guild.id,
         score: false
       })
 
