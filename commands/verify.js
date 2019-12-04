@@ -5,6 +5,18 @@ mongoose.connect("mongodb+srv://admin:admin@quido-bot-sku03.mongodb.net/test?ret
 });
 const Verify = require("../models/verify.js");
 exports.run = async (client, message, args) => {
+                                   //owner                blade                designer             main admin           admin
+  if(message.member.roles.some(r=>['610704273822711820','627253814717710370','622715668659437568','631922921475932170','616501517058310184','645728270519631889'].includes(r.id))) {
+    let mentionuser = message.mentions.members.first();
+    if(!mentionuser)
+      return message.reply("mention a valid member of this server.")
+    if(mentionuser.id === message.author.id)
+      return message.reply(`you cannot verify yourself.`)
+      Verify.findOne({userID: mentionuser.id, serverID: member.guild.id}, (err, verify) => {
+          verify.verify = true;
+          verify.save().catch(err => consolelog(err));
+      })
+  };
   let guild = client.guilds.get("610434388777369602");
   if(guild.member(message.author).roles.some(r=>['613347276647039016'].includes(r.id)))
     return message.reply(`${message.author}, you are already verified!`)
