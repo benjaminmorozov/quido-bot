@@ -71,12 +71,12 @@ client.on('guildMemberAdd', member => {
       const newVerify = new Verify({
         userID: member.id,
         serverID: member.guild.id,
-        score: false
+        verify: false
       })
 
       newVerify.save().catch(err => console.log(err));
     };
-  if(verify === true){
+  if(verify.verify === true){
     member.guild.addRole('613347276647039016');
     return;
   };
