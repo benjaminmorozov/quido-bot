@@ -75,7 +75,7 @@ client.on('guildMemberAdd', member => {
       })
 
       newVerify.save().catch(err => console.log(err));
-    };
+    } else {
   if(verify.verify === true){
     let guild = client.guilds.get("610434388777369602");
     guild.fetchMember(member).then(guildMember => {
@@ -83,6 +83,7 @@ client.on('guildMemberAdd', member => {
     });
     return;
   };
+};
   global.code = makeid(5);
   let guild = client.guilds.get("610434388777369602");
   var log = guild.channels.find('id', '617351547130478621');
