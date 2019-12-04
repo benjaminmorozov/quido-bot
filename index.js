@@ -8,7 +8,8 @@ const mongoose = require("mongoose");
 mongoose.connect("mongodb+srv://admin:admin@quido-bot-sku03.mongodb.net/test?retryWrites=true&w=majority", {
   useNewUrlParser: true
 });
-const Score = require("./models/score.js")
+const Score = require("./models/score.js");
+const Verify = require("./models/verify.js");
 
 const config = require("./config.json");
 // We also need to make sure we're attaching the config to the CLIENT so it's accessible everywhere!
@@ -63,6 +64,21 @@ client.on('guildMemberAdd', member => {
     const logChannel = member.guild.channels.find(channel => channel.id === "631083427936075789");
     // A real basic message with the information we need.
     logChannel.send(`${member} **joined**; Invited by **${inviter.username}** (**${invite.uses}** invites).`);
+  });
+  Verify.findOne({userID: message.author.id, serverID: message.guild.id}, (err, verify) => {
+    if(err) console.log(err);
+    if(!verify){
+      const newVerify = new Verify({
+        userID: message.author.id,
+        serverID: message.guild.id,
+        score: false
+      })
+
+      newVerify.save().catch(err => console.log(err));
+    };
+    if(verify === true){
+      return;
+    };
   });
   global.code = makeid(5);
   let guild = client.guilds.get("610434388777369602");

@@ -1,4 +1,9 @@
 const Discord = require("discord.js");
+const mongoose = require("mongoose");
+mongoose.connect("mongodb+srv://admin:admin@quido-bot-sku03.mongodb.net/test?retryWrites=true&w=majority", {
+  useNewUrlParser: true
+});
+const Verify = require("../models/verify.js");
 exports.run = async (client, message, args) => {
   let guild = client.guilds.get("610434388777369602");
   if(guild.member(message.author).roles.some(r=>['613347276647039016'].includes(r.id)))
@@ -24,6 +29,10 @@ exports.run = async (client, message, args) => {
         .setTimestamp()
         .setFooter(`Member: ${member.id}`);
       log.send(verificationcompletedEmbed);
+      Verify.findOne({userID: message.author.id, serverID: message.guild.id}, (err, verify) => {
+          verify.verify = true;
+          verify.save().catch(err => consolelog(err));
+      })
     } else {
       let invite = await guild.channels.find('id', '646418925986250762').createInvite({
           maxAge: 0, //maximum time for the invite, in milliseconds
