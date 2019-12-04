@@ -9,7 +9,7 @@ exports.run = async (client, message, args) => {
   if(message.member.roles.some(r=>['610704273822711820','627253814717710370','622715668659437568','631922921475932170','616501517058310184','645728270519631889'].includes(r.id))) {
     let mentionuser = message.mentions.members.first();
     if(!mentionuser)
-      return message.reply("mention a valid member of this server.")
+      return message.reply(`mention a valid member of this server. ${mentionuser}`)
     if(mentionuser.id === message.author.id)
       return message.reply(`you cannot verify yourself.`)
       Verify.findOne({userID: mentionuser.id, serverID: mentionuser.guild.id}, (err, verify) => {
