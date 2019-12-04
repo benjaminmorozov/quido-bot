@@ -28,17 +28,13 @@ exports.run = async (client, message, args) => {
       .setColor('#45b6fe')
       .setAuthor(`[WARN] ${member.username}#${member.discriminator}`, member.avatarURL)
       .addField('Member:', `${member}`, true)
-      .addField('Warned by:', `${message.author}`, true)
+      .addField('Warned By:', `${message.author}`, true)
+      .addField('Warned In:', `${message.channel}`, true)
       .addField('Reason:', `${reason}`, true)
       .setTimestamp()
       .setFooter(`Member ID: ${member.id}`);
-    if(!warns){
-      embed.addField("Warns Total:", "1", true);
+    embed.addField("Warns Total:", count, true);
       return warnslog.send(embed);
-    } else {
-      embed.addField("Warns Total:", count, true);
-      return warnslog.send(embed);
-    }
   });
 });
 };
