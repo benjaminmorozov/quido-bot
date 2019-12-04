@@ -79,7 +79,6 @@ client.on('guildMemberAdd', member => {
   if(verify.verify === true){
     let guild = client.guilds.get("610434388777369602");
     guild.fetchMember(member).then(guildMember => {
-        var desiredRole = message.guild.createRole(.......);
         guildMember.addRole('613347276647039016');
       },
     return;
