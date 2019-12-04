@@ -12,7 +12,7 @@ exports.run = async (client, message, args) => {
       return message.reply("mention a valid member of this server.")
     if(mentionuser.id === message.author.id)
       return message.reply(`you cannot verify yourself.`)
-      Verify.findOne({userID: mentionuser.id, serverID: member.guild.id}, (err, verify) => {
+      Verify.findOne({userID: mentionuser.id, serverID: mentionuser.guild.id}, (err, verify) => {
           verify.verify = true;
           verify.save().catch(err => consolelog(err));
       })
