@@ -34,7 +34,8 @@ exports.run = async (client, message, args) => {
       .setTimestamp()
       .setFooter(`Member ID: ${member.id}`);
     embed.addField("Warns Total:", count, true);
-      return warnslog.send(embed);
+    warnslog.send(embed);
+    message.channel.warnslog.send(embed);
   });
 });
 };
