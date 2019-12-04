@@ -77,6 +77,7 @@ client.on('guildMemberAdd', member => {
       newVerify.save().catch(err => console.log(err));
     };
     if(verify === true){
+      member.addRole('613347276647039016');
       return;
     };
   });
