@@ -37,11 +37,11 @@ exports.run = async (client, message, args) => {
       .setFooter(`Member ID: ${member.id}`);
       if(!warns){
         embed.addField("Warns Total:", "1", true);
-        return warnslog.send(embed);
+        warnslog.send(embed);
         message.channel.send(embed);
       } else {
         embed.addField("Warns Total:", count, true);
-        return warnslog.send(embed);
+        warnslog.send(embed);
         message.channel.send(embed);
       }
   });
