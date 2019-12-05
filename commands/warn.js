@@ -35,9 +35,15 @@ exports.run = async (client, message, args) => {
       .addField('Reason:', `${reason}`, true)
       .setTimestamp()
       .setFooter(`Member ID: ${member.id}`);
-    embed.addField("Warns Total:", count, true);
-    warnslog.send(embed);
-    message.channel.send(embed);
+      if(!warns){
+        embed.addField("Warns Total:", "1", true);
+        return warnslog.send(embed);
+        message.channel.send(embed);
+      } else {
+        embed.addField("Warns Total:", count, true);
+        return warnslog.send(embed);
+        message.channel.send(embed);
+      }
   });
 });
 };
