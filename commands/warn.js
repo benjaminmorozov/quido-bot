@@ -24,6 +24,7 @@ exports.run = async (client, message, args) => {
       reason: reason
     });
     newWarns.save().catch(err => console.log(err));
+  });
   Warns.count({userID: member.id}, function(err, count) {
     var warnslog = client.guilds.find('id','610434388777369602').channels.find('id','630403969616707594');
     let embed = new Discord.RichEmbed()
@@ -33,10 +34,9 @@ exports.run = async (client, message, args) => {
       .addField('Warned By:', `${message.author}`, true)
       .addField('Warned In:', `${message.channel}`, true)
       .addField('Reason:', `${reason}`, true)
+      .addField('Warns Total:', count, true)
       .setTimestamp()
       .setFooter(`Member ID: ${member.id}`);
-    embed.addField("Warns Total:", count, true);
     message.channel.send(embed);
   });
-});
 };
