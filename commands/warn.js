@@ -24,8 +24,7 @@ exports.run = async (client, message, args) => {
       reason: reason
     });
     newWarns.save().catch(err => console.log(err));
-    setTimeout(function(){
-      Warns.estimatedDocumentCount({userID: member.id}, function(err, count) {
+      Warns.countDocuments(query, {userID: member.id}, function(err, count) {
         var warnslog = client.guilds.find('id','610434388777369602').channels.find('id','630403969616707594');
         let embed = new Discord.RichEmbed()
           .setColor('#45b6fe')
@@ -46,6 +45,5 @@ exports.run = async (client, message, args) => {
             message.channel.send(embed);
           }
       });
-  }, 200);
 });
 };
