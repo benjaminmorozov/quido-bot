@@ -1,28 +1,35 @@
 const Discord = require("discord.js");
-const fs = require("fs");
-const ms = require("ms");
-let warns = JSON.parse(fs.readFileSync("./warnings.json", "utf8"));
+const mongoose = require("mongoose");
+mongoose.connect("mongodb+srv://admin:admin@quido-bot-sku03.mongodb.net/test?retryWrites=true&w=majority", {
+  useNewUrlParser: true
+});
+const Warns = require("../models/warns.js")
 
 exports.run = async (client, message, args) => {
-    if(!message.member.roles.some(r=>["🔱OWNER🔱","Discord Manager & Designer","Administrator","Head Moderator","Moderator","Head Admin","Admin","Helper"].includes(r.name)) )
-    return message.reply("sorry, you don't have enough permissions to use this command!");
+                                   //owner                designer             main admin           admin                main mod             mod                  helper
+  if(!message.member.roles.some(r=>["610704273822711820","622715668659437568","631922921475932170","616501517058310184","645728270519631889"].includes(r.id)) )
+    return message.reply("you don't have enough permissions to execute this command!");
 
-    // Let's first check if we have a member and if we can kick them!
-    // message.mentions.members is a collection of people that have been mentioned, as GuildMembers.
-    // We can also support getting the member by ID, which would be args[0]
-    let member = message.mentions.members.first();
-    if(!member)
-        return message.reply("please mention a valid member of this server.");
-
-    if(!warns[member.id]) warns[member.id] = {
-        warns: 0
+  let warnstoadd = 1;
+  let reason = args.join(" ").slice(22);
+  if(!reason) reason = "No reason provided.";
+  const member = message.mentions.users.first()
+  if(!member)
+    return message.reply("mention a valid member of this server.")
+  Warns.deleteMany({userID: member.id, serverID: message.guild.id}, (err, warns) => {
+    if(err) console.log(err);
+    if(!warns){
+      return;
     };
-
-    warns[member.id].warns++;
-
-    fs.writeFile("./warnings.json", JSON.stringify(warns), (err) => {
-        if (err) console.log(err)
-    });
-
-    let warnchannel = client.channels.get(`630403969616707594`);
+  });
+    var warnslog = client.guilds.find('id','610434388777369602').channels.find('id','630403969616707594');
+    let embed = new Discord.RichEmbed()
+      .setColor('#45b6fe')
+      .setAuthor(`[CLEAR WARNS] ${member.username}#${member.discriminator}`, member.avatarURL)
+      .addField('Member:', `${member}`, true)
+      .addField('Moderator:', `${message.author}`, true)
+      .setTimestamp()
+      .setFooter(`Member ID: ${member.id}`);
+    warnslog.send(embed);
+    message.channel.send(embed);
 };
