@@ -24,7 +24,7 @@ exports.run = async (client, message, args) => {
       reason: reason
     });
     newWarns.save().catch(err => console.log(err));
-  Warns.countDocuments({userID: member.id, serverID: message.guild.id}, (err, count) => {
+  Warns.estimatedDocumentCount({userID: member.id, serverID: message.guild.id}, (err, count) => {
     var warnslog = client.guilds.find('id','610434388777369602').channels.find('id','630403969616707594');
     let embed = new Discord.RichEmbed()
       .setColor('#45b6fe')
