@@ -14,6 +14,7 @@ exports.run = async (client, message, args) => {
     if(!member)
       return message.reply("mention a valid member of this server.")
     Warns.countDocuments({userID: member.id, serverID: message.guild.id}, (err, count) => {
+    Warns.find({userID: member.id, serverID: message.guild.id}, (err, warns).stream => {
     let embed = new Discord.RichEmbed()
       .setColor('#45b6fe')
       .setAuthor(`[WARNS] ${member.username}#${member.discriminator}`, member.avatarURL)
@@ -21,5 +22,6 @@ exports.run = async (client, message, args) => {
       .setTimestamp()
       .setFooter(`Member ID: ${member.id}`);
     message.channel.send(embed);
+    });
     });
 };

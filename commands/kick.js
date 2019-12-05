@@ -10,7 +10,7 @@ exports.run = async (client, message, args) => {
 
   if(!reason) reason = "No reason provided.";
 
-  if(message.member.roles.some(r=>['630151131841953792'].includes(r.id))){
+  if(message.member.roles.some(r=>['610704273822711820','627253814717710370','622715668659437568'].includes(r.id))){
     await member.kick(reason)
       .catch(error => message.channel.send(`Sorry ${message.author}, I couldn't kick ${member.user} because of : ${error}`));
     message.channel.send(`${member.user} has been kciked by ${message.author} because: ${reason}`);

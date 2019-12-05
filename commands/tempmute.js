@@ -23,7 +23,7 @@ exports.run = async (client, message, args) => {
     // This is the role you want to assign to the user
     let muterole = message.guild.roles.find(role => role.name == "Muted");
 
-    if(message.member.roles.some(r=>['630151131841953792'].includes(r.id))){
+    if(message.member.roles.some(r=>['610704273822711820','627253814717710370','622715668659437568'].includes(r.id))){
       if(message.member.roles.has(muterole.id)) {
         return message.channel.send(`Sorry ${message.author}, this member is already muted.`)
       } else {

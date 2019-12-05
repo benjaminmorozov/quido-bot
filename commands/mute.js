@@ -17,7 +17,7 @@ exports.run = async (client, message, args) => {
     if(member.roles.has('630146706930925569'))
         return message.reply("this user is already muted.");
 
-    if(message.member.roles.some(r=>['630151131841953792'].includes(r.id))){
+    if(message.member.roles.some(r=>['610704273822711820','627253814717710370','622715668659437568'].includes(r.id))){
         // Mute the user
         let mutedRole = message.guild.roles.find(role => role.name == "Muted");
         member.addRole(mutedRole);
