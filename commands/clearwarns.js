@@ -16,6 +16,12 @@ exports.run = async (client, message, args) => {
   const member = message.mentions.users.first()
   if(!member)
     return message.reply("mention a valid member of this server.")
+  Warns.findOne({userID: member.id, serverID: message.guild.id}, (err, warns) => {
+    if(err) console.log(err);
+    if(!warns){
+      return;
+    };
+  });
   Warns.deleteMany({userID: member.id, serverID: message.guild.id}, (err, warns) => {
     if(err) console.log(err);
     if(!warns){
