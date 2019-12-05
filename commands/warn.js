@@ -25,7 +25,7 @@ exports.run = async (client, message, args) => {
     });
     newWarns.save().catch(err => console.log(err));
   });
-  Warns.count({userID: member.id}, function(err, count) {
+  Warns.countDocuments({userID: member.id}, function(err, count) {
     var warnslog = client.guilds.find('id','610434388777369602').channels.find('id','630403969616707594');
     let embed = new Discord.RichEmbed()
       .setColor('#45b6fe')
@@ -37,6 +37,7 @@ exports.run = async (client, message, args) => {
       .addField('Warns Total:', count + 1, true)
       .setTimestamp()
       .setFooter(`Member ID: ${member.id}`);
+    warnslog.send(embed);
     message.channel.send(embed);
   });
 };
