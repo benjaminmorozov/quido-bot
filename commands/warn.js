@@ -24,26 +24,28 @@ exports.run = async (client, message, args) => {
       reason: reason
     });
     newWarns.save().catch(err => console.log(err));
-  Warns.estimatedDocumentCount({userID: member.id, serverID: message.guild.id}, (err, count) => {
-    var warnslog = client.guilds.find('id','610434388777369602').channels.find('id','630403969616707594');
-    let embed = new Discord.RichEmbed()
-      .setColor('#45b6fe')
-      .setAuthor(`[WARN] ${member.username}#${member.discriminator}`, member.avatarURL)
-      .addField('Member:', `${member}`, true)
-      .addField('Warned By:', `${message.author}`, true)
-      .addField('Warned In:', `${message.channel}`, true)
-      .addField('Reason:', `${reason}`, true)
-      .setTimestamp()
-      .setFooter(`Member ID: ${member.id}`);
-      if(!warns){
-        embed.addField("Warns Total:", "1", true);
-        warnslog.send(embed);
-        message.channel.send(embed);
-      } else {
-        embed.addField("Warns Total:", count, true);
-        warnslog.send(embed);
-        message.channel.send(embed);
-      }
-  });
+    setTimeout(function(){
+      Warns.estimatedDocumentCount({userID: member.id, serverID: message.guild.id}, (err, count) => {
+        var warnslog = client.guilds.find('id','610434388777369602').channels.find('id','630403969616707594');
+        let embed = new Discord.RichEmbed()
+          .setColor('#45b6fe')
+          .setAuthor(`[WARN] ${member.username}#${member.discriminator}`, member.avatarURL)
+          .addField('Member:', `${member}`, true)
+          .addField('Warned By:', `${message.author}`, true)
+          .addField('Warned In:', `${message.channel}`, true)
+          .addField('Reason:', `${reason}`, true)
+          .setTimestamp()
+          .setFooter(`Member ID: ${member.id}`);
+          if(!warns){
+            embed.addField("Warns Total:", "1", true);
+
+            message.channel.send(embed);
+          } else {
+            embed.addField("Warns Total:", count, true);
+
+            message.channel.send(embed);
+          }
+      });
+  }, 1000);
 });
 };
