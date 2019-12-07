@@ -20,8 +20,8 @@ exports.run = async (client, message, args) => {
         .setTitle('Verified!')
         .setDescription(`Thanks for verifying. Have a nice experience!`)
         .setFooter('Thanks for being a part of our community. ❤️', `${client.user.avatarURL}`);
-      member.send(verifyEmbed);
-      member.addRole('613347276647039016');
+      message.author.send(verifyEmbed);
+      message.author.addRole('613347276647039016');
       const verificationcompletedEmbed = new Discord.RichEmbed()
         .setColor('#7289DA')
         .setTitle('Captcha Completed')
@@ -46,7 +46,7 @@ exports.run = async (client, message, args) => {
         .addField('**Correct Code:**', `${code}`, false)
         .addField('**Input:**', `${reason}`, false)
         .setFooter('Thanks for being a part of our community. ❤️', `${client.user.avatarURL}`);
-      verifymember.send(verifyEmbed);
+      message.author.send(verifyEmbed);
       const verificationfailedEmbed = new Discord.RichEmbed()
         .setColor('#FF470F')
         .setTitle('Captcha Failed')
@@ -56,7 +56,7 @@ exports.run = async (client, message, args) => {
         .setTimestamp()
         .setFooter(`Member: ${member.id}`);
       log.send(verificationfailedEmbed);
-      verifymember.kick('Sent a wrong verification code.')
+      message.author.kick('Sent a wrong verification code.')
     };
   } else {
     return;
