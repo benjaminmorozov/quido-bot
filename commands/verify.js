@@ -4,7 +4,7 @@ mongoose.connect("mongodb+srv://admin:admin@quido-bot-sku03.mongodb.net/test?ret
   useNewUrlParser: true
 });
 const Verify = require("../models/verify.js");
-var verifymember = require("../index.js");
+const verifymember = require("../index.js");
 exports.run = async (client, message, args) => {
   let guild = client.guilds.get("610434388777369602");
   if(guild.member(message.author).roles.some(r=>['613347276647039016'].includes(r.id)))
