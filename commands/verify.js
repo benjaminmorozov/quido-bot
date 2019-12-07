@@ -4,7 +4,6 @@ mongoose.connect("mongodb+srv://admin:admin@quido-bot-sku03.mongodb.net/test?ret
   useNewUrlParser: true
 });
 const Verify = require("../models/verify.js");
-const verifymember = require("../index.js");
 exports.run = async (client, message, args) => {
   let guild = client.guilds.get("610434388777369602");
   if(guild.member(message.author).roles.some(r=>['613347276647039016'].includes(r.id)))
@@ -20,7 +19,7 @@ exports.run = async (client, message, args) => {
         .setTitle('Verified!')
         .setDescription(`Thanks for verifying. Have a nice experience!`)
         .setFooter('Thanks for being a part of our community. ❤️', `${client.user.avatarURL}`);
-      message.author.send(verifyEmbed);
+      member.send(verifyEmbed);
       member.addRole('613347276647039016');
       const verificationcompletedEmbed = new Discord.RichEmbed()
         .setColor('#7289DA')
@@ -46,7 +45,7 @@ exports.run = async (client, message, args) => {
         .addField('**Correct Code:**', `${code}`, false)
         .addField('**Input:**', `${reason}`, false)
         .setFooter('Thanks for being a part of our community. ❤️', `${client.user.avatarURL}`);
-      message.author.send(verifyEmbed);
+      member.send(verifyEmbed);
       const verificationfailedEmbed = new Discord.RichEmbed()
         .setColor('#FF470F')
         .setTitle('Captcha Failed')
