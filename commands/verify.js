@@ -4,13 +4,14 @@ mongoose.connect("mongodb+srv://admin:admin@quido-bot-sku03.mongodb.net/test?ret
   useNewUrlParser: true
 });
 const Verify = require("../models/verify.js");
+var verifymember = require("../index.js");
 exports.run = async (client, message, args) => {
   let guild = client.guilds.get("610434388777369602");
   if(guild.member(message.author).roles.some(r=>['613347276647039016'].includes(r.id)))
     return message.reply(`${message.author}, you are already verified!`)
   let reason = args.join(" ");
   if(!reason) reason = "none";
-  const member = global.verifymember.member(member.id);
+  const member = verifymember;
   if(message.guild === null) {
     var log = guild.channels.find('id', '617351547130478621');
     if(reason === code) {
