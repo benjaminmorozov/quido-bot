@@ -49,7 +49,7 @@ client.on('ready', () => {
 });
 
 client.on('guildMemberAdd', member => {
-  global.verifymember = member;
+  global.verifymember.member(member.id) = member;
   // To compare, we need to load the current invite list.
   member.guild.fetchInvites().then(guildInvites => {
     // This is the *existing* invites for the guild.

@@ -10,7 +10,7 @@ exports.run = async (client, message, args) => {
     return message.reply(`${message.author}, you are already verified!`)
   let reason = args.join(" ");
   if(!reason) reason = "none";
-  const member = verifymember;
+  const member = global.verifymember.member(member.id);
   if(message.guild === null) {
     var log = guild.channels.find('id', '617351547130478621');
     if(reason === code) {
