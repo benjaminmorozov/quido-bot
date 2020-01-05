@@ -8,7 +8,7 @@ exports.run = (client, message, args) => {
       .setColor('0x0092ca')
       .setAuthor(member.username)
       .setThumbnail(member.displayAvatarURL)
-      .addField('**Full Username:**', member.username} + `#` + member.discriminator, false)
+      .addField('**Full Username:**', member.username + `#` + member.discriminator, false)
       .addField('**Member ID:**', member.id, false)
       .addField('**Account Creation Date:**', `${moment.utc(member.createdAt).format('dddd DD/MM/YYYY')}`, false)
       .addField('**Member Join Date:**', `${member.joinedAt.toUTCString().substr(0, 16)}`, false)
