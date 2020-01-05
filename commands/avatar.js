@@ -4,7 +4,7 @@ exports.run = (client, message) => {
     message.channel.send({embed: {
         color: 0x0092ca,
         author: {
-          name: ${taggedUser.username} + `#` + ${taggedUser.discriminator},
+          name: taggedUser.username + `#` + taggedUser.discriminator,
         },
         image: {
             url: taggedUser.displayAvatarURL,
