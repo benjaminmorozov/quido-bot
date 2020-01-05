@@ -4,7 +4,7 @@ exports.run = (client, message, args) => {
     const member = message.mentions.users.first() || message.author;
 	function joinDate() {
 		var d = message.guild.member(member).joinedAt;
-		if (moment(d).add(10, 'minutes').isAfter(/*now*/)) return 'danger'; // danger if older than 10 mins
+		if (moment(d).add(1, 'months').isAfter(/*now*/)) return 'danger'; // danger if older than 10 mins
 		return 'success';  // Looks good!
 	}
     var avatar = member.avatarURL;

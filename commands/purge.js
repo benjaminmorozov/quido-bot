@@ -7,7 +7,7 @@ exports.run = async (client, message, args) => {
         return;
     }
     // get the delete count, as an actual number.
-    const deleteCount = parseInt(args[0], 10);
+    const deleteCount = parseInt(args[0], 10) + 1;
 
     // Ooooh nice, combined conditions. <3
     if(!deleteCount || deleteCount < 2 || deleteCount > 100)
