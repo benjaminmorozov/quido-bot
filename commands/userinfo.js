@@ -5,7 +5,7 @@ exports.run = (client, message, args) => {
 	let joinDate = message.guild.member(member).joinedAt.toUTCString().substr(0, 16);
 	var date = new Date(joinDate);
 	var currentDate = new Date();
-	if (date >= currentDate - 1 month) {
+	if(date >= currentDate - 1 month) {
 		let newJoinDate = `**⚠ ${joinDate}**`
 	else {
 		let newJoinDate = `${joinDate}`
