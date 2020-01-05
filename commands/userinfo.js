@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const moment = require("moment");
 exports.run = (client, message, args) => {
     const member = message.mentions.users.first() || message.author;
-	let d = message.guild.member(member).createdAt;
+	let d = moment.utc(member.createdAt).format('dddd DD/MM/YYYY');
 			var OneDay = new Date().getTime() + (7 * 1 * 24 * 60 * 60 * 1000)
 	function creationDate() {
 										 // week day hour min  sec  msec
