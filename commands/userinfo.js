@@ -5,7 +5,7 @@ exports.run = (client, message, args) => {
 	function creationDate() {
 		var d = message.guild.member(member).createdAt;
 		var diff = moment().diff(d, 'months');
-		if(diff < 1) return `**⚠️ ${moment.utc(member.createdAt).format('dddd DD/MM/YYYY')} ⚠**`; // danger if age less than 1 month
+		if(diff > 1) return `**⚠️ ${moment.utc(member.createdAt).format('dddd DD/MM/YYYY')} ⚠**`; // danger if age less than 1 month
 		return moment.utc(member.createdAt).format('dddd DD/MM/YYYY');  // Looks good!
 	}
     var avatar = member.avatarURL;
