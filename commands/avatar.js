@@ -2,9 +2,9 @@ exports.run = (client, message) => {
     const taggedUser = message.mentions.users.first() || message.author;
 
     message.channel.send({embed: {
-        color: 0xff5353,
+        color: 0x0092ca,
         author: {
-          name: `${taggedUser.username}#${taggedUser.discriminator}`,
+          name: ${taggedUser.username} + `#` + ${taggedUser.discriminator},
         },
         image: {
             url: taggedUser.displayAvatarURL,
