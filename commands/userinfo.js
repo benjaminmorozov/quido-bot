@@ -15,7 +15,7 @@ exports.run = (client, message, args) => {
       .addField('**Full Username:**', member.username + `#` + member.discriminator, false)
       .addField('**Member ID:**', member.id, false)
       .addField('**Account Creation Date:**', `${moment.utc(member.createdAt).format('dddd DD/MM/YYYY')}`, false)
-      .addField('**Member Join Date:**', `${joinDate}`, false)
+      .addField('**Member Join Date:**', `${joinDate()}`, false)
       .setFooter('Thanks for being a part of our community. ❤️', message.guild.iconURL);
     message.channel.send(userinfoEmbed);
 };
