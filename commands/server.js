@@ -3,7 +3,7 @@ exports.run = (client, message) => {
         color: 0x0092ca,
         author: {
         name: message.guild.name,
-        icon_url: $essage.guild.iconURL
+        icon_url: message.guild.iconURL
         },
         thumbnail: {
             "url": message.guild.iconURL
