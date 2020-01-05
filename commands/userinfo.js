@@ -2,10 +2,10 @@ const Discord = require("discord.js");
 const moment = require("moment");
 exports.run = (client, message, args) => {
     const member = message.mentions.users.first() || message.author;
-	joinDate: function() {
+	function joinDate() {
     if(moment.utc(message.guild.member(member).joinedAt).add(1, 'month').isBefore(/*now*/)) return 'danger'; // danger if older than 10 mins
-    return 'success';  // Looks good!
-  },
+		return 'success';  // Looks good!
+    };
     var avatar = member.avatarURL;
     if(avatar == null) avatar = "https://discordapp.com/assets/0e291f67c9274a1abdddeb3fd919cbaa.png";
     const userinfoEmbed= new Discord.RichEmbed()
