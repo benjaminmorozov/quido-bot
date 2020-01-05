@@ -10,7 +10,7 @@ exports.run = (client, message) => {
             url: taggedUser.displayAvatarURL,
         },
         footer: {
-          icon_url: guild.icon_url,
+          icon_url: message.guild.iconURL,
           text: "Thanks for being a part of our community ❤️"
         }
       }
