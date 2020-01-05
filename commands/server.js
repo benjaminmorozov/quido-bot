@@ -2,11 +2,11 @@ exports.run = (client, message) => {
     message.channel.send({embed: {
         color: 0x0092ca,
         author: {
-        name: `${message.guild.name}`,
-        icon_url: `${message.guild.iconURL}`
+        name: message.guild.name,
+        icon_url: $essage.guild.iconURL
         },
         thumbnail: {
-            "url": `${message.guild.iconURL}`
+            "url": message.guild.iconURL
         },
         description: "A Czech/English gaming Discord server for everyone.",
         fields: [{
@@ -41,8 +41,8 @@ exports.run = (client, message) => {
             },
         ],
         footer: {
-        icon_url: `${client.user.avatarURL}`,
-        text: "Thanks for being a part of our community ❤️"
+          icon_url: message.guild.iconURL,
+          text: "Thanks for being a part of our community ❤️"
         }
     }
     })

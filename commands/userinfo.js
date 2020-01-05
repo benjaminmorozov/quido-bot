@@ -5,13 +5,13 @@ exports.run = (client, message, args) => {
     var avatar = member.avatarURL;
     if(avatar == null) avatar = "https://discordapp.com/assets/0e291f67c9274a1abdddeb3fd919cbaa.png";
     const userinfoEmbed= new Discord.RichEmbed()
-      .setColor('0xff5353')
-      .setAuthor(`${member.username}`)
-      .setThumbnail(`${avatar}`)
-      .addField('**Full Username:**', `${member.username}#${member.discriminator}`, false)
-      .addField('**Member ID:**', `${member.id}`, false)
+      .setColor('0x0092ca')
+      .setAuthor(member.username)
+      .setThumbnail(member.displayAvatarURL)
+      .addField('**Full Username:**', member.username} + `#` + member.discriminator, false)
+      .addField('**Member ID:**', member.id, false)
       .addField('**Account Creation Date:**', `${moment.utc(member.createdAt).format('dddd DD/MM/YYYY')}`, false)
-      .addField('**Member Join Date:**', `${moment.utc(member.JoinedAt).format('dddd DD/MM/YYYY')}`, false)
-      .setFooter('Thanks for being a part of our community. ❤️', `${client.user.avatarURL}`);
+      .addField('**Member Join Date:**', `${member.joinedAt.toUTCString().substr(0, 16)}`, false)
+      .setFooter('Thanks for being a part of our community. ❤️', message.guild.iconURL);
     message.channel.send(userinfoEmbed);
 };
