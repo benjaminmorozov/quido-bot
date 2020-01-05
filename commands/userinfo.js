@@ -4,9 +4,8 @@ exports.run = (client, message, args) => {
     const member = message.mentions.users.first() || message.author;
 	function creationDate() {
 		var d = message.guild.member(member).createdAt;
-		var today = new Date();
-		let diff = today.diff(d, 'months');
-		if(diff < 1) return `**⚠️ ${moment.utc(member.createdAt).format('dddd DD/MM/YYYY')} ⚠**`; // danger if age less than 1 month
+		var ONE_MONTH = 31 * 24 * 60 * 60 * 1000; /* ms */
+		if(((new Date) - d) < ONE_MONTH) return `**⚠️ ${moment.utc(member.createdAt).format('dddd DD/MM/YYYY')} ⚠**`; // danger if age less than 1 month
 		return moment.utc(member.createdAt).format('dddd DD/MM/YYYY');  // Looks good!
 	}
     var avatar = member.avatarURL;
