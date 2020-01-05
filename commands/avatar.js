@@ -7,7 +7,7 @@ exports.run = (client, message) => {
           name: `${taggedUser.username}#${taggedUser.discriminator}`,
         },
         image: {
-            url: `${taggedUser.displayAvatarURL}`,
+            url: taggedUser.displayAvatarURL,
         },
         footer: {
           icon_url: 'https://cdn.discordapp.com/icons/610434388777369602/08a037cb16972aa3cd069a055d63ca43.webp',
