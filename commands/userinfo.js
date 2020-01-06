@@ -8,8 +8,6 @@ exports.run = (client, message, args) => {
 		if(((new Date) - d) < ONE_MONTH) return `**⚠️ ${moment.utc(member.createdAt).format('dddd DD/MM/YYYY')} ⚠**`; // danger if age less than 1 month
 		return moment.utc(member.createdAt).format('dddd DD/MM/YYYY');  // Looks good!
 	}
-    var avatar = member.avatarURL;
-    if(avatar == null) avatar = "https://discordapp.com/assets/0e291f67c9274a1abdddeb3fd919cbaa.png";
     const userinfoEmbed= new Discord.RichEmbed()
       .setColor('0x0092ca')
       .setAuthor(member.username)
