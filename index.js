@@ -61,9 +61,19 @@ client.on('guildMemberAdd', member => {
     // This is just to simplify the message being sent below (inviter doesn't have a tag property)
     const inviter = client.users.get(invite.inviter.id);
     // Get the log channel (change to your liking)
-    const logChannel = member.guild.channels.find(channel => channel.id === "631083427936075789");
+    const memberLogChannel = member.guild.channels.find(channel => channel.id === "617351599202762754");
     // A real basic message with the information we need.
-    logChannel.send(`${member} **joined**; Invited by **${inviter.username}** (**${invite.uses}** invites).`);
+    memberLogChannel.send(`${member} **joined**; Invited by **${inviter.username}** (**${invite.uses}** invites).`);
+	const joinMemberEmbed = new Discord.RichEmbed()
+      .setColor('0x0092ca')
+      .setAuthor(member.username)
+      .setThumbnail(member.displayAvatarURL)
+      .addField('**Full Username:**', member.username + `#` + member.discriminator, false)
+      .addField('**Member ID:**', member.id, false)
+      .addField('**Account Creation Date:**', `${creationDate()}`, false)
+      .addField('**Member Join Date:**', `${moment.utc(message.guild.member(member).joinedAt).format('dddd DD/MM/YYYY')}`, false)
+      .setFooter('Thanks for being a part of our community. ❤️', message.guild.iconURL);
+	memberLogChannel.send(joinMemberEmbed);
   });
   Verify.findOne({userID: member.id, serverID: member.guild.id}, (err, verify) => {
     if(err) console.log(err);
@@ -83,6 +93,7 @@ client.on('guildMemberAdd', member => {
     });
     return;
   };
+  
 };
   global.code = makeid(5);
   let guild = client.guilds.get("610434388777369602");
