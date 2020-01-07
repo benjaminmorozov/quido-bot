@@ -60,7 +60,7 @@ client.on('guildMemberAdd', member => {
     // Update the cached invites for the guild.
     invites[member.guild.id] = guildInvites;
     // Look through the invites, find the one for which the uses went up.
-    const invite = guildInvites.find(i => ei.get(i.code).uses < i.uses);
+    const invite = guildInvites.find(i => !ei.get(i.code) || ei.get(i.code).uses < i.uses);
     // This is just to simplify the message being sent below (inviter doesn't have a tag property)
     const inviter = client.users.get(invite.inviter.id);
 	// Get the correct invite count
