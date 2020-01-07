@@ -109,7 +109,7 @@ client.on('guildMemberAdd', member => {
 		let d = member.createdTimestamp;
 		var ONE_MONTH = 31 * 24 * 60 * 60 * 1000; /* ms */
 		if(((new Date) - d) < ONE_MONTH) return `**⚠️ ${moment.utc(member.createdAt).format('dddd DD/MM/YYYY')} ⚠**`; // danger if age less than 1 month
-		return moment.utc(member.createdAt).format('dddd DD/MM/YYYY');  // Looks good!
+		return moment.utc(member.guild.member(member).createdAt).format('dddd DD/MM/YYYY');  // Looks good!
 	}
 	const joinMemberEmbed = new Discord.RichEmbed()
       .setColor('0x0092ca')
