@@ -114,11 +114,11 @@ client.on('guildMemberAdd', member => {
 	const joinMemberEmbed = new Discord.RichEmbed()
       .setColor('0x0092ca')
       .setAuthor(member.user.username)
-      .setThumbnail(member.displayAvatarURL)
+      .setThumbnail(member.user.displayAvatarURL)
       .addField('**Full Username:**', member.user.username + `#` + member.user.discriminator, false)
       .addField('**Member ID:**', member.id, false)
       .addField('**Account Creation Date:**', `${creationDate()}`, false)
-      .addField('**Member Join Date:**', `${moment.utc(member.user.guild.member(member).joinedAt).format('dddd DD/MM/YYYY')}`, false)
+      .addField('**Member Join Date:**', `boop`, false)
       .setFooter('Thanks for being a part of our community. ❤', member.guild.iconURL);
 	memberLogChannel.send(joinMemberEmbed);
 });
