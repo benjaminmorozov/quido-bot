@@ -64,7 +64,7 @@ client.on('guildMemberAdd', member => {
     // This is just to simplify the message being sent below (inviter doesn't have a tag property)
     const inviter = client.users.get(invite.inviter.id);
 	// Get the correct invite count
-	const userInvites = invites.array().filter(o => o.inviter.id === inviter.id);
+	const userInvites = guildInvites.array().filter(o => o.inviter.id === inviter.id);
 		var userInviteCount = 0;
 			for(var i=0; i < userInvites.length; i++)
 			{
