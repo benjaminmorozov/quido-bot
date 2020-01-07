@@ -63,10 +63,18 @@ client.on('guildMemberAdd', member => {
     const invite = guildInvites.find(i => ei.get(i.code).uses < i.uses);
     // This is just to simplify the message being sent below (inviter doesn't have a tag property)
     const inviter = client.users.get(invite.inviter.id);
-	 // Get the log channel (change to your liking)
+	// Get the correct invite count
+	const userInvites = invites.array().filter(o => o.inviter.id === inviter.id);
+		var userInviteCount = 0;
+			for(var i=0; i < userInvites.length; i++)
+			{
+				var invite = userInvites[i];
+				userInviteCount += invite['uses'];
+			}
+	// Get the log channel (change to your liking)
 	const memberWelcomeChannel = member.guild.channels.find(channel => channel.id === "631083427936075789");
     // A real basic message with the information we need.
-    memberWelcomeChannel.send(`${member} **joined**; Invited by **${inviter.username}** (**${invite.uses}** invites).`);
+    memberWelcomeChannel.send(`${member} **joined**; Invited by **${inviter.username}** (**${userInviteCount}** invites).`);
   });
   Verify.findOne({userID: member.id, serverID: member.guild.id}, (err, verify) => {
     if(err) console.log(err);
