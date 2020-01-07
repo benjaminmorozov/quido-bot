@@ -118,8 +118,8 @@ client.on('guildMemberAdd', member => {
       .addField('**Full Username:**', member.usernagme + `#` + member.discriminator, false)
       .addField('**Member ID:**', member.id, false)
       .addField('**Account Creation Date:**', `${creationDate()}`, false)
-      .addField('**Member Join Date:**', `boop`, false)
-      .setFooter('Thanks for being a part of our community. ❤');
+      .addField('**Member Join Date:**', `${moment.utc(member.guild.member(member).joinedAt).format('dddd DD/MM/YYYY')}`, false)
+      .setFooter('Thanks for being a part of our community. ❤', member.guild.iconURL);
 	memberLogChannel.send(joinMemberEmbed);
 });
 
