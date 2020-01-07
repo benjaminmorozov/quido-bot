@@ -86,7 +86,7 @@ client.on('guildMemberAdd', member => {
       .setAuthor(`[JOINED] ${member.user.username}#${member.user.discriminator}`, member.user.displayAvatarURL)
       .setThumbnail(member.user.displayAvatarURL)
       .addField('**Account Creation Date:**', creationDate(), false)
-	  .addField('**Invited By:**', inviter.username, false)
+	  .addField('**Invited By:**', inviter.username + `#` + inviter.discriminator + `**(${userInviteCount})**`, false)
       .setTimestamp()
       .setFooter(`Member ID: ${member.id}`);
 	memberLogChannel.send(joinMemberEmbed);
