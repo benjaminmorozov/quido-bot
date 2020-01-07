@@ -108,17 +108,17 @@ client.on('guildMemberAdd', member => {
 	function creationDate() {
 		let d = member.createdTimestamp;
 		var ONE_MONTH = 31 * 24 * 60 * 60 * 1000; /* ms */
-		if(((new Date) - d) < ONE_MONTH) return `**⚠️ ${moment.utc(member.createdAt).format('dddd DD/MM/YYYY')} ⚠**`; // danger if age less than 1 month
-		return moment.utc(member.guild.member(member).createdAt).format('dddd DD/MM/YYYY');  // Looks good!
+		if(((new Date) - d) < ONE_MONTH) return `**⚠️ ${moment.utc(member.user.createdAt).format('dddd DD/MM/YYYY')} ⚠**`; // danger if age less than 1 month
+		return moment.utc(member.user.createdAt).format('dddd DD/MM/YYYY');  // Looks good!
 	}
 	const joinMemberEmbed = new Discord.RichEmbed()
       .setColor('0x0092ca')
-      .setAuthor(member.username)
+      .setAuthor(member.user.username)
       .setThumbnail(member.displayAvatarURL)
-      .addField('**Full Username:**', member.usernagme + `#` + member.discriminator, false)
+      .addField('**Full Username:**', member.user.username + `#` + member.user.discriminator, false)
       .addField('**Member ID:**', member.id, false)
       .addField('**Account Creation Date:**', `${creationDate()}`, false)
-      .addField('**Member Join Date:**', `${moment.utc(member.guild.member(member).joinedAt).format('dddd DD/MM/YYYY')}`, false)
+      .addField('**Member Join Date:**', `${moment.utc(member.user.guild.member(member).joinedAt).format('dddd DD/MM/YYYY')}`, false)
       .setFooter('Thanks for being a part of our community. ❤', member.guild.iconURL);
 	memberLogChannel.send(joinMemberEmbed);
 });
