@@ -63,8 +63,10 @@ client.on('guildMemberAdd', member => {
     const invite = guildInvites.find(i => ei.get(i.code).uses < i.uses);
     // This is just to simplify the message being sent below (inviter doesn't have a tag property)
     const inviter = client.users.get(invite.inviter.id);
+	 // Get the log channel (change to your liking)
+	const memberWelcomeChannel = member.guild.channels.find(channel => channel.id === "631083427936075789");
     // A real basic message with the information we need.
-    memberLogChannel.send(`${member} **joined**; Invited by **${inviter.username}** (**${invite.uses}** invites).`);
+    memberWelcomeChannel.send(`${member} **joined**; Invited by **${inviter.username}** (**${invite.uses}** invites).`);
   });
   Verify.findOne({userID: member.id, serverID: member.guild.id}, (err, verify) => {
     if(err) console.log(err);
@@ -116,7 +118,6 @@ client.on('guildMemberAdd', member => {
       .setAuthor(`[JOINED] ${member.user.username}#${member.user.discriminator}`, member.user.displayAvatarURL)
       .setThumbnail(member.user.displayAvatarURL)
       .addField('**Account Creation Date:**', `${creationDate()}`, false)
-      .addField('**Member Join Date:**', `boop`, false)
       .setTimestamp()
       .setFooter(`Member ID: ${member.id}`);
 	memberLogChannel.send(joinMemberEmbed);
