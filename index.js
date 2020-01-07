@@ -1,6 +1,7 @@
 const Discord = require("discord.js");
 const Enmap = require("enmap");
 const fs = require("fs");
+const moment = require("moment");
 const { RichEmbed } = require('discord.js');
 const client = new Discord.Client();
 const getImages = require('./util/getImages');
