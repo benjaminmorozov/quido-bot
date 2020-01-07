@@ -75,6 +75,21 @@ client.on('guildMemberAdd', member => {
 	const memberWelcomeChannel = member.guild.channels.find(channel => channel.id === "631083427936075789");
     // A real basic message with the information we need.
     memberWelcomeChannel.send(`${member} **joined**; Invited by **${inviter.username}** (**${userInviteCount}** invites).`);
+		function creationDate() {
+		let d = member.user.createdTimestamp;
+		var ONE_MONTH = 31 * 24 * 60 * 60 * 1000; /* ms */
+		if(((new Date) - d) < ONE_MONTH) return `**⚠️ ${moment.utc(member.user.createdAt).format('dddd DD/MM/YYYY')} ⚠**`; // danger if age less than 1 month
+		return moment.utc(member.user.createdAt).format('dddd DD/MM/YYYY');  // Looks good!
+	}
+	const joinMemberEmbed = new Discord.RichEmbed()
+      .setColor('0x0092ca')
+      .setAuthor(`[JOINED] ${member.user.username}#${member.user.discriminator}`, member.user.displayAvatarURL)
+      .setThumbnail(member.user.displayAvatarURL)
+      .addField('**Account Creation Date:**', creationDate(), false)
+	  .addField('**Invited By:**', inviter.username, false)
+      .setTimestamp()
+      .setFooter(`Member ID: ${member.id}`);
+	memberLogChannel.send(joinMemberEmbed);
   });
   Verify.findOne({userID: member.id, serverID: member.guild.id}, (err, verify) => {
     if(err) console.log(err);
@@ -115,20 +130,6 @@ client.on('guildMemberAdd', member => {
     .setFooter(`Member: ${member.id}`);
   log.send(verificationsentEmbed);
     });
-	function creationDate() {
-		let d = member.createdTimestamp;
-		var ONE_MONTH = 31 * 24 * 60 * 60 * 1000; /* ms */
-		if(((new Date) - d) < ONE_MONTH) return `**⚠️ ${moment.utc(member.user.createdAt).format('dddd DD/MM/YYYY')} ⚠**`; // danger if age less than 1 month
-		return moment.utc(member.user.createdAt).format('dddd DD/MM/YYYY');  // Looks good!
-	}
-	const joinMemberEmbed = new Discord.RichEmbed()
-      .setColor('0x0092ca')
-      .setAuthor(`[JOINED] ${member.user.username}#${member.user.discriminator}`, member.user.displayAvatarURL)
-      .setThumbnail(member.user.displayAvatarURL)
-      .addField('**Account Creation Date:**', `${creationDate()}`, false)
-      .setTimestamp()
-      .setFooter(`Member ID: ${member.id}`);
-	memberLogChannel.send(joinMemberEmbed);
 });
 
 client.on('messageDelete', async function(message) {
