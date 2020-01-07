@@ -68,8 +68,8 @@ client.on('guildMemberAdd', member => {
 		var userInviteCount = 0;
 			for(var i=0; i < userInvites.length; i++)
 			{
-				var invite = userInvites[i];
-				userInviteCount += invite['uses'];
+				var inviteCount = userInvites[i];
+				userInviteCount += inviteCount['uses'];
 			}
 	// Get the log channel (change to your liking)
 	const memberWelcomeChannel = member.guild.channels.find(channel => channel.id === "631083427936075789");
