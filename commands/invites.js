@@ -12,10 +12,10 @@ exports.run = (client, message) => {
 					var invite = userInvites[i];
 					userInviteCount += invite['uses'];
 				}
-			if(!targetUser.id == message.author.id)
-				message.channel.send(`User _${targetUser.username}_ has invited ${userInviteCount} user(s) to this server.`);
-			else
+			if(targetUser.id == message.author.id)
 				message.reply(`You have invited ${userInviteCount} user(s) to this server. Keep up the good work!`);
+			else
+				message.channel.send(`User _${targetUser.username}_ has invited ${userInviteCount} user(s) to this server.`);
 		}
     )
     .catch(console.error);
