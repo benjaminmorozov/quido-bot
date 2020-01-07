@@ -119,7 +119,7 @@ client.on('guildMemberAdd', member => {
       .addField('**Member ID:**', member.id, false)
       .addField('**Account Creation Date:**', `${creationDate()}`, false)
       .addField('**Member Join Date:**', `boop`, false)
-      .setFooter('Thanks for being a part of our community. ❤', message.guild.iconURL);
+      .setFooter('Thanks for being a part of our community. ❤');
 	memberLogChannel.send(joinMemberEmbed);
 });
 
