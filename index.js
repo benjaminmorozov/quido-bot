@@ -133,6 +133,7 @@ client.on('guildMemberAdd', member => {
 });
 
 client.on("guildMemberRemove", (member) => {
+	const memberLogChannel = member.guild.channels.find(channel => channel.id === "617351599202762754");
 	function creationDate() {
 		let d = member.user.createdTimestamp;
 		var ONE_MONTH = 31 * 24 * 60 * 60 * 1000; /* ms */
