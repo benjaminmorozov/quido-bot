@@ -141,7 +141,7 @@ client.on("guildMemberRemove", (member) => {
 		return moment.utc(member.user.createdAt).format('dddd DD/MM/YYYY');  // Looks good!
 	}
 	const joinMemberEmbed = new Discord.RichEmbed()
-		.setColor('0x45b6fe')
+		.setColor('0xFF470F')
 		.setAuthor(`[LEAVE] ${member.user.username}#${member.user.discriminator}`, member.user.displayAvatarURL)
 		.setThumbnail(member.user.displayAvatarURL)
 		.addField('**Account Creation Date:**', creationDate(), false)
