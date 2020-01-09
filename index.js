@@ -140,14 +140,14 @@ client.on("guildMemberRemove", (member) => {
 		if(((new Date) - d) < ONE_MONTH) return `**⚠️ ${moment.utc(member.user.createdAt).format('dddd DD/MM/YYYY')} ⚠**`; // danger if age less than 1 month
 		return moment.utc(member.user.createdAt).format('dddd DD/MM/YYYY');  // Looks good!
 	}
-	const joinMemberEmbed = new Discord.RichEmbed()
+	const leaveMemberEmbed = new Discord.RichEmbed()
 		.setColor('0xFF470F')
 		.setAuthor(`[LEAVE] ${member.user.username}#${member.user.discriminator}`, member.user.displayAvatarURL)
 		.setThumbnail(member.user.displayAvatarURL)
 		.addField('**Member Join Date:**', `${moment.utc(member.user.joinedAt).format('dddd DD/MM/YYYY')}`, false)
 		.setTimestamp()
 		.setFooter(`Member ID: ${member.id}`);
-	memberLogChannel.send(joinMemberEmbed);
+	memberLogChannel.send(leaveMemberEmbed);
 });
 
 client.on('messageDelete', async function(message) {

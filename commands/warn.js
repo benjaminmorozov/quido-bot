@@ -28,7 +28,7 @@ exports.run = async (client, message, args) => {
   Warns.countDocuments({userID: member.id}, function(err, count) {
     var warnslog = client.guilds.find('id','610434388777369602').channels.find('id','630403969616707594');
     let embed = new Discord.RichEmbed()
-      .setColor('#45b6fe')
+      .setColor('0xFF470F')
       .setAuthor(`[WARN] ${member.username}#${member.discriminator}`, member.avatarURL)
       .addField('Member:', `${member}`, true)
       .addField('Warned By:', `${message.author}`, true)
