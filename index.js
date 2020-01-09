@@ -79,7 +79,7 @@ client.on('guildMemberAdd', member => {
 		let d = member.user.createdTimestamp;
 		var ONE_MONTH = 31 * 24 * 60 * 60 * 1000; /* ms */
 		if(((new Date) - d) < ONE_MONTH) return `**⚠️ ${moment.utc(member.user.createdAt).format('dddd DD/MM/YYYY')} ⚠**`; // danger if age less than 1 month
-		return moment.utc(member.user.createdAt).format('dddd DD/MM/YYYY');  // Looks good!
+		return `**✔️ ${moment.utc(member.user.createdAt).format('dddd DD/MM/YYYY')} ✔**`;  // Looks good!
 	}
 	const joinMemberEmbed = new Discord.RichEmbed()
       .setColor('0x0092ca')
@@ -144,7 +144,6 @@ client.on("guildMemberRemove", (member) => {
 		.setColor('0xFF470F')
 		.setAuthor(`[LEAVE] ${member.user.username}#${member.user.discriminator}`, member.user.displayAvatarURL)
 		.setThumbnail(member.user.displayAvatarURL)
-		.addField('**Account Creation Date:**', creationDate(), false)
 		.addField('**Member Join Date:**', `${moment.utc(member.user.joinedAt).format('dddd DD/MM/YYYY')}`, false)
 		.setTimestamp()
 		.setFooter(`Member ID: ${member.id}`);
