@@ -18,6 +18,8 @@ client.config = config;
 
 client.on('ready', () => {
   console.log(`Successfully loaded and logged in as ${client.user.tag}.`);
+  let guild = client.guilds.get("610434388777369602");
+  guild.setRolePosition("639422517546844172", "3");
   client.user.setPresence({ game: { name: "Quido's Club > All", type: 0 } });
 });
 
