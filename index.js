@@ -51,11 +51,6 @@ client.on('ready', () => {
   });
 });
 
-client.on('message', message => {
-  if(words.filter-words.some(word => message.content.toLowerCase().includes(word))){
-    message.delete()
-}});
-
 client.on('guildMemberAdd', member => {
   global.verifymember = member;
   // Get the log channel (change to your liking)
