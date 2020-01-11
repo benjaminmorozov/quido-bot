@@ -22,10 +22,13 @@ exports.run = async (client, message, args) => {
 	message.channel.fetchMessages({limit: deleteCount}).then((fetched) => {
 		if(user) {
 			const filterBy = user ? user.id : Client.user.id;
-			let fetched = fetched.filter(m => m.author.id === filterBy).array().slice(0, deleteCount);
-		}
+			let userFetched = fetched.filter(m => m.author.id === filterBy).array().slice(0, deleteCount);
+			message.channel.bulkDelete(userFetched)
+				.catch(error => message.reply(`couldn't delete messages because of: ${error}`));
+		} else {
 		message.channel.bulkDelete(fetched)
 			.catch(error => message.reply(`couldn't delete messages because of: ${error}`));
+		};
 		message.channel.send(`Deleted ${deleteCount} messages!`).then(sentMessage => {
 			sentMessage.delete(5000);
 		});
