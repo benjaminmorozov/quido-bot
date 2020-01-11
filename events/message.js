@@ -37,7 +37,7 @@ module.exports = (client, message) => {
 	setTimeout(() => {
 		// Removes the user from the set after 2.5 seconds
 		talkedRecently.delete(message.author.id);
-	}, 2500);
+	}, 1500);
 	
     // Our standard argument/command name definition.
     const args = message.content.slice(client.config.prefix.length).trim().split(/ +/g);
