@@ -22,7 +22,7 @@ exports.run = async (client, message, args) => {
     let fetched = await message.channel.fetchMessages({limit: deleteCount});
 	if(user) {
 		const filterBy = user ? user.id : Client.user.id;
-		let fetched = messages.filter(m => m.author.id === filterBy).array().slice(0, deleteCount);
+		let fetched = fetched.filter(m => m.author.id === filterBy).array().slice(0, deleteCount);
 	}
     message.channel.bulkDelete(fetched)
       .catch(error => message.reply(`couldn't delete messages because of: ${error}`));
