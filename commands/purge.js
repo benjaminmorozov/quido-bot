@@ -29,5 +29,5 @@ exports.run = async (client, message, args) => {
 		message.channel.send(`Deleted ${deleteCount} messages!`).then(sentMessage => {
 			sentMessage.delete(5000);
 		});
-	}
+	});
 }
