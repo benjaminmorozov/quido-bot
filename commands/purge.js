@@ -19,7 +19,7 @@ exports.run = async (client, message, args) => {
       return message.reply("provide a number between 2 and 100 for the number of messages to delete.");
   
 	message.channel.fetchMessages({
-		limit: 250,
+		limit: 100,
 	}).then((messages) => {
 		if(user) {
 			const filterBy = user ? user.id : Client.user.id;
