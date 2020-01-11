@@ -4,18 +4,29 @@ exports.run = async (client, message, args) => {
     // makes the bot say something and delete the message. As an example, it's open to anyone to use.
     // To get the "message" itself we join the `args` back into a string with spaces:
 	message.delete();
-    if (!args.length) {
-        return;
-    }
 	
 	const user = message.mentions.users.first();
 	
     // get the delete count, as an actual number.
     const deleteCount = parseInt(args[0], 10);
+	
+	if (!deleteCount) {
+        return;
+    }
 
     // Ooooh nice, combined conditions. <3
     if(!deleteCount || deleteCount < 2 || deleteCount > 100)
       return message.reply("provide a number between 2 and 100 for the number of messages to delete.");
+  
+	message.channel.fetchMessages({
+		limit: 250,
+	}).then((messages) => {
+		if (user) {
+			const filterBy = user ? user.id : Client.user.id;
+			messages = messages.filter(m => m.author.id === filterBy).array().slice(0, amount);
+		}
+		message.channel.bulkDelete(messages).catch(error => console.log(error.stack));
+	});
 
     // So we get our messages, and delete them. Simple enough, right?
     const fetched = await message.channel.fetchMessages({limit: deleteCount});
