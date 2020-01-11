@@ -3,6 +3,7 @@ mongoose.connect("mongodb+srv://admin:admin@quido-bot-sku03.mongodb.net/test?ret
   useNewUrlParser: true
 });
 const Score = require("../models/score.js")
+const talkedRecently = new Set();
 module.exports = (client, message) => {
     // Ignore all bots
     if (message.author.bot) return;
