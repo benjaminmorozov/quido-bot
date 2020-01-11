@@ -7,6 +7,9 @@ exports.run = async (client, message, args) => {
     if (!args.length) {
         return;
     }
+	
+	const user = message.mentions.users.first();
+	
     // get the delete count, as an actual number.
     const deleteCount = parseInt(args[0], 10);
 
@@ -18,7 +21,7 @@ exports.run = async (client, message, args) => {
     const fetched = await message.channel.fetchMessages({limit: deleteCount});
     message.channel.bulkDelete(fetched)
       .catch(error => message.reply(`couldn't delete messages because of: ${error}`));
-    message.channel.send(`Deleted ${deleteCount} messages!`).then(sentMessage => {
+    message.channel.send(`Deleted ${deleteCount} messages! ${user}`).then(sentMessage => {
         sentMessage.delete(5000);
     });
 }
