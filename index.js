@@ -5,6 +5,7 @@ const moment = require("moment");
 const { RichEmbed } = require('discord.js');
 const client = new Discord.Client();
 const getImages = require('./util/getImages');
+const talkedRecently = new Set();
 const mongoose = require("mongoose");
 mongoose.connect("mongodb+srv://admin:admin@quido-bot-sku03.mongodb.net/test?retryWrites=true&w=majority", {
   useNewUrlParser: true
