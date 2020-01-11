@@ -140,7 +140,7 @@ client.on("guildMemberRemove", (member) => {
 		.setColor('0xFF470F')
 		.setAuthor(`[LEAVE] ${member.user.username}#${member.user.discriminator}`, member.user.displayAvatarURL)
 		.setThumbnail(member.user.displayAvatarURL)
-		.addField('**Member Join Date:**', `${moment.utc(member.user.guild.member(member).joinedAt).format('dddd DD/MM/YYYY')}`, false)
+		.addField('**Member Join Date:**', `${moment.utc(member.user.joinedAt).format('dddd DD/MM/YYYY')}`, false)
 		.setTimestamp()
 		.setFooter(`Member ID: ${member.id}`);
 	memberLogChannel.send(leaveMemberEmbed);
