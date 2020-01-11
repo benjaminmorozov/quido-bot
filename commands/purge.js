@@ -5,19 +5,29 @@ exports.run = async (client, message, args) => {
     // To get the "message" itself we join the `args` back into a string with spaces:
 	message.delete();
 	
-const user = message.mentions.users.first();
-// Parse Amount
-const amount = !!parseInt(message.content.split(' ')[1]) ? parseInt(message.content.split(' ')[1]) : parseInt(message.content.split(' ')[2])
-if (!amount) return message.reply('Must specify an amount to delete!');
-if (!amount && !user) return message.reply('Must specify a user and amount, or just an amount, of messages to purge!');
-// Fetch 100 messages (will be filtered and lowered up to max amount requested)
-message.channel.fetchMessages({
- limit: 100,
-}).then((messages) => {
- if (user) {
- const filterBy = user ? user.id : Client.user.id;
- messages = messages.filter(m => m.author.id === filterBy).array().slice(0, amount);
- }
- message.channel.bulkDelete(messages).catch(error => console.log(error.stack));
-});
+	const user = message.mentions.users.first();
+	
+    // get the delete count, as an actual number.
+    const deleteCount = parseInt(args[0], 10);
+	
+	if (!deleteCount) {
+        return;
+    }
+
+    // Ooooh nice, combined conditions. <3
+    if(!deleteCount || deleteCount < 2 || deleteCount > 100)
+      return message.reply("provide a number between 2 and 100 for the number of messages to delete.");
+  
+	message.channel.fetchMessages({
+		limit: deleteCount,
+	}).then((messages) => {
+		if(user) {
+			const filterBy = user ? user.id : Client.user.id;
+			messages = messages.filter(m => m.author.id === filterBy).array().slice(0, deleteCount);
+		}
+		message.channel.bulkDelete(messages).catch(error => message.reply(`couldn't delete messages because of: ${error}`));
+		message.channel.send(`Deleted ${deleteCount} messages!`).then(sentMessage => {
+			sentMessage.delete(5000);
+		});
+	});
 }
