@@ -20,7 +20,7 @@ client.words = words;
 
 client.on('ready', () => {
   console.log(`Successfully loaded and logged in as ${client.user.tag}.`);
-  client.user.setPresence({ game: { name: 'Welcome to Quido\'s Club ️❤️', type: 0 } });
+  client.user.setPresence({ game: { name: 'psst', type: 0 } });
 });
 
 function makeid(length) {
@@ -51,6 +51,7 @@ client.on('ready', () => {
   });
 });
 
+/*
 client.on('guildMemberAdd', member => {
   global.verifymember = member;
   // Get the log channel (change to your liking)
@@ -79,7 +80,7 @@ client.on('guildMemberAdd', member => {
     memberWelcomeChannel.send(`${member} **joined**; Invited by **${inviter.username}** (**${userInviteCount}** invites).`);
 	function creationDate() {
 		let d = member.user.createdTimestamp;
-		var ONE_MONTH = 31 * 24 * 60 * 60 * 1000; /* ms */
+		var ONE_MONTH = 31 * 24 * 60 * 60 * 1000; // ms
 		if(((new Date) - d) < ONE_MONTH) return `**⚠ ${moment.utc(member.user.createdAt).format('dddd DD/MM/YYYY')} ⚠**`; // danger if age less than 1 month
 		return `**✓️ ${moment.utc(member.user.createdAt).format('dddd DD/MM/YYYY')} ✓**`;  // Looks good!
 	}
@@ -314,6 +315,7 @@ client.on('guildMemberUpdate', (oldMember, newMember) => {
     }
 
 });
+*/
 
 fs.readdir("./events/", (err, files) => {
   if (err) return console.error(err);

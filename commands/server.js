@@ -8,10 +8,10 @@ exports.run = (client, message) => {
         thumbnail: {
             "url": message.guild.iconURL
         },
-        description: "A Czech/English gaming Discord server for everyone.",
+        description: `**${client.config.description}**`,,
         fields: [{
             name: "Server Owner:",
-            value: "<@529057345599307776>",
+            value: "<@298528389940379648>",
             inline: "true"
             },
             {
@@ -22,16 +22,6 @@ exports.run = (client, message) => {
             {
             name: "User Count:",
             value: `${message.guild.members.filter(member => !member.user.bot).size}`,
-            inline: "true"
-            },
-            {
-            name: "Staff List:",
-            value: "<#638804758240559154>",
-            inline: "true"
-            },
-            {
-            name: "Server Rules:",
-            value: "<#613420283000520770>",
             inline: "true"
             },
             {
